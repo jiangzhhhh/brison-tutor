@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>进度管理 · Brison 的练习书架</title><link rel="stylesheet" href="project.css">
+<style>
+*{box-sizing:border-box}body{margin:0}main{max-width:900px;margin:auto;padding:36px 20px}h1{font-size:30px;margin:0 0 12px}h2{font-size:21px;margin:0}p{color:var(--muted)}.toolbar,.row{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}.toolbar{margin:24px 0}.card{padding:24px;margin:18px 0;border:1px solid var(--line)}.version{border-top:1px solid var(--line);padding:16px 0;display:flex;gap:12px;justify-content:space-between;align-items:center}.version p{margin:4px 0;font-size:13px;overflow-wrap:anywhere}.version div{min-width:0}.secondary{padding:9px 15px;cursor:pointer}.danger{cursor:pointer}.note{font-size:13px;line-height:1.8}.status{min-height:30px;color:var(--green)}.error{color:var(--project-danger)}iframe{display:none}dialog{padding:28px}dialog h2{margin-top:0}dialog .row{justify-content:flex-end}.empty{font-size:14px}button:disabled{opacity:.5}#records[aria-busy=true]{opacity:.65}a{color:var(--green)}
+</style></head>
+<body><nav class="project-nav" aria-label="项目导航"><a href="index.html">← 返回练习书架</a><span>进度管理</span></nav><main>
+<h1>进度管理</h1>
+<p class="note">管理当前浏览器的练习进度，包含保留的旧版记录。清理前请关闭练习页；清理不可撤销。</p>
+<div class="toolbar"><button class="secondary" id="refresh" type="button">刷新记录</button><button class="danger" id="clear-all" type="button" disabled>清理全部练习进度…</button></div>
+<div class="status" id="status" role="status" aria-live="polite"></div><section id="records" aria-label="练习进度列表" aria-busy="true"></section>
+<p class="note">更换浏览器或文件位置，可能无法读取原进度。</p>
+</main><dialog id="confirmation" aria-labelledby="confirm-title"><h2 id="confirm-title">确定清理进度？</h2><p id="confirm-text"></p><div class="row"><button class="secondary" id="cancel" type="button">保留进度</button><button class="danger" id="confirm" type="button">确认清理</button></div></dialog>
+<script src="catalog.js"></script><script src="progress-manager.js"></script></body></html>
