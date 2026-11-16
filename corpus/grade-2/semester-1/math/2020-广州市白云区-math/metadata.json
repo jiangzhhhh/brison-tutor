@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 1,
+  "id": "2020-广州市白云区-math",
+  "title": "2020广州市白云区二年级上册数学期末试卷",
+  "subject": "math",
+  "grade": 2,
+  "semester": 1,
+  "examType": "期末",
+  "yearAsLabeled": "2020",
+  "regionAsLabeled": "广州市白云区",
+  "provenance": "third_party_repost_not_independently_authenticated",
+  "publisher": "奥数网",
+  "retrievedDate": "2026-11-17",
+  "textbookEdition": "人教版",
+  "sources": [
+    {
+      "url": "https://www.aoshu.com/e/20220126/61f15f38dc3bb.shtml",
+      "title": "2020广州市白云区二年级上册数学期末试卷（下载版）",
+      "subject": "math"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220126/61f15ecbaec42.shtml",
+      "title": "2020广州市白云区二年级上册数学期末试卷（答案）",
+      "subject": "math"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220126/61f15cebdec8e.shtml",
+      "title": "2020广州市白云区二年级上册数学期末试卷（图片版）",
+      "subject": "math"
+    }
+  ],
+  "files": [
+    {
+      "path": "raw/download-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220126/61f15f38dc3bb.shtml",
+      "bytes": 75536,
+      "sha256": "ee812e0b3f9d5c42ff915124806804c8fd99738449d89bb9235e8572d7ea9d24",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "download"
+    },
+    {
+      "path": "raw/original-1.zip",
+      "sourceUrl": "https://files.eduuu.com/ohr/2022/01/26/224732_61f15f041110e.zip",
+      "bytes": 330490,
+      "sha256": "1a60eaaa173d9f3663130f7c32ba72a4e84ebc693f8900d40595f1bdb72b0c5c",
+      "contentType": "application/zip",
+      "role": "attachment"
+    },
+    {
+      "path": "raw/answers-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220126/61f15ecbaec42.shtml",
+      "bytes": 75251,
+      "sha256": "e8aba56e5b90a6e09a35ee5c1d49da6b314fabb799ee70444ed6002e7ce3410f",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/26/223736_61f15cb0543a8.png",
+      "bytes": 46502,
+      "sha256": "cebe2d0c22b002bc7420d57708b1abfa71b1b4a598e78a3d686051dbe4ce908d",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220126/61f15ecbaec42.shtml"
+    },
+    {
+      "path": "raw/questions-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220126/61f15cebdec8e.shtml",
+      "bytes": 75084,
+      "sha256": "491afd589bf6d67d043a30b980f1ba582c972180a924a706cc530edc48e318e4",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/26/223736_61f15cb0e9013.png",
+      "bytes": 80117,
+      "sha256": "d919245bc599af0be693285a1377594604e001f70bcfbb890a9abfdac6a6119f",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220126/61f15cebdec8e.shtml"
+    },
+    {
+      "path": "raw/questions-02.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220126/61f15cebdec8e_2.shtml",
+      "bytes": 75039,
+      "sha256": "f80240b5ee0cbb88cebb43cd0a38796102890233368f9a2badfad7d32593ff60",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-02.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/26/223736_61f15cb0bfec0.png",
+      "bytes": 86400,
+      "sha256": "bf5e1c768b20068f77b25ca93b134394be85d8511adb502bbe9621cb0906387b",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 2,
+      "articleUrl": "https://www.aoshu.com/e/20220126/61f15cebdec8e_2.shtml"
+    },
+    {
+      "path": "raw/questions-03.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220126/61f15cebdec8e_3.shtml",
+      "bytes": 75041,
+      "sha256": "719e74f3e3bf4a8a5e29594bc33335e2f74d69dfebe5a0c42ee9bf656f5c85dd",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-03.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/26/223736_61f15cb099217.png",
+      "bytes": 77815,
+      "sha256": "8da917184feb6f75565771b619ffc41e1772cbaa78182d6a0bd3c381c28fa77c",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 3,
+      "articleUrl": "https://www.aoshu.com/e/20220126/61f15cebdec8e_3.shtml"
+    },
+    {
+      "path": "raw/questions-04.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220126/61f15cebdec8e_4.shtml",
+      "bytes": 75468,
+      "sha256": "537786d65a04ce089295feafe6b6a9e2d95f40ede44cd5d667916a5212251f1f",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-04.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/26/223736_61f15cb07376d.png",
+      "bytes": 85145,
+      "sha256": "d6008b3618c5a3d6c48760304fa7e25f6e562e60b46e8ee0d49e8420d0053f59",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 4,
+      "articleUrl": "https://www.aoshu.com/e/20220126/61f15cebdec8e_4.shtml"
+    },
+    {
+      "path": "raw/original.pdf",
+      "role": "extracted_original",
+      "archivePath": "raw/original-1.zip",
+      "originalFilename": "【真题】广东省广州市白云区数学二年级第一学期期末质量评估检测2019-2020学年（人教版，PDF版，含答案）.pdf",
+      "bytes": 422534,
+      "sha256": "925d5a976f688354d1538fb1d554d57bdc03a9e6a2b4f35cfbad0b5c2444b70d"
+    }
+  ],
+  "errors": [],
+  "questionImageCount": 4,
+  "answerImageCount": 1,
+  "answerStatus": "source_answers_unreviewed",
+  "completeness": "公开图片版全部可见分页及附件已保存；不保证转载件等同命题方完整原稿",
+  "excludedAssets": [
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    },
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    }
+  ],
+  "transcriptionStatus": "image_only_no_transcript",
+  "schoolYearAsLabeledInAttachment": "2019-2020",
+  "editionEvidence": "附件原始文件名，未与当前教材逐题对照",
+  "regionNormalized": "广州市白云区",
+  "notes": [],
+  "sourcePageReferences": [
+    "raw/original.pdf#page=1",
+    "raw/original.pdf#page=2",
+    "raw/original.pdf#page=3",
+    "raw/original.pdf#page=4",
+    "raw/original.pdf#page=5"
+  ],
+  "originalPageCount": 5,
+  "pagesWithEmbeddedText": 0,
+  "ocrStatus": "not_available",
+  "derivedFiles": []
+}

@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "2021-广州市黄埔区-chinese",
+  "title": "2021广州市黄埔区二年级上册语文期末试卷",
+  "subject": "chinese",
+  "grade": 2,
+  "semester": 1,
+  "examType": "期末",
+  "yearAsLabeled": "2021",
+  "regionAsLabeled": "广州市黄埔区",
+  "provenance": "third_party_repost_not_independently_authenticated",
+  "publisher": "奥数网",
+  "retrievedDate": "2026-11-17",
+  "textbookEdition": "部编版",
+  "sources": [
+    {
+      "url": "https://www.aoshu.com/e/20220125/61f000d0889e1.shtml",
+      "title": "2021广州市黄埔区二年级上册语文期末试卷（下载版）",
+      "subject": "chinese"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220125/61f0006c9cbba.shtml",
+      "title": "2021广州市黄埔区二年级上册语文期末试卷（图片版）",
+      "subject": "chinese"
+    }
+  ],
+  "files": [
+    {
+      "path": "raw/download-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f000d0889e1.shtml",
+      "bytes": 75630,
+      "sha256": "37ba603fd735002ab96f3408b1d3b15498d0f410ff954ca15491c0e678ad1359",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "download"
+    },
+    {
+      "path": "raw/original-1.zip",
+      "sourceUrl": "https://files.eduuu.com/ohr/2022/01/25/215222_61f000964813f.zip",
+      "bytes": 1607089,
+      "sha256": "e5200b87ec6706b7d8395b6d7a9c76727398635d41e90cd6738223044513fd31",
+      "contentType": "application/zip",
+      "role": "attachment"
+    },
+    {
+      "path": "raw/questions-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f0006c9cbba.shtml",
+      "bytes": 75083,
+      "sha256": "245cdb3a318d37b319131417bc5a9c6576fb78bd273bb97a2198eba4cabb6145",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/215059_61f000431cfde.png",
+      "bytes": 263759,
+      "sha256": "1790aa64f1942e52095ac057f0afc598d60596ffa3d2250859113b94892feef7",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f0006c9cbba.shtml"
+    },
+    {
+      "path": "raw/questions-02.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f0006c9cbba_2.shtml",
+      "bytes": 75038,
+      "sha256": "e9f9284369ad76f6c2b3ca31581d7d133917832f90d7219bef522c708f88dac1",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-02.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/215058_61f00042e96f5.png",
+      "bytes": 241474,
+      "sha256": "d0d2bbc0b696d09e4acc1dffa635bbf9cca469ad9eec924ffb1efed9bd0db335",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 2,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f0006c9cbba_2.shtml"
+    },
+    {
+      "path": "raw/questions-03.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f0006c9cbba_3.shtml",
+      "bytes": 75040,
+      "sha256": "e5058c27d090f9251e7a4a994912f655ecc7d2f30e23000af13993fc2c4d7d0f",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-03.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/215058_61f00042b7c8c.png",
+      "bytes": 279163,
+      "sha256": "1160b8a6c6f84e25a63c2ba90805c788f3c6ba630656345b8f897c0055389562",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 3,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f0006c9cbba_3.shtml"
+    },
+    {
+      "path": "raw/questions-04.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f0006c9cbba_4.shtml",
+      "bytes": 75561,
+      "sha256": "13a1478382205e662f0683936aa00e2e0d3973a4f6c043b195738fced6af2ac9",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-04.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/215058_61f0004284053.png",
+      "bytes": 244808,
+      "sha256": "cb122f28f369390c56f4df07fe11ea14e95c44f8daadff87005294467cdaf137",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 4,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f0006c9cbba_4.shtml"
+    },
+    {
+      "path": "raw/original.docx",
+      "role": "extracted_original",
+      "archivePath": "raw/original-1.zip",
+      "originalFilename": "二年级上册语文试题-广东省广州市黄埔区2020-2021学年第一学期期末教学质量检测卷 部编版（图片版无答案）.docx",
+      "bytes": 1607852,
+      "sha256": "e7d406bbfd8e87a20624cedf16605df5026150de2009e3d1583c3cbd6228be2b"
+    }
+  ],
+  "errors": [],
+  "questionImageCount": 4,
+  "answerImageCount": 0,
+  "answerStatus": "not_available",
+  "completeness": "公开图片版全部可见分页及附件已保存；不保证转载件等同命题方完整原稿",
+  "excludedAssets": [
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    }
+  ],
+  "transcriptionStatus": "image_only_no_transcript",
+  "schoolYearAsLabeledInAttachment": "2020-2021",
+  "editionEvidence": "附件原始文件名，未与当前教材逐题对照",
+  "regionNormalized": "广州市黄埔区",
+  "notes": [],
+  "sourcePageReferences": [
+    "raw/questions-01.png",
+    "raw/questions-02.png",
+    "raw/questions-03.png",
+    "raw/questions-04.png"
+  ],
+  "originalPageCount": 4,
+  "pagesWithEmbeddedText": 0,
+  "ocrStatus": "not_available",
+  "derivedFiles": []
+}

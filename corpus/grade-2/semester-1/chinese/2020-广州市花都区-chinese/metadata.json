@@ -1,0 +1,252 @@
+{
+  "schemaVersion": 1,
+  "id": "2020-广州市花都区-chinese",
+  "title": "2020广州市花都区二年级上册语文期末试卷",
+  "subject": "chinese",
+  "grade": 2,
+  "semester": 1,
+  "examType": "期末",
+  "yearAsLabeled": "2020",
+  "regionAsLabeled": "广州市花都区",
+  "provenance": "third_party_repost_not_independently_authenticated",
+  "publisher": "奥数网",
+  "retrievedDate": "2026-11-17",
+  "textbookEdition": "部编版",
+  "sources": [
+    {
+      "url": "https://www.aoshu.com/e/20220125/61eff79d8c4a1.shtml",
+      "title": "2020广州市花都区二年级上册语文期末试卷（下载版）",
+      "subject": "chinese"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220125/61eff6fe389e3.shtml",
+      "title": "2020广州市花都区二年级上册语文期末试卷（答案）",
+      "subject": "chinese"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220125/61eff6c921c69.shtml",
+      "title": "2020广州市花都区二年级上册语文期末试卷（图片版）",
+      "subject": "chinese"
+    }
+  ],
+  "files": [
+    {
+      "path": "raw/download-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61eff79d8c4a1.shtml",
+      "bytes": 75630,
+      "sha256": "a8f09edace7a1016a1017c649ca042c8fe096a5c3baeec18252c20a2acf76c82",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "download"
+    },
+    {
+      "path": "raw/original-1.zip",
+      "sourceUrl": "https://files.eduuu.com/ohr/2022/01/25/211207_61eff727f000c.zip",
+      "bytes": 550225,
+      "sha256": "121bc00cebe21996aa8ed5d23c0af6073546a3c900b8c80c60f112c7f1089f27",
+      "contentType": "application/zip",
+      "role": "attachment"
+    },
+    {
+      "path": "raw/answers-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61eff6fe389e3.shtml",
+      "bytes": 75004,
+      "sha256": "7d906f05536f5e32ebede66ce6f99717810d0b1ce2cb4e6d1f429579d71dd1c5",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/210925_61eff68590e04.png",
+      "bytes": 49895,
+      "sha256": "722a82a21ee76924edcd2c85e667b83cb98d38569f7e6552b7c9153e12c45e7a",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61eff6fe389e3.shtml"
+    },
+    {
+      "path": "raw/answers-02.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61eff6fe389e3_2.shtml",
+      "bytes": 74961,
+      "sha256": "ec0ae51302427aa66f6fbe17156f0d1cab20532a185ea2900a99095687e2970d",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-02.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/210925_61eff6857644c.png",
+      "bytes": 39772,
+      "sha256": "7f721710f565fed4af475ca8cb52bf8c09f8ae545268b75d62fc3567aae35e9f",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 2,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61eff6fe389e3_2.shtml"
+    },
+    {
+      "path": "raw/answers-03.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61eff6fe389e3_3.shtml",
+      "bytes": 75484,
+      "sha256": "43fd5fba3cbdd0f0aac7c5ac82798531aaff069d2cc8f093f1cec83616394348",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-03.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/210925_61eff68551941.png",
+      "bytes": 51205,
+      "sha256": "31a4620d2529795a36b4508c5e580086a06f59c9cf85bc8c6b6f89f1bfbb6a6b",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 3,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61eff6fe389e3_3.shtml"
+    },
+    {
+      "path": "raw/questions-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61eff6c921c69.shtml",
+      "bytes": 75154,
+      "sha256": "94d63a15dbad2109e65610f034298db1535a3a62e6b3530334a4688ba1d8f569",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/210926_61eff6866abdc.png",
+      "bytes": 85970,
+      "sha256": "9144c6950d2c1f90729c813e7dfa8f20ba547a3e4e8f21003d9a73bde2469f2b",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61eff6c921c69.shtml"
+    },
+    {
+      "path": "raw/questions-02.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61eff6c921c69_2.shtml",
+      "bytes": 75109,
+      "sha256": "ab77962f429071cdb5754258263c391f3b4d3d7bd178e7ffa88d169e5d8ea8da",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-02.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/210926_61eff68640f8a.png",
+      "bytes": 100937,
+      "sha256": "b7ff69eedf42fc970a2840004af6e3f3606e26a699dbe55911a1612c4d1fd0b5",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 2,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61eff6c921c69_2.shtml"
+    },
+    {
+      "path": "raw/questions-03.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61eff6c921c69_3.shtml",
+      "bytes": 75111,
+      "sha256": "8bae7545821b8d88cc9ffc28b277d2fd8c5a07f5f719240933876c2d92855997",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-03.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/210926_61eff6861907f.png",
+      "bytes": 65613,
+      "sha256": "0f90b09ebe6974f8904587449e870f132a7ccdb2f57387caafb7fa35c444d914",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 3,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61eff6c921c69_3.shtml"
+    },
+    {
+      "path": "raw/questions-04.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61eff6c921c69_4.shtml",
+      "bytes": 75111,
+      "sha256": "5814485fc44b551fc7bc25b540f86a598890cb114ce61aa3ed1c0c3dfaa4b2e7",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-04.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/210925_61eff685e9c0a.png",
+      "bytes": 192437,
+      "sha256": "ef1018d5ba7f3aa95f64b4578eb4d2d1f476a7d71814aa01e4b283bead8009ae",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 4,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61eff6c921c69_4.shtml"
+    },
+    {
+      "path": "raw/questions-05.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61eff6c921c69_5.shtml",
+      "bytes": 75632,
+      "sha256": "b5074cebb7661121fbb9619e44fab6f959336a7c0a5d9480a50b9f739cde1aea",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-05.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/210925_61eff685ba104.png",
+      "bytes": 59094,
+      "sha256": "0fa60f91f9f9a1e97675a7f4b2915f5754b4e1bcd7200e879259ba170b3ac762",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 5,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61eff6c921c69_5.shtml"
+    },
+    {
+      "path": "raw/original.pdf",
+      "role": "extracted_original",
+      "archivePath": "raw/original-1.zip",
+      "originalFilename": "二年级上册语文试题广东省广州市花都区2019-2020学年二年级上学期语文期末试题(部编版，含答案，扫描版）.pdf",
+      "bytes": 764372,
+      "sha256": "5f32e7afbe3fde64d1af304dfe57f604f10a6d8c5b96468c14263a2b2ac9e61c"
+    }
+  ],
+  "errors": [],
+  "questionImageCount": 5,
+  "answerImageCount": 3,
+  "answerStatus": "source_answers_unreviewed",
+  "completeness": "公开图片版全部可见分页及附件已保存；不保证转载件等同命题方完整原稿",
+  "excludedAssets": [
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    },
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    }
+  ],
+  "transcriptionStatus": "native_pdf_text_partial_unreviewed",
+  "schoolYearAsLabeledInAttachment": "2019-2020",
+  "editionEvidence": "附件原始文件名，未与当前教材逐题对照",
+  "regionNormalized": "广州市花都区",
+  "notes": [],
+  "sourcePageReferences": [
+    "raw/original.pdf#page=1",
+    "raw/original.pdf#page=2",
+    "raw/original.pdf#page=3",
+    "raw/original.pdf#page=4",
+    "raw/original.pdf#page=5",
+    "raw/original.pdf#page=6",
+    "raw/original.pdf#page=7",
+    "raw/original.pdf#page=8"
+  ],
+  "originalPageCount": 8,
+  "pagesWithEmbeddedText": 8,
+  "ocrStatus": "not_available",
+  "derivedFiles": [
+    {
+      "path": "pdf-text.txt",
+      "role": "native_pdf_text_unreviewed",
+      "bytes": 5968,
+      "sha256": "d96546585842b2be9de8c79d115874175943bf8ef0ea79b2f56c3b01158ef473"
+    }
+  ]
+}

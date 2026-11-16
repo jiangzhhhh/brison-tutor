@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "verifiedAt": "2026-11-16T16:39:21.502993+00:00",
+  "status": "passed",
+  "documents": 12,
+  "counts": {
+    "hashedFiles": 227,
+    "validatedArchives": 13,
+    "validatedImages": 91,
+    "chinese": 6,
+    "documentsWithAnswers": 10,
+    "documentsWithNativeText": 9,
+    "sourcePages": 88,
+    "math": 6,
+    "pageRecordsWithNativeText": 70
+  },
+  "errors": [],
+  "scope": "本地字节完整性和引用校验；不核定命题真实性、转载卷完整性及答案正确性。"
+}

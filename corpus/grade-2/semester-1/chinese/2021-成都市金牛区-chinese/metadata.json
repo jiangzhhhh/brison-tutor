@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "id": "2021-成都市金牛区-chinese",
+  "title": "2021成都市金牛区二年级上册语文期末试卷",
+  "subject": "chinese",
+  "grade": 2,
+  "semester": 1,
+  "examType": "期末",
+  "yearAsLabeled": "2021",
+  "regionAsLabeled": "成都市金牛区",
+  "provenance": "third_party_repost_not_independently_authenticated",
+  "publisher": "奥数网",
+  "retrievedDate": "2026-11-17",
+  "textbookEdition": "部编版",
+  "sources": [
+    {
+      "url": "https://www.aoshu.com/e/20220120/61e8e282291c6.shtml",
+      "title": "2021成都市金牛区二年级上册语文期末试卷（下载版）",
+      "subject": "chinese"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220120/61e8e2230f4d6.shtml",
+      "title": "2021成都市金牛区二年级上册语文期末试卷（答案）",
+      "subject": "chinese"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220120/61e8e1f1830d3.shtml",
+      "title": "2021成都市金牛区二年级上册语文期末试卷（图片版）",
+      "subject": "chinese"
+    }
+  ],
+  "files": [
+    {
+      "path": "raw/download-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220120/61e8e282291c6.shtml",
+      "bytes": 75630,
+      "sha256": "4e070ab78a74a5f0919b90b78f357e9de39cf0f037b058b660112d9ff649a553",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "download"
+    },
+    {
+      "path": "raw/original-1.zip",
+      "sourceUrl": "https://files.eduuu.com/ohr/2022/01/20/121725_61e8e255555b2.zip",
+      "bytes": 922039,
+      "sha256": "480f30dd57c6a1008f387b1e62dac2c290adc8009dad0550578c2c85f139e8f2",
+      "contentType": "application/zip",
+      "role": "attachment"
+    },
+    {
+      "path": "raw/answers-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220120/61e8e2230f4d6.shtml",
+      "bytes": 75346,
+      "sha256": "97bbe01e0d3511f2a4671d6406b89370ffe24a8b55020ccf836e4e9b3ca211b5",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/20/121453_61e8e1bd20fee.png",
+      "bytes": 114789,
+      "sha256": "f140c982d7742a798380870a26200485e3e10186e538681d08d2a95fab572f32",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220120/61e8e2230f4d6.shtml"
+    },
+    {
+      "path": "raw/questions-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220120/61e8e1f1830d3.shtml",
+      "bytes": 75083,
+      "sha256": "e25a755a59728437e68dd4fe4d7b901693907e755fbc6055a59c8845903b6d05",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/20/121454_61e8e1bebbc27.png",
+      "bytes": 282413,
+      "sha256": "4997b98d667ef70f64d2257b9dc204756567abeb72221aa22afbb73419f51cb7",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220120/61e8e1f1830d3.shtml"
+    },
+    {
+      "path": "raw/questions-02.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220120/61e8e1f1830d3_2.shtml",
+      "bytes": 75038,
+      "sha256": "234674e4cde4d71e3d24f0d4199680a3c8ed4abf0d794cdf3117c6c96c0c1026",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-02.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/20/121454_61e8e1be5e561.png",
+      "bytes": 321879,
+      "sha256": "1c45e694b0f64a22d52fc4ec9093a09b5af38c7225710a277b8fd7f99a76b105",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 2,
+      "articleUrl": "https://www.aoshu.com/e/20220120/61e8e1f1830d3_2.shtml"
+    },
+    {
+      "path": "raw/questions-03.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220120/61e8e1f1830d3_3.shtml",
+      "bytes": 75040,
+      "sha256": "3c2d82a7ad6985700880bd29d5e2b1671a656d1db1d4954188bffc69b6c22f5b",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-03.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/20/121454_61e8e1be08837.png",
+      "bytes": 360137,
+      "sha256": "2e7a1fc5df593fa45742dcefff43a7bad10247d6cc6772e3c085d0d603e70d14",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 3,
+      "articleUrl": "https://www.aoshu.com/e/20220120/61e8e1f1830d3_3.shtml"
+    },
+    {
+      "path": "raw/questions-04.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220120/61e8e1f1830d3_4.shtml",
+      "bytes": 75561,
+      "sha256": "fab61adccadbc394950df56d0b363a5cb96cc7320cc86550e7a4129b0cc6e725",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-04.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/20/121453_61e8e1bd8b89e.png",
+      "bytes": 356312,
+      "sha256": "e1776700542e0482182ac2578b8ed2678f2d20778047ec0ef3e52961b18e95d8",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 4,
+      "articleUrl": "https://www.aoshu.com/e/20220120/61e8e1f1830d3_4.shtml"
+    },
+    {
+      "path": "raw/original.pdf",
+      "role": "extracted_original",
+      "archivePath": "raw/original-1.zip",
+      "originalFilename": "二年级上册语文试题四川省成都市2020-2021金牛区2年级上期语文试卷+答案综合素质测评（图片版含答案）部编版.pdf",
+      "bytes": 977992,
+      "sha256": "5d571bf4ec23dca384af981832182b5502c5515f36686b2e79b2b04269c7e467"
+    }
+  ],
+  "errors": [],
+  "questionImageCount": 4,
+  "answerImageCount": 1,
+  "answerStatus": "source_answers_unreviewed",
+  "completeness": "公开图片版全部可见分页及附件已保存；不保证转载件等同命题方完整原稿",
+  "excludedAssets": [
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    },
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    }
+  ],
+  "transcriptionStatus": "native_pdf_text_partial_unreviewed",
+  "schoolYearAsLabeledInAttachment": "2020-2021",
+  "editionEvidence": "附件原始文件名，未与当前教材逐题对照",
+  "regionNormalized": "成都市金牛区",
+  "notes": [],
+  "sourcePageReferences": [
+    "raw/original.pdf#page=1",
+    "raw/original.pdf#page=2",
+    "raw/original.pdf#page=3",
+    "raw/original.pdf#page=4",
+    "raw/original.pdf#page=5"
+  ],
+  "originalPageCount": 5,
+  "pagesWithEmbeddedText": 1,
+  "ocrStatus": "not_available",
+  "derivedFiles": [
+    {
+      "path": "pdf-text.txt",
+      "role": "native_pdf_text_unreviewed",
+      "bytes": 1680,
+      "sha256": "9fd81af28c541ebcb27a11c9769d46df451e01871dcb7131888c1c70af85e76e"
+    }
+  ]
+}

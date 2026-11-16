@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "id": "2020-广州市花都区-math",
+  "title": "2020广州市花都区二年级上册数学期末试卷",
+  "subject": "math",
+  "grade": 2,
+  "semester": 1,
+  "examType": "期末",
+  "yearAsLabeled": "2020",
+  "regionAsLabeled": "广州市花都区",
+  "provenance": "third_party_repost_not_independently_authenticated",
+  "publisher": "奥数网",
+  "retrievedDate": "2026-11-17",
+  "textbookEdition": "人教版",
+  "sources": [
+    {
+      "url": "https://www.aoshu.com/e/20220125/61f0181c2d562.shtml",
+      "title": "2020广州市花都区二年级上册数学期末试卷（下载版）",
+      "subject": "math"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220125/61f017cb5cecc.shtml",
+      "title": "2020广州市花都区二年级上册数学期末试卷（答案）",
+      "subject": "math"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220125/61f01785755f2.shtml",
+      "title": "2020广州市花都区二年级上册数学期末试卷（图片版）",
+      "subject": "math"
+    }
+  ],
+  "files": [
+    {
+      "path": "raw/download-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f0181c2d562.shtml",
+      "bytes": 75536,
+      "sha256": "8f7baf0fe21754e4dc0b97798fb025e53fb7c08e10757e3bb43a6ba7fb6d6e59",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "download"
+    },
+    {
+      "path": "raw/original-1.zip",
+      "sourceUrl": "https://files.eduuu.com/ohr/2022/01/25/233206_61f017f611166.zip",
+      "bytes": 738933,
+      "sha256": "fe29f16a96975a6f44ba07688fae806e5d24db7987588bb7e564d25ef89feefc",
+      "contentType": "application/zip",
+      "role": "attachment"
+    },
+    {
+      "path": "raw/answers-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f017cb5cecc.shtml",
+      "bytes": 75216,
+      "sha256": "ba613a679ba08fe308caa8b0a028510e21b579cd085d551d5b8fa33e2c170ab7",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/232918_61f0174e1e771.png",
+      "bytes": 37746,
+      "sha256": "effc6d563a434470d9575a1e465b94046d4541154745aa41f9ddc54d8dbcf919",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f017cb5cecc.shtml"
+    },
+    {
+      "path": "raw/answers-02.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f017cb5cecc_2.shtml",
+      "bytes": 75173,
+      "sha256": "3826053732ceb10f715215cc9468d25abcbc250d4bc9183f8d6c978c75983d2c",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-02.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/232917_61f0174deed15.png",
+      "bytes": 69987,
+      "sha256": "f8f9481107d39bc215122eef284f55152763469caa215033632e8a463a88e275",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 2,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f017cb5cecc_2.shtml"
+    },
+    {
+      "path": "raw/answers-03.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f017cb5cecc_3.shtml",
+      "bytes": 75175,
+      "sha256": "dd5bfac0ed0257de3116f4784635e08353f59ad631430de29aa27237c03da3ea",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-03.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/232917_61f0174dd2f29.png",
+      "bytes": 54341,
+      "sha256": "75f40f8e06f4d436c97b9d3fe01701f3e1051a818f3642474ecf665d3e950ed9",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 3,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f017cb5cecc_3.shtml"
+    },
+    {
+      "path": "raw/answers-04.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f017cb5cecc_4.shtml",
+      "bytes": 75175,
+      "sha256": "ff890444ec56b203a312b3855fcfef29435b86a83226c808874089e5c508e388",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-04.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/232917_61f0174daea9a.png",
+      "bytes": 45483,
+      "sha256": "df90689c206c5e2f945d85b741f6feb50808f5e2e63194d205cf6ecef6162741",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 4,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f017cb5cecc_4.shtml"
+    },
+    {
+      "path": "raw/answers-05.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f017cb5cecc_5.shtml",
+      "bytes": 75175,
+      "sha256": "7bd296aaf7ac80e503fdb7520cac74d3c1185d273a9121b6d3c1c056a74b9f52",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-05.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/232917_61f0174d8ea81.png",
+      "bytes": 56497,
+      "sha256": "407795d9ea7bba41cd059bd9a6c8b38e746c9cff784cbac81e6391fc52d43706",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 5,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f017cb5cecc_5.shtml"
+    },
+    {
+      "path": "raw/answers-06.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f017cb5cecc_6.shtml",
+      "bytes": 75602,
+      "sha256": "10d72f234022ed1305a77610302c69868061cf69c460f65b8a4fb4ad9d7d6392",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-06.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/232917_61f0174d6beb2.png",
+      "bytes": 38038,
+      "sha256": "2a6a5ccfc4e38b304e2036903b5e34430fa37f79e7d9af1de85778ab76f6c2a5",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 6,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f017cb5cecc_6.shtml"
+    },
+    {
+      "path": "raw/questions-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f01785755f2.shtml",
+      "bytes": 75226,
+      "sha256": "373c59d370ad2234a947f471bb481c4f85687b88bfc7549ce5fac2f7e885a5f7",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/232918_61f0174ed2df2.png",
+      "bytes": 66675,
+      "sha256": "3d3cd00be102fb51fe29f1596335289ebcd9f44b254edf63a53a5b1a037fa0f5",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f01785755f2.shtml"
+    },
+    {
+      "path": "raw/questions-02.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f01785755f2_2.shtml",
+      "bytes": 75181,
+      "sha256": "b1b465116de89c6ce07d3eed290684776c20866452fbba030cc5176c37d818f6",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-02.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/232918_61f0174eb1381.png",
+      "bytes": 76792,
+      "sha256": "cb728700e7f8d856275cf73d42df41bef2ecb46ae61f39033c6f859d111f69cc",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 2,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f01785755f2_2.shtml"
+    },
+    {
+      "path": "raw/questions-03.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f01785755f2_3.shtml",
+      "bytes": 75183,
+      "sha256": "ec0fdeaf502c5b21dbdefe941c3feb2327f5ce676238640f82d2380a96e89201",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-03.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/232918_61f0174e94726.png",
+      "bytes": 30735,
+      "sha256": "8fc0cf73bd3abb64b49e636e13bedf8211e0d270f1d1b5a9baa100c3895a8bff",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 3,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f01785755f2_3.shtml"
+    },
+    {
+      "path": "raw/questions-04.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f01785755f2_4.shtml",
+      "bytes": 75183,
+      "sha256": "9de905defb4cc57b81a201f60c93dc7c172895e28dd4e80b299d82db5c520a9c",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-04.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/232918_61f0174e72ebb.png",
+      "bytes": 40436,
+      "sha256": "0ca2ff509882e54bb150b6d7b8cc4704bf84164a68fd625b7b84dd9018257491",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 4,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f01785755f2_4.shtml"
+    },
+    {
+      "path": "raw/questions-05.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f01785755f2_5.shtml",
+      "bytes": 75183,
+      "sha256": "353ed95848a29fbea1c827c2891f980d711d61f79b82a2c0284e99b65ce6871c",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-05.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/232918_61f0174e469af.png",
+      "bytes": 55887,
+      "sha256": "1143ac908660ddd33e634031e527cbaf3bbb37307583d73ab9649f3fa8cf7220",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 5,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f01785755f2_5.shtml"
+    },
+    {
+      "path": "raw/questions-06.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220125/61f01785755f2_6.shtml",
+      "bytes": 75610,
+      "sha256": "b6e4b1c67e5a1629ce2baabb7cdd14017053a48be0aec0d1e880f5e33c3f4564",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-06.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/25/232918_61f0174e31645.png",
+      "bytes": 22600,
+      "sha256": "93ee4b4cfe6a62d19f535a97254e6b3bfe9062d723d9d1b7767ad41dd2439769",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 6,
+      "articleUrl": "https://www.aoshu.com/e/20220125/61f01785755f2_6.shtml"
+    },
+    {
+      "path": "raw/original.pdf",
+      "role": "extracted_original",
+      "archivePath": "raw/original-1.zip",
+      "originalFilename": "二年级上册数学试题2019~2020学年广东省广州市花都区上学期期末试卷人教版PDF含答案.pdf",
+      "bytes": 770890,
+      "sha256": "28e4d6a708f52635882ed66981f585c6f692ef788d990248d5c2471217d6c85e"
+    }
+  ],
+  "errors": [],
+  "questionImageCount": 6,
+  "answerImageCount": 6,
+  "answerStatus": "source_answers_unreviewed",
+  "completeness": "公开图片版全部可见分页及附件已保存；不保证转载件等同命题方完整原稿",
+  "excludedAssets": [
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    },
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    }
+  ],
+  "transcriptionStatus": "native_pdf_text_partial_unreviewed",
+  "schoolYearAsLabeledInAttachment": "2019~2020",
+  "editionEvidence": "附件原始文件名，未与当前教材逐题对照",
+  "regionNormalized": "广州市花都区",
+  "notes": [],
+  "sourcePageReferences": [
+    "raw/original.pdf#page=1",
+    "raw/original.pdf#page=2",
+    "raw/original.pdf#page=3",
+    "raw/original.pdf#page=4",
+    "raw/original.pdf#page=5",
+    "raw/original.pdf#page=6",
+    "raw/original.pdf#page=7",
+    "raw/original.pdf#page=8",
+    "raw/original.pdf#page=9",
+    "raw/original.pdf#page=10",
+    "raw/original.pdf#page=11"
+  ],
+  "originalPageCount": 11,
+  "pagesWithEmbeddedText": 11,
+  "ocrStatus": "not_available",
+  "derivedFiles": [
+    {
+      "path": "pdf-text.txt",
+      "role": "native_pdf_text_unreviewed",
+      "bytes": 6452,
+      "sha256": "037bd350f01885ab3048f1250e76dc93718d95bde738f1e05d5733b298261e43"
+    }
+  ]
+}

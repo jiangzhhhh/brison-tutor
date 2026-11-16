@@ -1,0 +1,213 @@
+{
+  "schemaVersion": 1,
+  "id": "2020-广州市荔湾区-math",
+  "title": "2020广州市荔湾区二年级上册数学期末试卷",
+  "subject": "math",
+  "grade": 2,
+  "semester": 1,
+  "examType": "期末",
+  "yearAsLabeled": "2020",
+  "regionAsLabeled": "广州市荔湾区",
+  "provenance": "third_party_repost_not_independently_authenticated",
+  "publisher": "奥数网",
+  "retrievedDate": "2026-11-17",
+  "textbookEdition": "人教版",
+  "sources": [
+    {
+      "url": "https://www.aoshu.com/e/20220123/61ed4f316c0e1.shtml",
+      "title": "2020广州市荔湾区二年级上册数学期末试卷（下载版）",
+      "subject": "math"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220123/61ed4ee763831.shtml",
+      "title": "2020广州市荔湾区二年级上册数学期末试卷（答案）",
+      "subject": "math"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220123/61ed4ec02226f.shtml",
+      "title": "2020广州市荔湾区二年级上册数学期末试卷（图片版）",
+      "subject": "math"
+    }
+  ],
+  "files": [
+    {
+      "path": "raw/download-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed4f316c0e1.shtml",
+      "bytes": 75536,
+      "sha256": "b026fd1dcdca3b527fd19a95528f0037e0b9862115a7a476069dce5bf953256e",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "download"
+    },
+    {
+      "path": "raw/original-1.zip",
+      "sourceUrl": "https://files.eduuu.com/ohr/2022/01/23/205023_61ed4f0fa7d6a.zip",
+      "bytes": 704493,
+      "sha256": "0706a40aa544380a9d2f612711adc8d0be6368ff5a24d93f178dd111a6753414",
+      "contentType": "application/zip",
+      "role": "attachment"
+    },
+    {
+      "path": "raw/answers-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed4ee763831.shtml",
+      "bytes": 74932,
+      "sha256": "995a7c8dc55b41816e3b571113d7cf3fa64d1e6b69bd87ff3bfaae00c0075056",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/204820_61ed4e94801bc.png",
+      "bytes": 49578,
+      "sha256": "d9b66a3aef641baaefe2e7d7f0635b57a54e936a5a6ec76cb5d88b0b64cc8e1f",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed4ee763831.shtml"
+    },
+    {
+      "path": "raw/answers-02.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed4ee763831_2.shtml",
+      "bytes": 75316,
+      "sha256": "76772a26fd8157a72f9d6cd1ac78d56d58a89751ee1225673583324e1e87440b",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-02.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/204820_61ed4e9465cd7.png",
+      "bytes": 33029,
+      "sha256": "95f181d0e31f5a4a396141c808f0e38f7f88572de15a6d5a9fe93405a0f92eb4",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 2,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed4ee763831_2.shtml"
+    },
+    {
+      "path": "raw/questions-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed4ec02226f.shtml",
+      "bytes": 75084,
+      "sha256": "c1fda6089ee513fe8e1e7d466220084202725d23754f875c6f14c8be9ee698bf",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/204821_61ed4e9513fa5.png",
+      "bytes": 82507,
+      "sha256": "6687a99afc2d62faa77d666e55111fd6f2dd1e1471fa3e9b8145699c8b1ce378",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed4ec02226f.shtml"
+    },
+    {
+      "path": "raw/questions-02.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed4ec02226f_2.shtml",
+      "bytes": 75039,
+      "sha256": "2dc5f18dc337e44b60ef296b1dd3ea65635d30cb2af8316ded2f1496d58c782e",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-02.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/204820_61ed4e94e0a2f.png",
+      "bytes": 48191,
+      "sha256": "e2cd2a56371e347aadf92fe74821f4bb02544a5285d7e0c7a527c1d0c9444674",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 2,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed4ec02226f_2.shtml"
+    },
+    {
+      "path": "raw/questions-03.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed4ec02226f_3.shtml",
+      "bytes": 75041,
+      "sha256": "129e78b303c0accf9446d4d0200a04e6eeb38020343457293e639a20cefd049f",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-03.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/204820_61ed4e94ca589.png",
+      "bytes": 52003,
+      "sha256": "5d8e9969a65ff63ff71928013eaeb483641024f5afd811665b9bb6069521567c",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 3,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed4ec02226f_3.shtml"
+    },
+    {
+      "path": "raw/questions-04.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed4ec02226f_4.shtml",
+      "bytes": 75468,
+      "sha256": "6832c28a9ce043365472b7d43188dd9ce1dc0c03b1e8ff574dea89fb14c412a8",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-04.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/204820_61ed4e94a733b.png",
+      "bytes": 65922,
+      "sha256": "2cf3e37ce3b6a5b207535d95fa424f037374e2bc266adbd986e4423c01356742",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 4,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed4ec02226f_4.shtml"
+    },
+    {
+      "path": "raw/original.pdf",
+      "role": "extracted_original",
+      "archivePath": "raw/original-1.zip",
+      "originalFilename": "广东省广州市荔湾区2019-2020学年二年级上学期数学期末试题(人教版，含答案，扫描版）.pdf",
+      "bytes": 739167,
+      "sha256": "82f312c04fd79297ac38fe648e468209002e911714b00d363a325cbf75a62a45"
+    }
+  ],
+  "errors": [],
+  "questionImageCount": 4,
+  "answerImageCount": 2,
+  "answerStatus": "source_answers_unreviewed",
+  "completeness": "公开图片版全部可见分页及附件已保存；不保证转载件等同命题方完整原稿",
+  "excludedAssets": [
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    },
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    }
+  ],
+  "transcriptionStatus": "native_pdf_text_partial_unreviewed",
+  "schoolYearAsLabeledInAttachment": "2019-2020",
+  "editionEvidence": "附件原始文件名，未与当前教材逐题对照",
+  "regionNormalized": "广州市荔湾区",
+  "notes": [],
+  "sourcePageReferences": [
+    "raw/original.pdf#page=1",
+    "raw/original.pdf#page=2",
+    "raw/original.pdf#page=3",
+    "raw/original.pdf#page=4",
+    "raw/original.pdf#page=5",
+    "raw/original.pdf#page=6",
+    "raw/original.pdf#page=7"
+  ],
+  "originalPageCount": 7,
+  "pagesWithEmbeddedText": 6,
+  "ocrStatus": "not_available",
+  "derivedFiles": [
+    {
+      "path": "pdf-text.txt",
+      "role": "native_pdf_text_unreviewed",
+      "bytes": 2941,
+      "sha256": "8b04cb1ca8f4a8485dc323984e23bc0baf2d29d05d55577184d4b645451b81ac"
+    }
+  ]
+}

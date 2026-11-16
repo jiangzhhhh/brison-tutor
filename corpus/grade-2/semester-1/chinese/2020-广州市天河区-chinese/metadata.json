@@ -1,0 +1,232 @@
+{
+  "schemaVersion": 1,
+  "id": "2020-广州市天河区-chinese",
+  "title": "2020广州市天河区二年级上册语文期末试卷",
+  "subject": "chinese",
+  "grade": 2,
+  "semester": 1,
+  "examType": "期末",
+  "yearAsLabeled": "2020",
+  "regionAsLabeled": "广州市天河区",
+  "provenance": "third_party_repost_not_independently_authenticated",
+  "publisher": "奥数网",
+  "retrievedDate": "2026-11-17",
+  "textbookEdition": "部编版",
+  "sources": [
+    {
+      "url": "https://www.aoshu.com/e/20220123/61ed56a5603ec.shtml",
+      "title": "2020广州市天河区二年级上册语文期末试卷（下载版）",
+      "subject": "chinese"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220123/61ed563e5721d.shtml",
+      "title": "2020广州市天河区二年级上册语文期末试卷（答案）",
+      "subject": "chinese"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220123/61ed560d662bf.shtml",
+      "title": "2020广州市天河区二年级上册语文期末试卷（图片版）",
+      "subject": "chinese"
+    }
+  ],
+  "files": [
+    {
+      "path": "raw/download-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed56a5603ec.shtml",
+      "bytes": 75630,
+      "sha256": "794b6f006573f4f296f2958d14fa4b5293a2145aa2be85c68d5e5b2dcd171c2a",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "download"
+    },
+    {
+      "path": "raw/original-1.zip",
+      "sourceUrl": "https://files.eduuu.com/ohr/2022/01/23/212158_61ed56764b322.zip",
+      "bytes": 934349,
+      "sha256": "82b964f0b4700ea6aece9e3d6d3c4676c4e8c382b319d72953fbc4fa0dc97cb1",
+      "contentType": "application/zip",
+      "role": "attachment"
+    },
+    {
+      "path": "raw/answers-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed563e5721d.shtml",
+      "bytes": 75004,
+      "sha256": "1b6bb8c9b3295d2673e12101d202abf71a4ad4dba588bee4790bdc59eafc1c00",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/211923_61ed55dbd7bec.png",
+      "bytes": 42140,
+      "sha256": "d8caad8e9c7ed94ccb5b7d285fa677d9c0ee6c90336468c9ceb03c1f617d59ca",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed563e5721d.shtml"
+    },
+    {
+      "path": "raw/answers-02.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed563e5721d_2.shtml",
+      "bytes": 74961,
+      "sha256": "570ba4bc4b312703b8a0e6bf1b3e899f995d49a7fd8ac5e88bfe73b54fb8d468",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-02.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/211923_61ed55dbc0ecb.png",
+      "bytes": 95457,
+      "sha256": "9d8c16152a646cc5e3d2da6abce5d19abbe8d773752f5555d943036ba2d7fbd6",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 2,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed563e5721d_2.shtml"
+    },
+    {
+      "path": "raw/answers-03.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed563e5721d_3.shtml",
+      "bytes": 75484,
+      "sha256": "c9d97db3e5c0cba536b6cb1e9a577c87dc90df7070e46f36d8702a4e32063480",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "answers"
+    },
+    {
+      "path": "raw/answers-03.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/211923_61ed55db943bf.png",
+      "bytes": 78292,
+      "sha256": "673bf5daf8aa043dcb52d3d26ef66a67e6c6b3eaa7028a4054b36633f84da17f",
+      "contentType": "image/png",
+      "role": "answers",
+      "page": 3,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed563e5721d_3.shtml"
+    },
+    {
+      "path": "raw/questions-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed560d662bf.shtml",
+      "bytes": 75083,
+      "sha256": "0bab9d30dbbc5e867cf8f75c6193f1d8eb5719d95c9adf61d2e552a60e864aa6",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/211924_61ed55dc6fa7c.png",
+      "bytes": 96753,
+      "sha256": "fd425212728850ba3b165613a074af98a355e5241eb53ebb9a69d011ba58146c",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed560d662bf.shtml"
+    },
+    {
+      "path": "raw/questions-02.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed560d662bf_2.shtml",
+      "bytes": 75038,
+      "sha256": "663eecdca88f5d0d18d7d2a8e4593ccece5dbab2738cda769f5fa34fb7bc8d50",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-02.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/211924_61ed55dc471de.png",
+      "bytes": 90210,
+      "sha256": "33f1a1909aa5cc5fceb171dc62d2c683017ee338d2a81b18bb9ab7548546bf79",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 2,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed560d662bf_2.shtml"
+    },
+    {
+      "path": "raw/questions-03.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed560d662bf_3.shtml",
+      "bytes": 75040,
+      "sha256": "86f744023b08aad393528d37488569396270acafee11a90cf7640ce937a9461b",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-03.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/211924_61ed55dc22363.png",
+      "bytes": 130403,
+      "sha256": "f5906b55b6c55ab2b385c6c1752c1eac194793a7b9071fdcc023711513654015",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 3,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed560d662bf_3.shtml"
+    },
+    {
+      "path": "raw/questions-04.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed560d662bf_4.shtml",
+      "bytes": 75561,
+      "sha256": "209083403f350a34819b0eb2cb503da0011378fc8646450e3c0b55b0a9db8b89",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-04.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/211924_61ed55dc08f34.png",
+      "bytes": 73098,
+      "sha256": "bb1b629050df79d047d42c17a1cdc012171151f5e72420d5fe6dd3d676c04851",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 4,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed560d662bf_4.shtml"
+    },
+    {
+      "path": "raw/original.pdf",
+      "role": "extracted_original",
+      "archivePath": "raw/original-1.zip",
+      "originalFilename": "二年级上册语文试题广东省广州市天河区2019-2020学年二年级上学期语文期末试题(部编版，含答案，扫描版）.pdf",
+      "bytes": 1112387,
+      "sha256": "afad7e504fe7acb852358cdd91c7261b62ad7fae4e8bbd7e3e3148624bf84ff5"
+    }
+  ],
+  "errors": [],
+  "questionImageCount": 4,
+  "answerImageCount": 3,
+  "answerStatus": "source_answers_unreviewed",
+  "completeness": "公开图片版全部可见分页及附件已保存；不保证转载件等同命题方完整原稿",
+  "excludedAssets": [
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    },
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    }
+  ],
+  "transcriptionStatus": "native_pdf_text_partial_unreviewed",
+  "schoolYearAsLabeledInAttachment": "2019-2020",
+  "editionEvidence": "附件原始文件名，未与当前教材逐题对照",
+  "regionNormalized": "广州市天河区",
+  "notes": [],
+  "sourcePageReferences": [
+    "raw/original.pdf#page=1",
+    "raw/original.pdf#page=2",
+    "raw/original.pdf#page=3",
+    "raw/original.pdf#page=4",
+    "raw/original.pdf#page=5",
+    "raw/original.pdf#page=6",
+    "raw/original.pdf#page=7"
+  ],
+  "originalPageCount": 7,
+  "pagesWithEmbeddedText": 7,
+  "ocrStatus": "not_available",
+  "derivedFiles": [
+    {
+      "path": "pdf-text.txt",
+      "role": "native_pdf_text_unreviewed",
+      "bytes": 5658,
+      "sha256": "da43ed6e378df0e533330212683a396705091ae034de34e2746dc9837b052930"
+    }
+  ]
+}

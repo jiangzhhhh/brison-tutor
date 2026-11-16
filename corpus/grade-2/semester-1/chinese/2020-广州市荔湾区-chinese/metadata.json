@@ -1,0 +1,156 @@
+{
+  "schemaVersion": 1,
+  "id": "2020-广州市荔湾区-chinese",
+  "title": "2020广州市荔湾区二年级上册语文期末试卷",
+  "subject": "chinese",
+  "grade": 2,
+  "semester": 1,
+  "examType": "期末",
+  "yearAsLabeled": "2020",
+  "regionAsLabeled": "广州市荔湾区",
+  "provenance": "third_party_repost_not_independently_authenticated",
+  "publisher": "奥数网",
+  "retrievedDate": "2026-11-17",
+  "textbookEdition": "未明确",
+  "sources": [
+    {
+      "url": "https://www.aoshu.com/e/20220123/61ed383866500.shtml",
+      "title": "2020广州市荔湾区二年级上册语文期末试卷（下载版）",
+      "subject": "chinese"
+    },
+    {
+      "url": "https://www.aoshu.com/e/20220123/61ed37e762006.shtml",
+      "title": "2020广州市荔湾区二年级上册语文期末试卷（图片版）",
+      "subject": "chinese"
+    }
+  ],
+  "files": [
+    {
+      "path": "raw/download-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed383866500.shtml",
+      "bytes": 75630,
+      "sha256": "9d6805ed6f5120a2f568283f36a573a8aa158fe1a9ce1c9a0f7a44ad7571aee4",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "download"
+    },
+    {
+      "path": "raw/original-1.zip",
+      "sourceUrl": "https://files.eduuu.com/ohr/2022/01/23/191213_61ed380d8a974.zip",
+      "bytes": 1885038,
+      "sha256": "68ae58c5f017cc7374b813a56f80d5d0e8042e9c432508736b9a2da5b06a384f",
+      "contentType": "application/zip",
+      "role": "attachment"
+    },
+    {
+      "path": "raw/questions-01.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed37e762006.shtml",
+      "bytes": 75083,
+      "sha256": "ff735bc2c31ec240e7fef0b1bbc8d62106ca0715dae05e83b6b3de5fc4da0889",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-01.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/191049_61ed37b933faa.png",
+      "bytes": 341202,
+      "sha256": "6ce49e92b5128f99e59841ef7eed9289d262d4b1d22722aba92e2a11131c9216",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 1,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed37e762006.shtml"
+    },
+    {
+      "path": "raw/questions-02.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed37e762006_2.shtml",
+      "bytes": 75038,
+      "sha256": "67de43a8e3df7a2c106912a8cc8fee54efb4cf7f61f6a1428b5ec6458b7654bb",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-02.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/191048_61ed37b8c1950.png",
+      "bytes": 343798,
+      "sha256": "ef76e83efae29c490f7b1a4737dc36e332efceef96139cb6bbe7510d17e0b252",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 2,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed37e762006_2.shtml"
+    },
+    {
+      "path": "raw/questions-03.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed37e762006_3.shtml",
+      "bytes": 75040,
+      "sha256": "528f47974ba23abd4cfc5cc8dde1e148147c8e300172321dade087cdfbda7a9f",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-03.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/191048_61ed37b860aee.png",
+      "bytes": 365298,
+      "sha256": "d3f93d6b934bbbe892e3036d57a44fa889c405e93e6295ce10ea1e8dcfa5ffe0",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 3,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed37e762006_3.shtml"
+    },
+    {
+      "path": "raw/questions-04.html.txt",
+      "sourceUrl": "https://www.aoshu.com/e/20220123/61ed37e762006_4.shtml",
+      "bytes": 75561,
+      "sha256": "deb72def7997687bd38d42eb8ea1ece918eef4ff2980db4558779b1eafbe1ff8",
+      "contentType": "text/html",
+      "role": "source_html",
+      "paperRole": "questions"
+    },
+    {
+      "path": "raw/questions-04.png",
+      "sourceUrl": "https://files.eduuu.com/img/2022/01/23/191047_61ed37b7edb8c.png",
+      "bytes": 355157,
+      "sha256": "5646dd8748d8e71d76cfc223800b7788309430099e384d935392399a0aec2b5f",
+      "contentType": "image/png",
+      "role": "questions",
+      "page": 4,
+      "articleUrl": "https://www.aoshu.com/e/20220123/61ed37e762006_4.shtml"
+    },
+    {
+      "path": "raw/original.pdf",
+      "role": "extracted_original",
+      "archivePath": "raw/original-1.zip",
+      "originalFilename": "广东省广州市荔湾区2020-2021学年语文二年级上册期末综合练习卷（图片版无答案）.pdf",
+      "bytes": 1898811,
+      "sha256": "7940aca1ec5122593a385a3401d10f9e9e0b0734f37c324e16fb6c5dab74a7a3"
+    }
+  ],
+  "errors": [],
+  "questionImageCount": 4,
+  "answerImageCount": 0,
+  "answerStatus": "not_available",
+  "completeness": "公开图片版全部可见分页及附件已保存；不保证转载件等同命题方完整原稿",
+  "excludedAssets": [
+    {
+      "sourceUrl": "https://files.eduuu.com/img/2019/05/30/133732_5cef6c1c84a2a.jpg",
+      "reason": "网站推广二维码，非试题或答案"
+    }
+  ],
+  "transcriptionStatus": "image_only_no_transcript",
+  "schoolYearAsLabeledInAttachment": "2020-2021",
+  "editionEvidence": "附件原始文件名，未与当前教材逐题对照",
+  "regionNormalized": "广州市荔湾区",
+  "notes": [
+    "来源标题标2020，附件名标2020-2021学年；不能仅按目录ID判断考试年份。"
+  ],
+  "sourcePageReferences": [
+    "raw/original.pdf#page=1",
+    "raw/original.pdf#page=2"
+  ],
+  "originalPageCount": 2,
+  "pagesWithEmbeddedText": 0,
+  "ocrStatus": "not_available",
+  "derivedFiles": []
+}
