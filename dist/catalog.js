@@ -1,7 +1,7 @@
 // 新练习在此登记；路径相对于 dist/index.html。
 window.EXERCISES = [
   {
-    id: 'read-before-answer', storage: {currentKey: 'reading-lab-v1', schemaVersion: 1, bankVersion: '1.0', legacyPrefixes: ['reading-lab-v']}, grade: 2, semester: 1, subject: 'chinese',
+    id: 'read-before-answer', storage: {currentKey: 'brison-tutor:progress:read-before-answer:v2', schemaVersion: 2, bankVersion: '3.0', legacyPrefixes: ['reading-lab-v'], auxiliaryKeys: ['brison-tutor:progress:read-before-answer:migration:v1-v2']}, grade: 2, semester: 1, subject: 'chinese',
     title: '读懂再答', subtitle: '读清题意，想完整再回答',
     description: '阅读审题、信息筛选和完整作答训练。',
     tags: ['审题训练', '信息筛选', '完整作答'],

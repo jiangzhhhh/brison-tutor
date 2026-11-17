@@ -28,3 +28,12 @@ test('namespaced future versions and incompatible current records are visible',(
 test('blocked storage is an error, never mistaken for empty progress',()=>{
   const {store}=setup();assert.throws(()=>store.list({get length(){throw new Error('denied');}},config),/denied/);
 });
+
+test('migration markers stay hidden, survive clearing one version, and are included in clear-all',()=>{
+  const marker='brison-tutor:progress:semantic-blocks:migration';
+  const exercise={...config,storage:{...config.storage,auxiliaryKeys:[marker]}};
+  const {store,storage,values}=setup({'semantic-blocks-v4':'{"version":4,"bankVersion":4}',[marker]:'{"done":true}',unrelated:'keep'});
+  assert.equal(store.list(storage,exercise).length,1);
+  store.clear(storage,exercise,['semantic-blocks-v4']);assert(values.has(marker));
+  store.clear(storage,exercise);assert(!values.has(marker));assert(values.has('unrelated'));
+});

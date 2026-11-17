@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>注音组件浏览器检查</title>
+<link rel="stylesheet" href="../dist/project.css">
+<script src="../dist/vendor/pinyin-pro-3.29.5.js"></script>
+<script src="../dist/pinyin-data.js"></script>
+<script src="../dist/pinyin.js"></script>
+<style>body{margin:16px;font-size:20px}.fixture{max-width:320px;line-height:2.2}.flex{display:flex;gap:12px;align-items:center;width:100%;padding:12px;border:1px solid var(--project-border);box-sizing:border-box}.flex>.letter{flex-shrink:0}</style>
+<div id="fixture" class="fixture">
+  <button id="flex" class="flex" data-pinyin><span class="letter">A</span>狐狸和仙鹤</button>
+  <p id="context" data-pinyin>长<span>颈鹿</span>长大了，银<button id="context-word">行</button>门前有人行走。</p>
+  <p id="excluded" data-pinyin>小鸟啄米。<code>啄</code><span data-pinyin-skip>鹰</span><ruby>鹰<rt>yīng</rt></ruby></p>
+  <p id="nested" data-pinyin>鹰和<span data-pinyin>仙鹤</span>。</p>
+  <p id="literal" data-pinyin></p>
+</div>
+<pre id="result" role="status"></pre>
+<script>
+(() => {
+  const assert=(condition,message)=>{if(!condition)throw Error(message);};
+  const plain=node=>{const copy=node.cloneNode(true);copy.querySelectorAll('rt,rp').forEach(n=>n.remove());return copy.textContent;};
+  const fixture=document.getElementById('fixture');
+  document.getElementById('literal').textContent='🐸<img src=x onerror=alert(1)> 啄 & 鹰！';
+  const before=plain(fixture),code=document.querySelector('code'),skip=document.querySelector('[data-pinyin-skip]');
+  try {
+    PinyinAid.annotate(fixture,{extraChars:'长行狐狸鹤'});
+    assert(plain(fixture)===before,'原始文本发生变化');
+    assert(!document.querySelector('ruby ruby'),'出现嵌套注音');
+    const flex=document.getElementById('flex');
+    assert(flex.children.length===2,'连续标题被拆成多个flex项目');
+    assert(flex.lastElementChild.querySelectorAll('ruby').length===3,'标题注音缺失');
+    assert(flex.scrollWidth<=flex.clientWidth,'按钮横向溢出');
+    const context=document.getElementById('context');
+    assert(context.querySelector('#context-word rt').textContent==='háng','跨词块上下文丢失');
+    assert([...context.querySelectorAll('ruby')].filter(r=>r.firstElementChild.textContent==='长').map(r=>r.querySelector('rt').textContent).join(',')==='cháng,zhǎng','多音字语境错误');
+    let clicked=false;document.getElementById('context-word').onclick=()=>{clicked=true;};
+    document.querySelector('#context-word ruby span').click();assert(clicked,'注音后点击失效');
+    assert(!code.querySelector('ruby')&&!skip.querySelector('ruby'),'排除区域被注音');
+    assert(!document.querySelector('#literal img'),'原文被解释为HTML');
+    const count=document.querySelectorAll('.pinyin-ruby').length;
+    PinyinAid.annotate(fixture,{extraChars:'长行狐狸鹤'});
+    assert(document.querySelectorAll('.pinyin-ruby').length===count,'重复注音改变数量');
+    assert([...document.querySelectorAll('.pinyin-ruby rt')].every(rt=>rt.getAttribute('aria-hidden')==='true'),'重复朗读拼音');
+    window.pinyinTestResult={passed:true,rubies:count};
+    document.getElementById('result').textContent='浏览器检查通过';
+  } catch(error) {
+    window.pinyinTestResult={passed:false,error:error.message};
+    document.getElementById('result').textContent=error.message;
+  }
+})();
+</script>
+</html>

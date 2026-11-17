@@ -73,3 +73,4 @@
 - 排序不能只能拖拽；保留上下移动或其他点击替代。遵循 `prefers-reduced-motion`。
 - 新页面检查手机窄屏、键盘操作、刷新恢复、存储不可用、版本不兼容、清理取消/确认；无法进行浏览器验收时明确记录限制。
 - 进度存储与版本规则见 [docs/progress.md](docs/progress.md)。
+- 生字上方注音共用`dist/pinyin.js`、`dist/pinyin-data.js`和共享样式，按年级选少量生字，不逐页复制实现；接入与多音字校订见[生字注音组件](docs/pinyin.md)。

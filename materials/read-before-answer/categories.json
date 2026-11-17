@@ -1,0 +1,10 @@
+[
+  {"id":"requirements","title":"看清所问","questions":["T06","T26","T46"]},
+  {"id":"complete","title":"完整作答","questions":["T01","T12","T32","T56"]},
+  {"id":"judgement","title":"信息判断","questions":["T03","T19","T30","V15"]},
+  {"id":"reference","title":"指代理解","questions":["T02","T42","X03"]},
+  {"id":"calculation","title":"多步计算","questions":["T15","V02","T55"]},
+  {"id":"ordering","title":"顺序排列","questions":["T09","T40","T49"]},
+  {"id":"summary","title":"整体概括","questions":["T04","T24","T54"]},
+  {"id":"equivalent","title":"问法等价","questions":["T07","T47"]}
+]

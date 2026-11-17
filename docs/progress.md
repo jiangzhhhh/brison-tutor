@@ -28,10 +28,10 @@
 
 | 练习 | 当前键 | 结构版本 | 题库版本 | 历史前缀 |
 | --- | --- | --- | --- | --- |
-| 读懂再答 | `reading-lab-v1` | `version: 1` | `1.0` | `reading-lab-v` |
+| 读懂再答 | `brison-tutor:progress:read-before-answer:v2` | `version: 2` | `3.0` | `reading-lab-v`，以及本练习命名空间 |
 | 语义积木 | `semantic-blocks-v4` | `version: 4` | `4` | `semantic-blocks-v` |
 
-现有格式继续读取，不为统一命名而强制清空或迁移。两套练习通过 `progress-bridge.js` 接入管理页；管理模式跳过训练初始化和自动保存，只允许列举和清理归属键。记录无时间戳时不伪造更新时间。管理页不把初始化记录等同于已经答过题。
+语义积木继续读取现有格式。读懂再答现为25题自由分类练习，保留题目的有效旧训练记录与草稿可迁移；两个旧键`reading-lab-v1`及`brison-tutor:progress:read-before-answer:v1`原样保留。迁移成功后用`storage.auxiliaryKeys`登记的隐藏标记防止清理后再次恢复旧成绩；全练习清理包含此标记，详见[分类练习说明](read-before-answer-categories.md)。两套练习通过 `progress-bridge.js` 接入管理页；管理模式跳过训练初始化和自动保存，只允许列举和清理归属键。记录无时间戳时不伪造更新时间。管理页不把初始化记录等同于已经答过题。
 
 新增练习在 head 中依次加载 `catalog.js`、`progress-store.js`、`progress-bridge.js`，后者通过 `data-exercise` 指定稳定 ID。训练脚本入口必须检查 `ProgressBridge.isManagementFrame` 并退出；每次保存前检查 `ProgressBridge.invalidated`，为真时停止保存。只有管理页向练习文档发消息，响应必须核对来源窗口、随机令牌和请求 ID。
 

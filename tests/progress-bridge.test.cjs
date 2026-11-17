@@ -2,8 +2,9 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const vm=require('node:vm');
-function environment({frame=true,raw='{"version":1,"bankVersion":"1.0"}'}={}) {
-  const handlers={},responses=[],values=new Map(raw===null?[]:[['reading-lab-v1',raw]]);
+const readingKey='brison-tutor:progress:read-before-answer:v2';
+function environment({frame=true,raw='{"version":2,"bankVersion":"3.0"}'}={}) {
+  const handlers={},responses=[],values=new Map(raw===null?[]:[[readingKey,raw]]);
   const storage={get length(){return values.size;},key(i){return [...values.keys()][i]??null;},getItem(k){return values.get(k)??null;},removeItem(k){values.delete(k);}};
   const document={currentScript:{dataset:{exercise:'read-before-answer'}},documentElement:{},getElementById(){return null;}};
   const window={addEventListener(name,fn){(handlers[name]??=[]).push(fn);}};
@@ -25,8 +26,8 @@ test('forged source, origin and token cannot delete progress',()=>{
   assert.equal(e.values.size,1);assert.equal(e.responses.length,0);
 });
 test('corrupt and incompatible progress blocks writes without deleting the old value',()=>{
-  for(const raw of ['broken','{"version":999,"bankVersion":"1.0"}']){
-    const e=environment({frame:false,raw});assert.equal(e.window.ProgressBridge.invalidated,true);assert.equal(e.values.get('reading-lab-v1'),raw);
+  for(const raw of ['broken','{"version":999,"bankVersion":"3.0"}','{"version":2,"bankVersion":"2.0"}']){
+    const e=environment({frame:false,raw});assert.equal(e.window.ProgressBridge.invalidated,true);assert.equal(e.values.get(readingKey),raw);
   }
   assert.equal(environment({frame:false}).window.ProgressBridge.invalidated,false);
   assert.equal(environment({frame:false,raw:null}).window.ProgressBridge.invalidated,false);
