@@ -135,6 +135,6 @@ python3 corpus/tools/verify.py
 
 [verification.json](verification.json) 保存本次本地校验结果。校验覆盖文件哈希、ZIP完整性、图片可解码性、原件去重和索引引用；不代表试卷真伪或答案正确性审定。
 
-重新索引：`python3 corpus/tools/build_index.py`。提取PDF原有文字层可运行 `swift -module-cache-path /tmp/brison-pdf-cache corpus/tools/extract_pdf.swift 输入.pdf 输出.txt`（macOS）。
+在仓库根目录重新索引：`python3 corpus/tools/build_index.py`。提取PDF原有文字层可运行 `swift -module-cache-path "${TMPDIR:?}/brison-pdf-cache" corpus/tools/extract_pdf.swift 输入.pdf 输出.txt`（macOS，缓存使用系统提供的 `TMPDIR` 临时目录）。
 ''')
 print(json.dumps({'documents': len(catalog), 'pages': len(pages), 'nativeTextDocuments': sum(d['pagesWithEmbeddedText'] > 0 for d in catalog)}, ensure_ascii=False))

@@ -1,4 +1,4 @@
-// macOS: swift -module-cache-path /tmp/brison-ocr-cache corpus/tools/extract_pdf.swift INPUT.pdf OUTPUT.txt
+// macOS 下在仓库根目录运行，缓存使用系统 TMPDIR：swift -module-cache-path "${TMPDIR:?}/brison-pdf-cache" corpus/tools/extract_pdf.swift INPUT.pdf OUTPUT.txt
 // Extracts embedded text only. Scanned pages can produce no text.
 // Render original pages locally for OCR; never modifies the original documents.
 import Foundation
