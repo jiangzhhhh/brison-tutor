@@ -19,7 +19,8 @@ test('selected 25 passages retain their short text, questions and answer keys',(
     const before=oldBank.find(x=>x.id===q.id);
     assert.deepEqual(q.passage.map(s=>s.text),passages[q.id][0],q.id);
     assert(sumLength(q)<=90,q.id+' 篇幅过长');
-    for(const key of ['question','targets','skills','taskSpans'])
+    assert.equal(q.question,q.id==='T06'?'小航出门时，水壶里装了多少毫升水？':before.question);
+    for(const key of ['targets','skills','taskSpans'])
       assert.deepEqual(q[key],before[key],q.id+' '+key);
   }
   assert(bank.reduce((n,q)=>n+sumLength(q),0)<oldBank.filter(q=>bank.some(selected=>selected.id===q.id)).reduce((n,q)=>n+sumLength(q),0)*0.35);

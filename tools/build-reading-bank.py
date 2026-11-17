@@ -1,4 +1,4 @@
-"""从原题和逐题审定的短材料重建内嵌题库；不修改题干、选项和答案。"""
+"""从原题和逐题审定的短材料重建内嵌题库；保留题意、选项和答案，应用已审定的题干精简。"""
 import copy
 import json
 import re
@@ -83,6 +83,9 @@ def main():
             "allowed": [f"s{i}" for i in allowed],
             "explanation": "直接依据需要选全；补充条件可以选，无关信息不选。",
         }
+        # 仅移除多余引导词，题意、答案和进度版本保持兼容。
+        if q["id"] == "T06":
+            q["question"] = "小航出门时，水壶里装了多少毫升水？"
         annotate(q, before)
     text = PAGE.read_text()
     payload = json.dumps(bank, ensure_ascii=False, separators=(",", ":"))
