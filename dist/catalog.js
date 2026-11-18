@@ -26,5 +26,18 @@ window.EXERCISES = [
     description: '随机练习七类标点用法，每类连续答对两题后达标。',
     tags: ['拖拽填空', '直接插入'],
     path: 'exercises/grade-2/semester-1/chinese/punctuation.html'
+  },
+  {
+    id: 'arithmetic-foundations',
+    storage: {
+      currentKey: 'brison-tutor:progress:arithmetic-foundations:v3', schemaVersion: 3, bankVersion: '1.1', legacyPrefixes: [],
+      auxiliaryKeys: ['brison-tutor:progress:arithmetic-foundations:migration:v3', 'brison-tutor:progress:arithmetic-foundations:migration:v1-v2'],
+      validate: record => record.exerciseId === 'arithmetic-foundations' && window.ArithmeticTraining.validData(record.data)
+    },
+    grade: 2, semester: 1, subject: 'math',
+    title: '乘除意义与运算顺序',
+    description: '练习选算式、用除法编题和判断先算哪一步。',
+    tags: ['用除法编题', '混合运算'],
+    path: 'exercises/grade-2/semester-1/math/arithmetic.html'
   }
 ];

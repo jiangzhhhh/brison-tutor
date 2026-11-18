@@ -15,6 +15,7 @@
 | 二年级 | 上册 | 语文 | 读懂再答 | [打开](dist/exercises/grade-2/semester-1/math/read-before-answer.html) |
 | 二年级 | 上册 | 语文 | 语义积木 | [打开](dist/exercises/grade-2/semester-1/chinese/semantic-blocks.html) |
 | 二年级 | 上册 | 语文 | 标点应用 | [互动练习](dist/exercises/grade-2/semester-1/chinese/punctuation.html) · [纸笔练习](materials/grade-2/semester-1/chinese/punctuation/practice.md) · [纸笔版答案与解析](materials/grade-2/semester-1/chinese/punctuation/answers.md) |
+| 二年级 | 上册 | 数学 | 乘除意义与运算顺序 | [互动练习](dist/exercises/grade-2/semester-1/math/arithmetic.html) · [题库与出处](docs/arithmetic-foundations.md) |
 
 ## 添加练习
 
@@ -42,5 +43,5 @@
 
 - 首页与目录脚本语法检查通过；默认分类、数学/语文归属、搜索、重置和全部 48 种分类组合的逻辑检查通过。
 - 初次归档时，两份 HTML 与来源文件的 SHA-256 校验一致；随后已接入上述公共能力。
-- 当前运行环境禁止启动 HTTP 预览服务，浏览器不允许打开本地文件；真实浏览器和手机布局尚未实测。
+- 《乘除意义与运算顺序》已通过 Chrome 的离线入口、320px 窄屏、键盘作答、刷新恢复和进度清理检查。
 - 支持 GitHub Pages 在线访问及本地离线使用，后续不再发布到 Sites。原有 Sites 删除确认尚未获得，尚未执行删除。
