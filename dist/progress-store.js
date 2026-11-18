@@ -19,6 +19,7 @@
         if (!data || typeof data!=='object' || Array.isArray(data)) throw new Error('Invalid progress');
         if(key===exercise.storage.currentKey) {
           status=(data.schemaVersion??data.version)===exercise.storage.schemaVersion && String(data.bankVersion)===String(exercise.storage.bankVersion)?'current':'incompatible';
+          if(status==='current' && exercise.storage.validate && !exercise.storage.validate(data)) status='damaged';
         }
       } catch {status='damaged';}
       rows.push({key,status,bytes:new TextEncoder().encode(raw).length,schemaVersion:data?.schemaVersion??data?.version??null,bankVersion:data?.bankVersion??null,updatedAt:typeof data?.updatedAt==='string'?data.updatedAt:null});

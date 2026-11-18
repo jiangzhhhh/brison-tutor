@@ -14,6 +14,7 @@
 | --- | --- | --- | --- | --- |
 | 二年级 | 上册 | 语文 | 读懂再答 | [打开](dist/exercises/grade-2/semester-1/math/read-before-answer.html) |
 | 二年级 | 上册 | 语文 | 语义积木 | [打开](dist/exercises/grade-2/semester-1/chinese/semantic-blocks.html) |
+| 二年级 | 上册 | 语文 | 标点应用 | [互动练习](dist/exercises/grade-2/semester-1/chinese/punctuation.html) · [纸笔练习](materials/grade-2/semester-1/chinese/punctuation/practice.md) · [纸笔版答案与解析](materials/grade-2/semester-1/chinese/punctuation/answers.md) |
 
 ## 添加练习
 
@@ -34,6 +35,8 @@
 构建源码及审查资料保留在各自的原项目中。归档时曾校验与原文件一致；此后本仓库版本已接入共享样式、公共导航和进度管理桥接，不再与原发布快照逐字一致。分发时应保留整个 `dist/` 目录及相对路径，不能仅复制单个练习 HTML。初次归档及公共能力接入未改变题目和判分规则；后续内容修订见下文。
 
 2026-11-17，《读懂再答》先按二年级地区卷篇幅缩短材料，再精选为8类共25题，取消三轮和整组交卷，支持任意选题、分题草稿、首次记录与独立重练结果。保留题目的有效旧训练记录可迁移，旧版原数据保留；见[分类练习说明](docs/read-before-answer-categories.md)。原90题短版的篇幅参照与改写过程见[历史说明](docs/read-before-answer-short-texts.md)。
+
+《标点应用》的互动题库含七类共 66 题，其中 12 道练顿号。每轮随机抽取尚未达标类别的题目，顿号按两倍权重参与抽题。每类连续答对两道不同的题后停止抽取该类。完成后显示时间、用时、各类做题数和错题数，并按题统计同一位置上顿号和逗号的双向错填。刷新可恢复草稿与本轮进度。题目、参考答案和解析一并收录在[互动题库](dist/exercises/grade-2/semester-1/chinese/punctuation-bank.js)。
 
 ## 验证与发布状态
 

@@ -28,7 +28,7 @@
         bridge.invalidated=true;
         window.addEventListener('DOMContentLoaded',()=>{
           const notice=document.createElement('div');notice.className='project-storage-notice';notice.setAttribute('role','alert');
-          notice.append('已有进度与当前版本不兼容或无法读取，已保留原记录并暂停保存。 ');
+          notice.append('此页无法恢复练习进度，已暂停保存。 ');
           const link=document.createElement('a');link.href='../../../../progress.html';link.textContent='前往进度管理';notice.append(link);document.body.prepend(notice);
         });
       }

@@ -13,5 +13,18 @@ window.EXERCISES = [
     description: '阅读短文，完成缩句、事件排序和标题选择。',
     tags: ['缩句', '事件排序', '选择标题'],
     path: 'exercises/grade-2/semester-1/chinese/semantic-blocks.html'
+  },
+  {
+    id: 'punctuation',
+    storage: {
+      currentKey: 'brison-tutor:progress:punctuation:v3', schemaVersion: 3, bankVersion: '2.1', legacyPrefixes: [],
+      auxiliaryKeys: ['brison-tutor:progress:punctuation:migration:v2-v3'],
+      validate: record => record.exerciseId === 'punctuation' && window.PunctuationTraining.validData(record.data)
+    },
+    grade: 2, semester: 1, subject: 'chinese',
+    title: '标点应用', subtitle: '拖标点填空，在句子里找位置',
+    description: '随机练习七类标点用法，每类连续答对两题后达标。',
+    tags: ['拖拽填空', '直接插入'],
+    path: 'exercises/grade-2/semester-1/chinese/punctuation.html'
   }
 ];

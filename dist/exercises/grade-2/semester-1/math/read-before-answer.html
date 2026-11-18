@@ -356,7 +356,7 @@ function reportHTML(){
 }
 function showModal(kind){modal=kind;previousFocus=document.activeElement;let content='';
  if(kind==='settings')content=`<h2>本练习记录</h2><p>记录保存在当前浏览器，可导出备份。</p><div class="modal-actions">${btn('导出备份','export','primary')}${btn('导入备份','import','secondary')}<input class="file-input" id="import-file" type="file" accept=".json,application/json"></div>${damagedRaw?`<div class="modal-actions">${btn('导出故障原始数据','export-damaged','secondary')}</div>`:''}<div class="divider"></div><div class="modal-actions">${btn('清理本练习进度…','reset-confirm','danger')}${btn('返回','close-modal','secondary')}</div>`;
- if(kind==='reset')content=`<h2>清理本练习进度？</h2><p>将删除当前25题的首次记录、重练记录和草稿，不包含保留的旧版记录。无法直接撤销。</p><div class="modal-actions">${btn('先导出备份','export','secondary')}${btn('确认清理','reset-now','danger')}${btn('保留进度','close-modal','secondary')}</div>`;
+ if(kind==='reset')content=`<h2>清理本练习进度？</h2><p>仅删除当前25题的首次记录、重练记录和草稿。此操作无法撤销。</p><div class="modal-actions">${btn('先导出备份','export','secondary')}${btn('确认清理','reset-now','danger')}${btn('保留进度','close-modal','secondary')}</div>`;
  modalRoot.innerHTML=`<div class="modal-shade" data-modal-backdrop><section class="modal" role="dialog" aria-modal="true" aria-label="${kind==='settings'?'本练习记录':'清理练习进度'}"><div class="modal-top"><span class="eyebrow">读懂再答</span><button class="iconbtn" data-action="close-modal" aria-label="关闭">${icon('close')}</button></div>${content}</section></div>`;
  document.body.style.overflow='hidden';modalRoot.querySelector('button')?.focus();
 }

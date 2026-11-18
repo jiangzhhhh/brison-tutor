@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>标点应用</title>
+  <link rel="stylesheet" href="punctuation.css">
+  <link rel="stylesheet" href="../../../../project.css">
+  <script src="../../../../catalog.js"></script>
+  <script src="../../../../progress-store.js"></script>
+  <script src="punctuation-bank.js"></script>
+  <script src="punctuation-training.js"></script>
+  <script src="../../../../progress-bridge.js" data-exercise="punctuation"></script>
+  <script defer src="../../../../vendor/pinyin-pro-3.29.5.js"></script>
+  <script defer src="../../../../pinyin-data.js"></script>
+  <script defer src="../../../../pinyin.js"></script>
+  <script defer src="punctuation.js"></script>
+</head>
+<body>
+  <nav class="project-nav" aria-label="项目导航">
+    <a href="../../../../index.html">← 返回练习书架</a>
+    <a href="../../../../progress.html">进度管理</a>
+  </nav>
+  <main>
+    <h1>标点应用</h1>
+    <p id="storage-notice" class="project-storage-notice" role="alert" hidden></p>
+    <section id="intro" class="card" aria-label="开始练习" hidden>
+      <p id="goal"></p>
+      <button type="button" class="primary" id="start">开始练习</button>
+    </section>
+    <section id="completion" class="card completion" aria-labelledby="completion-title" hidden>
+      <h2 id="completion-title" tabindex="-1">训练完成</h2>
+      <dl>
+        <div><dt>完成时间</dt><dd><time id="finished-at"></time></dd></div>
+        <div><dt>用时</dt><dd id="duration"></dd></div>
+        <div><dt>答题</dt><dd id="total-answered"></dd></div>
+      </dl>
+      <div id="completion-stats"></div>
+      <button type="button" class="secondary" id="restart">再练一次</button>
+    </section>
+    <section id="practice" class="card" aria-labelledby="question-title" hidden>
+      <div class="question-header">
+        <h2 id="question-title" tabindex="-1"></h2>
+        <span id="progress-count"></span>
+      </div>
+      <p id="instructions" class="instructions">把标点拖到句子里的合适位置，拖回标点区可以移除。</p>
+      <p id="context" class="context" data-pinyin></p>
+      <div class="writing" id="writing">
+        <div id="sentence" class="sentence" role="group"></div>
+        <span id="insertion-caret" class="insertion-caret" aria-hidden="true" hidden></span>
+      </div>
+      <div id="palette" class="palette" role="group" aria-label="标点"></div>
+      <p id="keyboard-help" class="sr-only">用左右方向键移动插入位置，按回车插入选好的标点，按退格键删除光标前的标点。</p>
+      <p id="keyboard-help-boxes" class="sr-only">用回车拿起标点，再按回车放进方框，按退格键移除方框里的标点。</p>
+      <p id="selection-status" class="sr-only" role="status"></p>
+      <div class="actions">
+        <button type="button" class="secondary" id="undo">撤销</button>
+        <button type="button" class="primary" id="submit">提交答案</button>
+      </div>
+      <p id="feedback" role="status"></p>
+      <div id="navigation" class="navigation" hidden>
+        <button type="button" class="primary" id="next">下一题</button>
+      </div>
+    </section>
+    <details id="history" class="card history" hidden>
+      <summary>历次完成记录</summary>
+      <ol id="history-list"></ol>
+    </details>
+  </main>
+  <template id="round-stats">
+    <div class="round-stats">
+      <table data-category-stats>
+        <caption>各类答题情况</caption>
+        <thead><tr><th scope="col">类别</th><th scope="col">做题数</th><th scope="col">错题数</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <table data-confusion-stats>
+        <caption>顿号和逗号错填</caption>
+        <thead><tr><th scope="col">方向</th><th scope="col">可比较题数</th><th scope="col">错填题数</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </template>
+  <span id="drag-mark" class="drag-mark" aria-hidden="true" hidden></span>
+</body>
+</html>
