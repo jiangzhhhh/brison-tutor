@@ -18,11 +18,12 @@ function page(storage){
 }
 test('分类练习可任选题，刷新恢复草稿，提交后留在原题',()=>{
   const storage=memory();let p=page(storage);
-  const answer=bank.questions.find(q=>q.id==='q-028').answer;
-  assert.equal(p.nodes.app.innerHTML.match(/data-question=/g).length,64);
-  p.click('open','q-028');p.choose(answer);
-  p.click('home');p.click('open','q-001');p.choose('A');
-  p.click('home');p.click('open','q-028');
+  const answer=bank.questions.find(q=>q.id==='wp-maximum-1').answer;
+  assert.equal(p.nodes.app.innerHTML.match(/data-question=/g).length,30);
+  assert.doesNotMatch(p.nodes.app.innerHTML,/阶段卷错题练习|方向短练/);
+  p.click('open','wp-maximum-1');p.choose(answer);
+  p.click('home');p.click('open','wp-minimum-1');p.choose('A');
+  p.click('home');p.click('open','wp-maximum-1');
   p=page(storage);
   assert.match(p.nodes.app.innerHTML,new RegExp(`value="${answer}" checked`));
   assert.doesNotMatch(p.nodes.app.innerHTML,/正确答案|回答正确|回答错误/);
@@ -30,42 +31,45 @@ test('分类练习可任选题，刷新恢复草稿，提交后留在原题',()=
   assert.match(p.nodes.app.innerHTML,/回答正确/);
   assert.match(p.nodes.app.innerHTML,/返回题目列表/);
   const recorded=JSON.parse(storage.values.get(model.KEY)).data.practice.questions;
-  assert.equal(recorded['q-001'].draft,'A');
-  assert.equal(recorded['q-028'].attempts.length,1);
+  assert.equal(recorded['wp-minimum-1'].draft,'A');
+  assert.equal(recorded['wp-maximum-1'].attempts.length,1);
   p.click('retry');
   assert.doesNotMatch(p.nodes.app.innerHTML,/回答正确/);
-  assert.equal(JSON.parse(storage.values.get(model.KEY)).data.practice.questions['q-028'].attempts.length,1);
+  assert.equal(JSON.parse(storage.values.get(model.KEY)).data.practice.questions['wp-maximum-1'].attempts.length,1);
 });
 test('a corrupt record stays untouched and its preservation warning survives starting practice',()=>{
   const storage=memory('broken'),p=page(storage);
   assert.match(p.nodes['storage-error'].innerHTML,/无法恢复上次进度/);
-  p.click('open','q-001');p.choose('B');
+  p.click('open','wp-minimum-1');p.choose('B');
   assert.match(p.nodes['storage-error'].innerHTML,/无法恢复上次进度/);
   assert.equal(p.nodes.saved.textContent,'');
   assert.equal(storage.values.get(model.KEY),'broken');
 });
-test('分类列表按题型展示题目，跨题题干可独立阅读',()=>{
+test('分类列表按题型展示题目',()=>{
   const p=page(memory());
   const topics=['最少需求','最多可买','倒推原数','错算还原','多条件约束','周期定位','状态追踪','对象筛选','嵌套数量','问题焦点'];
   for(const topic of topics)assert.match(p.nodes.app.innerHTML,new RegExp(topic));
-  p.click('open','q-002');
-  assert.match(p.nodes.app.innerHTML,/甲包6瓶饮料24元，乙包3瓶饮料18元/);
-  assert.match(p.nodes.app.innerHTML,/还是这两种饮料/);
 });
-test('逐题练习可以恢复旧组合练习的成绩和草稿',()=>{
+test('旧阶段卷错题不会自动开题或计入进度，后续作答保留旧记录',()=>{
   const stamp='2026-11-21T08:00:00.000Z';
   let old=model.openRound(model.initial(),'unit-price',stamp);
   old=model.submitCurrent(model.choose(old,'q-001','B'),stamp);
-  old=model.choose(model.openRound(old,'mixed',stamp),'q-025','A');
-  const storage=memory(JSON.stringify({exerciseId:model.ID,schemaVersion:model.SCHEMA,bankVersion:bank.version,updatedAt:stamp,data:old}));
+  old=model.chooseQuestion(model.selectQuestion(old,'wp-minimum-1'),'B');
+  old=model.selectQuestion(model.submitQuestion(old,stamp),'q-025');
+  old=model.chooseQuestion(old,'A');
+  const raw=JSON.stringify({exerciseId:model.ID,schemaVersion:model.SCHEMA,bankVersion:bank.version,updatedAt:stamp,data:old});
+  const storage=memory(raw);
   const p=page(storage);
   assert.match(p.nodes.app.innerHTML,/题目列表/);
-  p.click('open','q-001');
+  assert.equal(p.nodes.overall.textContent,'已提交 1 / 30 题');
+  assert.equal(storage.values.get(model.KEY),raw);
+  p.click('open','q-025');
+  assert.match(p.nodes.app.innerHTML,/题目列表/);
+  p.click('open','wp-minimum-1');
   assert.match(p.nodes.app.innerHTML,/回答正确/);
-  p.click('home');p.click('open','q-025');
-  assert.match(p.nodes.app.innerHTML,/value="A" checked/);
-  assert.doesNotMatch(p.nodes.app.innerHTML,/正确答案/);
-  assert.deepEqual(JSON.parse(storage.values.get(model.KEY)).data.rounds,old.rounds);
+  const saved=JSON.parse(storage.values.get(model.KEY)).data;
+  assert.deepEqual(saved.rounds,old.rounds);
+  assert.deepEqual(saved.practice.questions,old.practice.questions);
 });
 test('HTML bank keeps archived questions, answer choices, explanations and local assets',()=>{
   const path=require('node:path');
@@ -91,6 +95,7 @@ test('书架通过主入口打开分类练习，搜索子练习仍找到主入�
     return nodes.results.innerHTML;
   }
   const links=results();
+  assert.doesNotMatch(links,/阶段卷错题/);
   assert.match(links,/href="exercises\/grade-2\/semester-1\/math\/math-focus.html"/);
   assert.match(links,/href="exercises\/grade-2\/semester-1\/math\/arithmetic.html\?mode=classified"/);
   assert.doesNotMatch(links,/href="[^"]*math-streak.html"/);

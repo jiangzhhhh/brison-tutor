@@ -79,7 +79,7 @@ window.EXERCISES = [
   {
     id: 'math-focus', storage: {currentKey: 'brison-tutor:progress:math-focus:v1', schemaVersion: 1, bankVersion: '2026-11-21.1', legacyPrefixes: ['brison-tutor:progress:math-focus:']}, grade: 2, semester: 1, subject: 'math',
     title: '应用题分类练习', subtitle: '',
-    description: '按题型练习最少与最多、倒推、多条件筛选等应用题，也可参加应用题随机闯关或练习阶段卷错题。',
+    description: '按题型练习最少与最多、倒推、多条件筛选等应用题，也可参加应用题随机闯关。',
     tags: ['应用题', '数量关系', '审题', '计算检查', '随机抽题'],
     path: 'exercises/grade-2/semester-1/math/math-focus.html'
   },

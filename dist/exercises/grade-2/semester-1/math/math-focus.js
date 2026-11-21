@@ -5,10 +5,9 @@
   const bank = window.MathFocusBank;
   const model = window.MathFocusModel;
   const $ = id => document.getElementById(id);
-  const questions = new Map(bank.questions.map(question => [question.id, question]));
-  const groupByQuestion = new Map(bank.rounds.flatMap(group => group.questionIds.map(id => [id, group])));
   const applicationGroups = bank.rounds.filter(group => group.section === 'word-problems');
-  const reviewGroups = bank.rounds.filter(group => group.section !== 'word-problems');
+  const groupByQuestion = new Map(applicationGroups.flatMap(group => group.questionIds.map(id => [id, group])));
+  const questions = new Map(bank.questions.filter(question => groupByQuestion.has(question.id)).map(question => [question.id, question]));
   const escape = value => String(value).replace(/[&<>"']/g, char => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   })[char]);
@@ -25,6 +24,8 @@
   const persistence = model.persistence(storage, window.ProgressBridge, storageError);
   const loaded = persistence.load();
   let state = loaded.state;
+  const savedQuestionId = state.practice?.questionId;
+  if (savedQuestionId && !questions.has(savedQuestionId)) state = model.selectQuestion(state, null);
   if (loaded.updatedAt && !loaded.error) $('saved').textContent = '已恢复上次进度';
 
   function save() {
@@ -50,8 +51,8 @@
     </div>`;
   }
 
-  function renderGroups(groups, returnId) {
-    return groups.map(group => {
+  function renderGroups(returnId) {
+    return applicationGroups.map(group => {
       const rows = group.questionIds.map((id, index) => {
         const question = questions.get(id);
         const progress = model.questionProgress(state, id);
@@ -69,8 +70,7 @@
   function home(returnId) {
     return `<section class="practice-question-list" aria-labelledby="list-heading">
       <h2 id="list-heading" tabindex="-1">题目列表</h2>
-      <h3>应用题</h3>${renderGroups(applicationGroups, returnId)}
-      <h3>阶段卷错题练习</h3>${renderGroups(reviewGroups, returnId)}
+      ${renderGroups(returnId)}
     </section>`;
   }
 
@@ -88,7 +88,6 @@
     return `<button class="secondary back" type="button" data-action="home">返回题目列表</button>
       <section class="card" aria-labelledby="question-title">
         <div class="question-meta"><span class="meta">${escape(group.title)}</span><span class="meta">第 ${index} / ${group.questionIds.length} 题</span></div>
-        ${group.id === 'directions' ? '<p class="meta" data-pinyin>标准方位图：上北、下南、左西、右东。</p>' : ''}
         ${question.context ? `<p data-pinyin>${escape(question.context)}</p>` : ''}
         <h2 id="question-title" class="question-title" tabindex="-1" data-pinyin>${escape(question.prompt)}</h2>${table(question)}
         <fieldset class="options"><legend class="sr-only">选择一个答案</legend>${options}</fieldset>
@@ -103,7 +102,8 @@
   function render(focus = false, returnId = null) {
     $('action-error').textContent = '';
     const id = state.practice?.questionId;
-    $('overall').textContent = `已提交 ${Object.keys(model.firstResults(state)).length} / ${bank.questions.length} 题`;
+    const submitted = Object.keys(model.firstResults(state)).filter(questionId => questions.has(questionId)).length;
+    $('overall').textContent = `已提交 ${submitted} / ${questions.size} 题`;
     const app = $('app');
     app.innerHTML = id ? renderQuestion(id) : home(returnId);
     if (id) window.PinyinAid?.annotate(app);
@@ -130,6 +130,7 @@
     const button = event.target.closest('button[data-action]');
     if (!button || button.disabled) return;
     const {action, question} = button.dataset;
+    if (action === 'open' && !questions.has(question)) return;
     const returnId = action === 'home' ? state.practice?.questionId : null;
     try {
       if (action === 'home' || action === 'open') state = model.selectQuestion(state, question ?? null);
