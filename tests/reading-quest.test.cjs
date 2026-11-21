@@ -62,27 +62,61 @@ test('同组连对、答错清零和跨组独立，已消除组退出', () => {
   assert.equal(model.next(state, random).round.current, null);
 });
 
-test('一百组全对第 200 次通关，并保存首轮记录和新开始时间', () => {
+test('每轮从一百组中抽取十组，第 20 次全对通关，重练重新抽样', () => {
   const model = setup(100);
+  const storage = memory();
+  const progress = model.persistence(storage);
   let state = model.start(model.initial(), 1000, random);
-  for (let i = 0; i < 200; i++) {
+  const selected = new Set([state.round.current.groupId, ...state.round.queue]);
+  assert.equal(selected.size, 10);
+  for (let i = 0; i < 20; i++) {
     assert.equal(state.round.completedAt, null);
+    assert(selected.has(state.round.current.groupId));
     state = answer(model, state, 0, 2000 + i);
     state = model.next(state, random);
+    if (i === 9) {
+      assert.equal(progress.save(state, 2010), true);
+      const restored = model.persistence(storage).load();
+      assert.deepEqual(restored, state);
+      state = restored;
+    }
   }
-  assert.equal(state.round.completedAt, 2199);
-  assert.equal(model.stats(state.round).cleared, 100);
+  assert.equal(state.round.completedAt, 2019);
+  assert.equal(model.stats(state.round).cleared, 10);
   const previous = state.round;
   state = model.start(state, 9000, () => 0);
   assert.deepEqual(state.history, [previous]);
   assert.equal(state.round.startedAt, 9000);
   assert.equal(model.stats(state.round).cleared, 0);
-  assert.notEqual(state.round.current.groupId, previous.answers[0].groupId);
-  const storage = memory();
-  assert.equal(model.persistence(storage).save(state, 9100), true);
-  const restored = model.persistence(storage).load();
+  assert.notDeepEqual(new Set([state.round.current.groupId, ...state.round.queue]), selected);
+  assert.equal(progress.save(state, 9100), true);
+  const restored = progress.load();
   assert.deepEqual(restored.history[0], previous);
   assert.equal(restored.round.startedAt, 9000);
+});
+
+test('旧版一百组轮次可以续练通关并保留在历史中', () => {
+  const model = setup(100);
+  const legacy = { history: [], round: {
+    startedAt: 1000, completedAt: null,
+    queue: Array.from({ length: 99 }, (_, index) => `g${index + 1}`), answers: [],
+    current: { groupId: 'g0', variantId: 'g0-v3', order: [0, 1], choice: 0, submitted: false },
+  } };
+  const storage = memory(JSON.stringify({ exerciseId: model.ID, schemaVersion: 1, bankVersion: '1.0',
+    updatedAt: new Date(1100).toISOString(), data: legacy }));
+  const progress = model.persistence(storage);
+  let state = progress.load();
+  assert.deepEqual(state, legacy);
+  for (let i = 0; i < 200; i++) {
+    assert.equal(state.round.completedAt, null);
+    state = model.next(answer(model, state, 0, 2000 + i), random);
+  }
+  assert.equal(state.round.completedAt, 2199);
+  assert.equal(model.stats(state.round).cleared, 100);
+  const restarted = model.start(state, 9000, random);
+  assert.equal(progress.save(restarted, 9100), true);
+  assert.deepEqual(progress.load(), restarted);
+  assert.deepEqual(restarted.history, [state.round]);
 });
 
 test('同组用完四道题后可继续，且不会紧接着重复上一道', () => {

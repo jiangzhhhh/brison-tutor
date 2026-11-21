@@ -124,14 +124,14 @@
       mount.innerHTML = questionView(classified.current(state, selectedId), variant, groupId);
     } else {
       const { round } = state;
-      const cleared = round ? randomModel.stats(round).cleared : 0;
-      progress.max = randomModel.total;
+      const { cleared, total } = round ? randomModel.stats(round) : { cleared: 0, total: randomModel.total };
+      progress.max = total;
       progress.value = cleared;
-      const label = `已消除 ${cleared} / ${randomModel.total} 组`;
+      const label = `已消除 ${cleared} / ${total} 组`;
       if (progressText.textContent !== label) progressText.textContent = label;
       if (!round) {
         mount.innerHTML = `<section class="card" aria-label="开始练习">
-          <p>同组连续答对两次，就能消除这一组。</p>
+          <p>每轮随机抽取 ${total} 组，连续答对同组两题即可消除该组。</p>
           <button class="primary" type="button" data-action="start">开始练习</button>
         </section>`;
       } else {

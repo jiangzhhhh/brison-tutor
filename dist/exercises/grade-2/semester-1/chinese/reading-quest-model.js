@@ -22,7 +22,10 @@
   function createModel(bank) {
     const groups = new Map(bank.groups.map(group => [group.id, group]));
     const groupIds = [...groups.keys()];
+    const roundSize = Math.min(10, groupIds.length);
     const initial = () => ({ round: null, history: [] });
+    // Rounds saved before sampling used the full bank and have no groupIds.
+    const selectedGroups = ({ groupIds: selected = groupIds }) => selected;
 
     function question({ groupId, variantId }) {
       return groups.get(groupId)?.variants.find(variant => variant.id === variantId);
@@ -37,7 +40,7 @@
         if (entry.correct) correct++;
       }
       const cleared = [...streaks.values()].filter(streak => streak === 2).length;
-      return { streaks, cleared, correct, incorrect: round.answers.length - correct };
+      return { streaks, cleared, total: selectedGroups(round).length, correct, incorrect: round.answers.length - correct };
     }
 
     function eligibleVariants(groupId, answers) {
@@ -50,7 +53,7 @@
 
     function draw(round, random) {
       const streaks = stats(round).streaks;
-      const queue = round.queue.length ? round.queue : shuffled(groupIds.filter(id => streaks.get(id) !== 2), random);
+      const queue = round.queue.length ? round.queue : shuffled(selectedGroups(round).filter(id => streaks.get(id) !== 2), random);
       const [groupId, ...remaining] = queue;
       const variants = eligibleVariants(groupId, round.answers);
       const variant = variants[Math.floor(random() * variants.length)];
@@ -61,7 +64,8 @@
     function start(state, now = Date.now(), random = Math.random) {
       if (state.round && (state.round.completedAt === null || state.round.current)) return state;
       const history = state.round ? [...state.history, state.round] : state.history;
-      const round = draw({ startedAt: now, completedAt: null, queue: [], answers: [], current: null }, random);
+      const selected = shuffled(groupIds, random).slice(0, roundSize);
+      const round = draw({ startedAt: now, completedAt: null, groupIds: selected, queue: selected, answers: [], current: null }, random);
       return { round, history };
     }
 
@@ -79,7 +83,8 @@
       const correct = variant.choices[choice] === variant.answer;
       const answers = [...state.round.answers, { groupId, variantId, choice, correct }];
       const round = { ...state.round, answers, current: { ...current, submitted: true } };
-      if (stats(round).cleared === groupIds.length) round.completedAt = Math.max(now, round.startedAt);
+      const { cleared, total } = stats(round);
+      if (cleared === total) round.completedAt = Math.max(now, round.startedAt);
       return { ...state, round };
     }
 
@@ -91,13 +96,16 @@
 
     function validRound(round) {
       if (!round || !Array.isArray(round.queue) || !Array.isArray(round.answers) || !validTime(round.startedAt)) return false;
-      const streaks = new Map(groupIds.map(id => [id, 0]));
-      const played = new Map(groupIds.map(id => [id, new Set()]));
+      const selected = selectedGroups(round);
+      if (!Array.isArray(selected) || (round.groupIds !== undefined &&
+          (selected.length !== roundSize || new Set(selected).size !== roundSize || [...selected].some(id => !groups.has(id))))) return false;
+      const streaks = new Map(selected.map(id => [id, 0]));
+      const played = new Map(selected.map(id => [id, new Set()]));
       const latestVariant = new Map();
       let pending = new Set();
 
       function take(groupId, variantId) {
-        if (!pending.size) pending = new Set(groupIds.filter(id => streaks.get(id) !== 2));
+        if (!pending.size) pending = new Set(selected.filter(id => streaks.get(id) !== 2));
         if (!pending.delete(groupId)) return false;
         const used = played.get(groupId);
         const variantCount = groups.get(groupId).variants.length;
@@ -137,7 +145,7 @@
     }
 
     const storage = progress(RANDOM_ID, bank.version, initial, validData);
-    return Object.freeze({ ...storage, initial, total: groupIds.length, question, stats, start, choose, submit, next, validData });
+    return Object.freeze({ ...storage, initial, total: roundSize, question, stats, start, choose, submit, next, validData });
   }
 
   function createClassifiedModel(bank) {
