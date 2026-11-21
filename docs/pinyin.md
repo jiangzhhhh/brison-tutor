@@ -13,7 +13,7 @@
 ## 文件
 
 - [pinyin.js](../dist/pinyin.js)：通用注音和页面增强，提供`PinyinAid.segments`与`PinyinAid.annotate`。
-- [pinyin-data.js](../dist/pinyin-data.js)：生成年级识字参考范围及词语读音，两个练习共用。
+- [pinyin-data.js](../dist/pinyin-data.js)：生成年级识字参考范围及词语读音，书架上的练习共用。
 - [识字参考表](../materials/pinyin/recognition-profile.json)与[校订读音](../materials/pinyin/readings.json)：独立维护的源数据；通过[生成工具](../tools/build-pinyin-profile.py)更新分发配置。
 - [project.css](../dist/project.css)：`.pinyin-ruby`样式，拼音通过`ruby`、`rt`显示在汉字上方。
 - [pinyin-pro 3.29.5](../dist/vendor/pinyin-pro-3.29.5.js)：本地拼音转换依赖，固定版本，离线可用；[MIT许可证](../dist/vendor/pinyin-pro-LICENSE)。
@@ -37,6 +37,8 @@
 ```
 
 动态页面在每次替换内容之后调用`annotate`，包括局部更新与弹窗。重复调用不会嵌套生成注音，不使用持续观察整个页面的后台监听。
+
+接入时检查选题预览、题干、选项、题目表格和提交后的解析。折叠的题目列表可以在展开时注音。表格按单元格注音，保留各单元格自己的语境。
 
 现有元素也可以通过选择器接入：
 

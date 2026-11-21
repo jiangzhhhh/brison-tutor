@@ -226,23 +226,18 @@
       if (canEdit) sentence.setAttribute('aria-describedby', 'keyboard-help');
       else sentence.removeAttribute('aria-describedby');
       positions = bank.boundaries(current);
-      glyphs = PinyinAid.segments(text).map(({ text: char, reading }, index) => {
+      glyphs = Array.from(text, (char, index) => {
         const glyph = document.createElement('span');
         const before = positions[index];
         const after = positions[index + 1];
         glyph.className = before.index === after.index ? 'glyph placed' : 'glyph';
-        glyph.setAttribute('aria-hidden', 'true');
-        if (reading) {
-          const ruby = document.createElement('ruby');
-          ruby.className = 'pinyin-ruby';
-          const rt = document.createElement('rt');
-          rt.textContent = reading;
-          ruby.append(char, rt);
-          glyph.append(ruby);
-        } else glyph.textContent = char;
+        glyph.textContent = char;
         return glyph;
       });
       sentence.append(...glyphs);
+      PinyinAid.annotate(sentence, { selector: '#sentence' });
+      // 整句由 aria-label 朗读，注音后再隐藏逐字节点。
+      for (const glyph of glyphs) glyph.setAttribute('aria-hidden', 'true');
       cursor = Math.min(cursor, positions.length - 1);
     }
 
@@ -344,6 +339,7 @@
         const row = document.createElement('li');
         const choice = button('');
         const label = document.createElement('span');
+        label.dataset.pinyin = '';
         label.textContent = `第 ${questionNumbers.get(item.id)} 题　${item.text}`;
         const status = document.createElement('small');
         status.className = 'practice-question-status';
@@ -354,6 +350,10 @@
         questionButtons.set(item.id, choice);
       }
       group.append(summary, list);
+      if (group.open) PinyinAid.annotate(group);
+      group.ontoggle = () => {
+        if (group.open) PinyinAid.annotate(group);
+      };
       return group;
     }));
   }

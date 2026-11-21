@@ -39,7 +39,7 @@
     <section id="practice" class="card" aria-labelledby="question-title" hidden>
       <button type="button" id="question-list-return" class="secondary" hidden>返回题目列表</button>
       <header class="question-header">
-        <h2 id="question-title" tabindex="-1"></h2>
+        <h2 id="question-title" tabindex="-1" data-pinyin></h2>
         <span id="mastered"></span>
       </header>
       <p id="prompt" class="prompt" data-pinyin></p>
@@ -47,7 +47,7 @@
         <p id="original-expression"></p>
         <p id="new-expression" hidden></p>
       </div>
-      <p id="step-feedback" class="step-feedback" role="status" hidden></p>
+      <p id="step-feedback" class="step-feedback" role="status" data-pinyin hidden></p>
       <form id="answer-form">
         <div id="fields"></div>
         <div class="actions">

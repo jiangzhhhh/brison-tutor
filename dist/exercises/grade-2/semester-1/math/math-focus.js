@@ -37,8 +37,8 @@
 
   function table(question) {
     if (!question.table) return '';
-    const headers = question.table.headers.map(text => `<th scope="col">${escape(text)}</th>`).join('');
-    const rows = question.table.rows.map(row => `<tr>${row.map(cell => `<td>${escape(cell)}</td>`).join('')}</tr>`).join('');
+    const headers = question.table.headers.map(text => `<th scope="col" data-pinyin>${escape(text)}</th>`).join('');
+    const rows = question.table.rows.map(row => `<tr>${row.map(cell => `<td data-pinyin>${escape(cell)}</td>`).join('')}</tr>`).join('');
     return `<table class="question-table"><thead><tr>${headers}</tr></thead><tbody>${rows}</tbody></table>`;
   }
 
@@ -46,7 +46,7 @@
     const answer = question.choices.find(choice => choice.id === question.answer);
     return `<div class="feedback${result.correct ? '' : ' incorrect'}" role="status">
       <div class="result-title">${result.correct ? '✓ 回答正确' : '× 回答错误'}</div>
-      <p>正确答案：${escape(answer.id)}．${escape(answer.text)}</p><p>${escape(question.explanation)}</p>
+      <p data-pinyin>正确答案：${escape(answer.id)}．${escape(answer.text)}</p><p data-pinyin>${escape(question.explanation)}</p>
     </div>`;
   }
 
@@ -57,7 +57,7 @@
         const progress = model.questionProgress(state, id);
         const status = progress.draft !== null ? '有草稿' : progress.attempts.length ? '已作答' : '';
         return `<li><button type="button" id="practice-${id}" data-action="open" data-question="${id}">
-          <span>${index + 1}. ${escape(question.prompt)}</span><small class="practice-question-status">${status}</small>
+          <span data-pinyin>${index + 1}. ${escape(question.prompt)}</span><small class="practice-question-status">${status}</small>
         </button></li>`;
       }).join('');
       return `<details class="practice-question-group" ${group.questionIds.includes(returnId) ? 'open' : ''}>
@@ -82,15 +82,15 @@
     const selected = result?.choice ?? progress.draft;
     const options = question.choices.map(choice => `<label class="option">
       <input type="radio" name="answer" value="${choice.id}" ${selected === choice.id ? 'checked' : ''} ${result ? 'disabled' : ''}>
-      <span class="option-text"><span class="letter">${choice.id}</span>${escape(choice.text)}</span>
+      <span class="option-text"><span class="letter">${choice.id}</span><span data-pinyin>${escape(choice.text)}</span></span>
     </label>`).join('');
     const index = group.questionIds.indexOf(id) + 1;
     return `<button class="secondary back" type="button" data-action="home">返回题目列表</button>
       <section class="card" aria-labelledby="question-title">
         <div class="question-meta"><span class="meta">${escape(group.title)}</span><span class="meta">第 ${index} / ${group.questionIds.length} 题</span></div>
-        ${group.id === 'directions' ? '<p class="meta">标准方位图：上北、下南、左西、右东。</p>' : ''}
-        ${question.context ? `<p>${escape(question.context)}</p>` : ''}
-        <h2 id="question-title" class="question-title" tabindex="-1">${escape(question.prompt)}</h2>${table(question)}
+        ${group.id === 'directions' ? '<p class="meta" data-pinyin>标准方位图：上北、下南、左西、右东。</p>' : ''}
+        ${question.context ? `<p data-pinyin>${escape(question.context)}</p>` : ''}
+        <h2 id="question-title" class="question-title" tabindex="-1" data-pinyin>${escape(question.prompt)}</h2>${table(question)}
         <fieldset class="options"><legend class="sr-only">选择一个答案</legend>${options}</fieldset>
         ${result ? feedback(question, result) : ''}
         <div class="actions">${result
@@ -104,9 +104,16 @@
     $('action-error').textContent = '';
     const id = state.practice?.questionId;
     $('overall').textContent = `已提交 ${Object.keys(model.firstResults(state)).length} / ${bank.questions.length} 题`;
-    $('app').innerHTML = id ? renderQuestion(id) : home(returnId);
+    const app = $('app');
+    app.innerHTML = id ? renderQuestion(id) : home(returnId);
+    if (id) window.PinyinAid?.annotate(app);
+    else if (returnId) window.PinyinAid?.annotate($('practice-' + returnId).closest('details'));
     if (focus) $(id ? 'question-title' : returnId ? 'practice-' + returnId : 'list-heading').focus();
   }
+
+  $('app').addEventListener('toggle', event => {
+    if (event.target.matches('details.practice-question-group[open]')) window.PinyinAid?.annotate(event.target);
+  }, true);
 
   $('app').addEventListener('change', event => {
     if (event.target.name !== 'answer') return;

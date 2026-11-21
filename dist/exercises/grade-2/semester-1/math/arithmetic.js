@@ -135,6 +135,7 @@
   function fieldView(question, field, optionOrder) {
     const root = element('fieldset');
     const legend = element('legend', field.label);
+    legend.dataset.pinyin = '';
     if (field.label === question.title) legend.className = 'visually-hidden';
     if (field.id === 'intermediate') {
       const part = element('span', ` ${question.work.segment}`);
@@ -373,8 +374,10 @@
         const control = button(undefined, 'secondary');
         const label = question === bank.example ? `示例 · ${question.prompt}` : question.expression ?? question.prompt;
         const status = element('small');
+        const text = element('span', label);
+        text.dataset.pinyin = '';
         control.dataset.questionId = question.id;
-        control.append(element('span', label), status);
+        control.append(text, status);
         control.onclick = () => {
           if (!training.openClassifiedQuestion(data, question.id)) return;
           save();
@@ -386,6 +389,10 @@
         items.append(item);
       }
       group.append(element('summary', title), items);
+      if (group.open) window.PinyinAid.annotate(group);
+      group.ontoggle = () => {
+        if (group.open) window.PinyinAid.annotate(group);
+      };
       $('category-options').append(group);
     }
   }

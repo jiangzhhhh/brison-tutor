@@ -37,12 +37,14 @@
       element('p', `正确答案：${answer.id}．${answer.text}`),
       element('p', question.explanation)
     );
+    window.PinyinAid.annotate(node, {selector: '.feedback p'});
   }
 
   function renderPractice(round, question, result, focus) {
     const mastered = Object.values(training.streaks(round)).filter(value => value >= 2).length;
     $('mastered').textContent = `已达标 ${mastered} / ${training.categories.length} 类`;
     $('question').textContent = question.prompt;
+    window.PinyinAid.annotate($('question'));
     $('answer-form').hidden = !!result;
     $('feedback').hidden = !result;
     $('next').hidden = !result;
@@ -59,9 +61,12 @@
       input.checked = round.draft === choice.id;
       const label = element('label');
       label.className = 'option';
-      label.append(input, element('span', `${choice.id}．${choice.text}`));
+      const text = element('span', `${choice.id}．${choice.text}`);
+      text.dataset.pinyin = '';
+      label.append(input, text);
       return label;
     }));
+    window.PinyinAid.annotate($('options'));
     $('submit').disabled = round.draft === null;
     if (focus) $('question').focus();
   }

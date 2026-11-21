@@ -1,6 +1,8 @@
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');
+const path=require('node:path');
+const vm=require('node:vm');
 const aid=fs.existsSync('dist/pinyin.js')?require('../dist/pinyin.js'):{};
 
 test('二年级默认只给选定生字注音，常用字保持原样',()=>{
@@ -51,4 +53,29 @@ test('现有材料中的狐狸和铃铛统一使用轻声',()=>{
     for(const item of checked)if(item.text==='狸')assert.equal(item.reading,'li',story.id+' '+text);
     for(const item of checked)if(item.text==='铛')assert.equal(item.reading,'dang',story.id+' '+text);
   }
+});
+
+test('书架上的每个练习入口都按顺序加载同一套离线注音脚本',()=>{
+  const window={};
+  vm.runInNewContext(fs.readFileSync('dist/catalog.js','utf8'),{window});
+  for(const page of new Set(window.EXERCISES.map(exercise=>exercise.path.split('?')[0]))){
+    const file=path.join('dist',page);
+    const html=fs.readFileSync(file,'utf8');
+    const scripts=[...html.matchAll(/<script\b[^>]*\bsrc="([^"]+)"/g)]
+      .map(match=>path.join(path.dirname(file),match[1]))
+      .filter(script=>script.includes('pinyin'));
+    assert.deepEqual(scripts,['dist/vendor/pinyin-pro-3.29.5.js','dist/pinyin-data.js','dist/pinyin.js'],page);
+  }
+});
+
+test('应用题中表示应该的“应”按语境标注 yīng',()=>{
+  const {questions}=require('../dist/exercises/grade-2/semester-1/math/math-focus-bank.js');
+  const text=[
+    questions.find(question=>question.id==='q-006').choices[2].text,
+    questions.find(question=>question.id==='q-009').explanation,
+    questions.find(question=>question.id==='q-015').prompt,
+    '从容应对。'
+  ];
+  assert.deepEqual(text.map(value=>aid.segments(value).find(item=>item.text==='应')?.reading),
+    ['yīng','yīng','yīng','yìng']);
 });

@@ -39,6 +39,9 @@
   <script src="math-focus-bank.js"></script>
   <script src="math-streak-model.js"></script>
   <script src="../../../../progress-bridge.js" data-exercise="math-streak"></script>
+  <script defer src="../../../../vendor/pinyin-pro-3.29.5.js"></script>
+  <script defer src="../../../../pinyin-data.js"></script>
+  <script defer src="../../../../pinyin.js"></script>
   <script defer src="math-streak.js"></script>
 </head>
 <body>
@@ -61,7 +64,7 @@
     </section>
     <section id="practice" class="card" aria-labelledby="question" hidden>
       <p id="mastered" class="meta" role="status"></p>
-      <h2 id="question" tabindex="-1"></h2>
+      <h2 id="question" tabindex="-1" data-pinyin></h2>
       <form id="answer-form">
         <fieldset>
           <legend>选择一个答案</legend>
