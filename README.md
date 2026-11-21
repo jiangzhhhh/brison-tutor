@@ -30,7 +30,7 @@
 2. 在 `dist/catalog.js` 的数组中添加记录，填写年级、册别、学科、标题、介绍、标签和相对入口路径。学科值：`chinese`、`math`、`english`。新增学科时同步扩展首页的学科映射。
    子入口设置 `parentId`，进度管理仍按其独立记录管理。如书架默认打开分类页，在主入口设置 `shelfPath`。
 3. 依照 [项目风格指导](DESIGN.md) 接入共享样式及公共导航，依照 [进度与版本规则](docs/progress.md) 接入统一进度管理。
-4. 在本页索引登记，打开首页验证分类和跳转，运行 `node --test tests/*.test.cjs`。
+4. 按 [生字注音组件](docs/pinyin.md) 接入拼音，在本页索引登记，打开首页验证分类和跳转，运行 `node tools/lint-pinyin.cjs` 和 `node --test tests/*.test.cjs`。
 
 筛选状态保存在 URL 的 hash 中，可收藏分类。主页不记录答题进度；各练习使用自己的浏览器记录。所有练习均使用仓库内的本地入口。
 
