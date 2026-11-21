@@ -28,18 +28,37 @@
 
 | 练习 | 当前键 | 结构版本 | 题库版本 | 历史前缀 |
 | --- | --- | --- | --- | --- |
-| 读懂再答 | `brison-tutor:progress:read-before-answer:v2` | `version: 2` | `3.0` | `reading-lab-v`，以及本练习命名空间 |
 | 语义积木 | `semantic-blocks-v4` | `version: 4` | `4` | `semantic-blocks-v` |
 | 标点应用 | `brison-tutor:progress:punctuation:v3` | `schemaVersion: 3` | `2.1` | 本练习命名空间 |
+| 标点应用 · 分类练习 | `brison-tutor:progress:punctuation-classified:v2` | `schemaVersion: 2` | `2.1` | `brison-tutor:progress:punctuation-classified:` |
+| 中文阅读专项 · 随机闯关 | `brison-tutor:progress:reading-quest:v1` | `schemaVersion: 1` | `1.0` | `brison-tutor:progress:reading-quest:` |
+| 中文阅读专项 · 分类练习 | `brison-tutor:progress:reading-quest-classified:v1` | `schemaVersion: 1` | `1.0` | `brison-tutor:progress:reading-quest-classified:` |
 | 乘除意义与运算顺序 | `brison-tutor:progress:arithmetic-foundations:v3` | `schemaVersion: 3` | `1.1` | 本练习命名空间 |
+| 乘除意义与运算顺序 · 分类练习 | `brison-tutor:progress:arithmetic-foundations-classified:v1` | `schemaVersion: 1` | `1.1` | `brison-tutor:progress:arithmetic-foundations-classified:` |
+| 应用题分类练习 | `brison-tutor:progress:math-focus:v1` | `schemaVersion: 1` | `2026-11-21.1` | `brison-tutor:progress:math-focus:` |
+| 应用题随机闯关 | `brison-tutor:progress:math-streak:v1` | `schemaVersion: 1` | `2026-11-21.1` | `brison-tutor:progress:math-streak:` |
+
+应用题分类练习按稳定题目 ID保存选择、题目修订号、分组尝试和每次提交结果。重练新增尝试，不覆盖首次结果；未提交草稿不会计为正确或错误。相同结构的旧题库通过校验后先备份到当前键加 `:backup:<bankVersion>`，验证备份后升级；未来题库、修改过的题目、损坏数据或未知结构保留并暂停保存。页面为此在桥接脚本上声明 `data-validate-progress="app"`，由本练习严格校验完整格式；其他旧练习保持原有行为。保存时同时比较已读取的原始值，防止旧标签页覆盖外部更改。
+
+`2026-11-21.1` 增加十类应用题共30题，每组逐题提交。原34题的题目 ID、修订号及评分规则沿用旧版。升级时保留原有草稿、提交结果、重练和当前题位置。
+
+应用题随机闯关和应用题分类练习共用[十类题库](../dist/exercises/grade-2/semester-1/math/math-focus-bank.js)，各自保存进度。每轮从每类抽取两题，保存候选题 ID 和修订号、开始时间、当前题、草稿及正式作答顺序。续练以该轮候选和作答顺序恢复连对状态。完成时间取最后一类达标时的提交时间；重练把已完成轮次存入历史，从新抽取的候选开始。
 
 标点应用保存本轮的达标类别、开始时间、当前题、草稿、依序提交的答案和最后一题提交时的完成时间。用时为开始到完成的实际经过时间，包含中途关闭或离开页面的时间。选择“再练一次”后，本轮进入历次完成记录。v3 记录增加顿号类别，v2 进行中的轮次保留题目、草稿和答题记录，并纳入顿号。v2 已完成的轮次保留六类达标及原有时间。迁移保留原键并登记来源，使用隐藏标记防止单条清理后的数据恢复。v1 的逐题记录无法还原作答顺序和每轮用时，保留在原键并在进度管理中列为旧版记录。
 
 乘除意义与运算顺序在 v2 将十类题放在同一轮，v3 将运算顺序题拆成三个步骤，并保存已确认的答复、当前阶段和草稿。迁移时保留已完成轮次及其原判分，进行中的情境题、编题和示例可继续累计。旧版顺序题的成绩保留在原键，当前轮按三步重新验收；未提交的顺序题保留已选运算符，从第一步接续。迁移标记防止单独清理新版后重新恢复旧记录，全练习清理覆盖该练习各版本和迁移标记。
 
-语义积木继续读取现有格式。读懂再答现为25题自由分类练习，保留题目的有效旧训练记录与草稿可迁移；两个旧键`reading-lab-v1`及`brison-tutor:progress:read-before-answer:v1`原样保留。迁移成功后用`storage.auxiliaryKeys`登记的隐藏标记防止清理后再次恢复旧成绩；全练习清理包含此标记，详见[分类练习说明](read-before-answer-categories.md)。两套练习通过 `progress-bridge.js` 接入管理页；管理模式跳过训练初始化和自动保存，只允许列举和清理归属键。记录无时间戳时不伪造更新时间。管理页不把初始化记录等同于已经答过题。
+语义积木继续读取现有格式。各练习通过 `progress-bridge.js` 接入管理页；管理模式跳过训练初始化和自动保存，只允许列举和清理归属键。记录无时间戳时不伪造更新时间。管理页不把初始化记录等同于已经答过题。
+
+《读懂再答》下架后，浏览器中的历史记录保留在原键。进度管理及其全部清理操作仅涵盖目录中登记的练习。旧版进度键见[分类练习归档](read-before-answer-categories.md)。
 
 新增练习在 head 中依次加载 `catalog.js`、`progress-store.js`、`progress-bridge.js`，后者通过 `data-exercise` 指定稳定 ID。训练脚本入口必须检查 `ProgressBridge.isManagementFrame` 并退出；每次保存前检查 `ProgressBridge.invalidated`，为真时停止保存。只有管理页向练习文档发消息，响应必须核对来源窗口、随机令牌和请求 ID。
+
+中文阅读闯关按稳定题组和变种 ID 保存余下抽题顺序、当前题的选项顺序和草稿，以及已提交答案。开局保存开始时间，最后一组消除时保存通关时间。重练把已完成轮次写入同一条记录的 `data.history`，与新一轮一次写入。浏览器恢复时检查每次提交、抽题顺序和达标状态。损坏和不兼容的记录原样保留并暂停保存。支持 Web Locks 的浏览器会对本练习的保存与清理串行处理。缺少写入锁时，保存前仍核对原值并监听跨页变更，两页恰好同时写入时仍可能覆盖。
+
+同一练习可在目录中登记独立的子模式。包含 `parentId` 的记录由进度管理照常读取和清理。标点应用、中文阅读专项和乘除意义与运算顺序的分类模式以 `?mode=classified` 打开，在桥接脚本用 `data-classified-exercise` 指向分类 ID；直接打开原地址仍可恢复随机进度。
+
+分类题目列表按稳定题目 ID 保存草稿与提交记录。应用题分类练习和乘除分类保留原有分组记录，按题目 ID 读取旧草稿和成绩。中文阅读分类首次写入新列表记录前，把旧轮次原样备份到分类键的 `:backup:rounds`；标点分类从 v1 迁到 v2 时保留原键，并用隐藏标记防止清理后重新恢复已清记录。
 
 ## 浏览器边界
 

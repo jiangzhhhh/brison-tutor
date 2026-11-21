@@ -2,29 +2,43 @@
 (() => {
   'use strict';
   const script=document.currentScript;
-  const exercise=window.EXERCISES.find(item=>item.id===script.dataset.exercise);
+  const classifiedExercise=script.dataset.classifiedExercise;
+  const exerciseId=classifiedExercise && new URLSearchParams(location.search).get('mode')==='classified'
+    ? classifiedExercise : script.dataset.exercise;
+  const exercise=window.EXERCISES.find(item=>item.id===exerciseId);
   if(!exercise) return;
   const isManagementFrame=parent!==window && location.hash.startsWith('#brison-progress=');
-  const bridge=window.ProgressBridge={isManagementFrame,invalidated:false};
+  const bridge=window.ProgressBridge={exerciseId,isManagementFrame,invalidated:false};
   if(isManagementFrame) {
     document.documentElement.hidden=true;
     const token=location.hash.slice('#brison-progress='.length);
     window.addEventListener('message',event=>{
       if(event.origin!==(location.protocol==='file:'?'null':location.origin) || event.source!==parent || event.data?.channel!=='brison-progress' || event.data?.token!==token || !['list','clear'].includes(event.data.action)) return;
       const request=event.data;
-      try {
+      const reportError=()=>parent.postMessage({channel:'brison-progress',token,requestId:request.requestId,error:'无法读取或清理浏览器存储。请检查浏览器权限，或进入练习的进度管理中处理。'},'*');
+      const perform=()=>{
         if(request.action==='clear') window.ProgressStore.clear(localStorage,exercise,request.keys);
         const rows=window.ProgressStore.list(localStorage,exercise);
+        if(typeof bridge.validateCurrent==='function'){
+          for(const row of rows)if(row.status==='current'&&!bridge.validateCurrent(localStorage.getItem(row.key)))row.status='damaged';
+        }
         parent.postMessage({channel:'brison-progress',token,requestId:request.requestId,rows},'*');
+      };
+      try {
+        if(request.action==='clear' && bridge.withWriteLock) bridge.withWriteLock(perform).catch(reportError);
+        else perform();
       } catch {
-        parent.postMessage({channel:'brison-progress',token,requestId:request.requestId,error:'无法读取或清理浏览器存储。请检查浏览器权限，或进入练习的进度管理中处理。'},'*');
+        reportError();
       }
     });
   } else {
     // Keep incompatible/corrupt records intact rather than saving fresh state over them.
     try {
       const current=window.ProgressStore.list(localStorage,exercise).find(row=>row.key===exercise.storage.currentKey);
-      if(current && ['incompatible','damaged'].includes(current.status)) {
+      // New apps may validate and back up compatible bank upgrades themselves.
+      // The default remains strict for legacy apps without their own validator.
+      const appValidates=script.dataset.validateProgress==='app' && current?.status==='incompatible';
+      if(current && ['incompatible','damaged'].includes(current.status) && !appValidates) {
         bridge.invalidated=true;
         window.addEventListener('DOMContentLoaded',()=>{
           const notice=document.createElement('div');notice.className='project-storage-notice';notice.setAttribute('role','alert');

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>应用题随机闯关 · Brison 的练习书架</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 760px; margin-inline: auto; padding: 32px 24px 48px; }
+    h1 { font-size: 32px; line-height: 1.4; margin: 0 0 24px; }
+    h2 { font-size: 23px; line-height: 1.7; margin: 0 0 16px; overflow-wrap: anywhere; }
+    p { margin-block: 0 16px; }
+    .card { border: 1px solid var(--project-border); padding: 24px; margin-bottom: 16px; }
+    .meta { color: var(--project-muted); font-size: 14px; }
+    button { border: 1px solid transparent; font-size: 16px; padding: 8px 16px; cursor: pointer; }
+    button:disabled { opacity: .55; }
+    fieldset { min-width: 0; padding: 0; border: 0; margin: 0 0 20px; }
+    legend { padding: 0; margin-bottom: 8px; font-size: 15px; }
+    #options { display: grid; gap: 8px; }
+    .option { display: flex; align-items: baseline; gap: 8px; min-height: 44px; padding: 12px 16px; border: 1px solid var(--project-border); border-radius: 12px; cursor: pointer; font-size: 18px; overflow-wrap: anywhere; }
+    .option:has(input:checked) { background: var(--project-soft); border-color: var(--project-primary); }
+    .option input { accent-color: var(--project-primary); flex: 0 0 auto; }
+    .feedback { background: var(--project-soft); border-radius: 12px; padding: 16px; margin-bottom: 16px; }
+    .feedback[data-correct="false"] { border-inline-start: 4px solid var(--project-danger); }
+    .feedback p:last-child { margin-bottom: 0; }
+    summary { cursor: pointer; min-height: 44px; padding-block: 8px; }
+    a { color: var(--project-primary); }
+    @media (max-width: 520px) {
+      main { padding: 24px 16px 40px; }
+      h1 { font-size: 28px; }
+      h2 { font-size: 21px; }
+      .card { padding: 16px; }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../../project.css">
+  <script src="../../../../catalog.js"></script>
+  <script src="../../../../progress-store.js"></script>
+  <script src="math-focus-bank.js"></script>
+  <script src="math-streak-model.js"></script>
+  <script src="../../../../progress-bridge.js" data-exercise="math-streak"></script>
+  <script defer src="math-streak.js"></script>
+</head>
+<body>
+  <nav class="project-nav" aria-label="项目导航">
+    <a href="../../../../index.html#grade=2&amp;semester=1&amp;subject=math">← 返回练习书架</a>
+    <a href="../../../../progress.html">进度管理</a>
+  </nav>
+  <main>
+    <h1>应用题随机闯关</h1>
+    <nav class="practice-modes" aria-label="练习方式">
+      <a href="math-focus.html">分类练习</a>
+      <a href="math-streak.html" aria-current="page">随机闯关</a>
+    </nav>
+    <div id="storage-notice" class="project-storage-notice" role="alert" hidden>
+      <span id="storage-message"></span> <a href="../../../../progress.html">进度管理</a>
+    </div>
+    <section id="intro" class="card" aria-label="开始练习" hidden>
+      <p>混合练习十类应用题。每类连对两道不同的题目后，本轮就不再出这一类。</p>
+      <button type="button" id="start" class="primary">开始练习</button>
+    </section>
+    <section id="practice" class="card" aria-labelledby="question" hidden>
+      <p id="mastered" class="meta" role="status"></p>
+      <h2 id="question" tabindex="-1"></h2>
+      <form id="answer-form">
+        <fieldset>
+          <legend>选择一个答案</legend>
+          <div id="options"></div>
+        </fieldset>
+        <button type="submit" id="submit" class="primary" disabled>提交答案</button>
+      </form>
+      <div id="feedback" class="feedback" role="status" tabindex="-1" hidden></div>
+      <button type="button" id="next" class="primary" hidden>下一题</button>
+    </section>
+    <section id="completion" class="card" aria-labelledby="completion-title" hidden>
+      <h2 id="completion-title" tabindex="-1">本轮通关</h2>
+      <p id="completion-time"></p>
+      <div id="final-feedback" class="feedback"></div>
+      <button type="button" id="retry" class="secondary">再练一次</button>
+    </section>
+    <details id="history" class="card" hidden>
+      <summary>历次通关</summary>
+      <ol id="history-list"></ol>
+    </details>
+    <noscript>请启用 JavaScript 后使用练习。</noscript>
+  </main>
+</body>
+</html>

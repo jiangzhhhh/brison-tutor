@@ -49,6 +49,83 @@ function current(round) {
   return bank.questions.find(question => question.id === round.currentQuestionId);
 }
 
+test('分类练习直接打开指定题目，分别恢复草稿和每次提交', () => {
+  const data = { currentQuestionId: null, records: {} };
+  const randomData = started();
+  const randomSnapshot = JSON.stringify(randomData);
+  assert.equal(training.selectClassified(data, 'unknown'), false);
+  assert.equal(training.selectClassified(data, 'q01'), true);
+  assert.equal(data.currentQuestionId, 'q01');
+  data.records.q01.draft = ['！'];
+
+  assert.equal(training.selectClassified(data, 'q02'), true);
+  assert.equal(data.currentQuestionId, 'q02');
+  assert.equal(training.submitClassified(data, ['']), false);
+  assert.equal(training.submitClassified(data, ['？']), true);
+  assert.equal(training.submitClassified(data, ['。']), false);
+
+  const restored = JSON.parse(JSON.stringify(data));
+  assert.equal(training.validClassifiedData(restored), true);
+  assert.equal(training.selectClassified(restored, 'q01'), true);
+  assert.deepEqual(restored.records.q01.draft, ['！']);
+  assert.equal(training.submitClassified(restored, ['！']), true);
+  assert.equal(training.restartClassified(restored), true);
+  assert.equal(training.submitClassified(restored, ['。']), true);
+  assert.equal(JSON.stringify(restored.records.q01.attempts), '[["！"],["。"]]');
+  assert.equal(JSON.stringify(restored.records.q02.attempts), '[["？"]]');
+  assert.equal(training.validClassifiedData(restored), true);
+  assert.equal(JSON.stringify(randomData), randomSnapshot);
+});
+
+test('分类进度拒绝未知题目、不完整提交和误放的随机闯关记录', () => {
+  const data = { currentQuestionId: null, records: {} };
+  assert.equal(training.validClassifiedData(data), true);
+  assert.equal(training.validClassifiedData({ ...data, currentQuestionId: 'q01' }), false);
+  assert.equal(training.validClassifiedData({ ...data, records: { unknown: { draft: null, attempts: [] } } }), false);
+  assert.equal(training.validClassifiedData({ ...data, records: { q01: { draft: null, attempts: [['']] } } }), false);
+  assert.equal(training.validClassifiedData(started()), false);
+});
+
+test('旧分类轮次按稳定题号迁移草稿、历次提交和未提交题', () => {
+  const v1Key = 'brison-tutor:progress:punctuation-classified:v1';
+  const old = {
+    exerciseId: 'punctuation-classified', schemaVersion: 1, bankVersion: '2.1',
+    data: {
+      selectedCategoryId: 'statement',
+      sessions: {
+        statement: {
+          history: [{
+            requiredCategories: ['statement'], startedAt: 100, completedAt: 200, currentQuestionId: 'q05', draft: null,
+            attempts: [{ questionId: 'q01', marks: ['。'] }, { questionId: 'q05', marks: ['。'] }]
+          }],
+          round: {
+            requiredCategories: ['statement'], startedAt: 250, completedAt: null, currentQuestionId: 'q01', draft: ['！'],
+            attempts: [{ questionId: 'q18', marks: ['？'] }]
+          }
+        },
+        question: {
+          history: [],
+          round: { requiredCategories: ['question'], startedAt: 300, completedAt: null, currentQuestionId: 'q02', draft: null, attempts: [] }
+        }
+      }
+    }
+  };
+  const original = JSON.stringify(old);
+  const migrated = training.migrateClassifiedV1(old, v1Key);
+  assert.equal(training.validClassifiedData(migrated), true);
+  assert.equal(migrated.currentQuestionId, null);
+  assert.equal(migrated.migratedFrom, v1Key);
+  assert.deepEqual(JSON.parse(JSON.stringify(migrated.records)), {
+    q01: { draft: ['！'], attempts: [['。']] },
+    q05: { draft: null, attempts: [['。']] },
+    q18: { draft: null, attempts: [['？']] },
+    q02: { draft: null, attempts: [] }
+  });
+  assert.equal(JSON.stringify(old), original);
+  old.data.sessions.question.round.currentQuestionId = 'q01';
+  assert.equal(training.migrateClassifiedV1(old, v1Key), null);
+});
+
 test('题库有七类共六十六题，每类能以两种方式作答，每题答案能从题面填写', () => {
   assert.equal(bank.categories.length, 7);
   assert.equal(bank.questions.length, 66);

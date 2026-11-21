@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中文阅读专项</title>
+  <link rel="stylesheet" href="reading-quest.css">
+  <link rel="stylesheet" href="../../../../project.css">
+  <script src="../../../../catalog.js"></script>
+  <script src="../../../../progress-store.js"></script>
+  <script src="../../../../progress-bridge.js" data-exercise="reading-quest" data-classified-exercise="reading-quest-classified" data-validate-progress="app"></script>
+  <script src="../../../../vendor/pinyin-pro-3.29.5.js" defer></script>
+  <script src="../../../../pinyin-data.js" defer></script>
+  <script src="../../../../pinyin.js" defer></script>
+  <script src="reading-quest-bank.js" defer></script>
+  <script src="reading-quest-model.js" defer></script>
+  <script src="reading-quest.js" defer></script>
+</head>
+<body>
+  <nav class="project-nav" aria-label="项目导航">
+    <a href="../../../../index.html">← 返回练习书架</a>
+    <a href="../../../../progress.html">进度管理</a>
+  </nav>
+  <main>
+    <header>
+      <h1>中文阅读专项</h1>
+      <nav class="practice-modes" aria-label="练习方式">
+        <a id="classified-mode" href="reading-quest.html?mode=classified">分类练习</a>
+        <a id="random-mode" href="reading-quest.html" aria-current="page">随机闯关</a>
+      </nav>
+      <div class="progress-line">
+        <span id="progress-text" role="status"></span>
+        <progress id="progress-bar" aria-label="已消除题组" value="0" max="100"></progress>
+      </div>
+    </header>
+    <div class="storage-error" id="storage-error" role="alert" hidden>
+      <span id="storage-message"></span> <a href="../../../../progress.html">前往进度管理</a>
+    </div>
+    <div id="quest"></div>
+    <noscript><p>请启用 JavaScript 后打开练习。</p></noscript>
+  </main>
+</body>
+</html>

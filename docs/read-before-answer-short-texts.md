@@ -1,6 +1,6 @@
 # 读懂再答：短材料版
 
-本文记录90道短题版的历史改写。现行练习已改为[25题自由分类练习](read-before-answer-categories.md)，90题完整快照保存在[bank-2.0.json](../materials/read-before-answer/bank-2.0.json)。
+本文记录90道短题版的历史改写。后续版本见[25题自由分类练习归档](read-before-answer-categories.md)，90题完整快照保存在[bank-2.0.json](../materials/read-before-answer/bank-2.0.json)。
 
 2026-11-17 按用户要求，参考仓库内二年级上册地区卷的同类短题篇幅，缩短全部90题的阅读材料。题干、可选作答内容、选项、参考答案和逐步解析保持原样；标记依据与指代标注随新材料重新定位。
 
@@ -25,21 +25,14 @@
 - 删除天气、场地陈设、离场收拾等不影响作答的背景；保留需要辨别的时刻、范围、实际与计划、否定、先后关系及有用的干扰信息。
 - 概括题仍保留问题、做法和结果，未知题不补造事实，指代题保留说话人、承接动作和原题所引用的语句。
 - 直接依据为必选，相关补充条件为可选；无关背景不纳入允许依据。已逐题人工核对90题的所问内容和选项语义，程序检查不代替语义核对。
-- 全部题目浏览入口继续开放。
+- 此版本曾提供全部题目浏览入口。
 
-## 材料与生成
+## 归档材料
 
 - [原题库归档](../materials/read-before-answer/bank-1.0.json)：保留长版完整材料、题干、答案、解析与标注，供回溯。
 - [短材料源稿](../materials/read-before-answer/short-passages.json)：键为稳定题号；值依次是新材料数组、必选依据的句号数组、可选的允许依据句号数组。句号从1开始；第三项缺省时与必选相同。
-- [生成工具](../tools/build-reading-bank.py)：使用这些短材料及现行分类清单，生成[练习页面](../dist/exercises/grade-2/semester-1/math/read-before-answer.html)中的25题内嵌JSON，继续支持离线打开；本文90题版本使用上方完整快照回溯。
+- [25题版快照](../materials/read-before-answer/bank-3.0.json)：下架前页面内嵌的分类题库。
 
-在仓库根目录运行：
-
-```sh
-python3 tools/build-reading-bank.py
-node --test tests/*.test.cjs
-```
-
-## 进度隔离
+## 原练习的进度隔离
 
 材料与依据判定发生变化，题库升级为`2.0`，数据结构仍为`version: 1`。短版使用`brison-tutor:progress:read-before-answer:v1`；原键`reading-lab-v1`保持原样，不删除、不覆盖、不把旧成绩重新判成短版成绩。两版记录都可通过统一进度管理查看和清理，清理时确认范围；练习页不显示版本切换说明。旧版备份不能导入短版。

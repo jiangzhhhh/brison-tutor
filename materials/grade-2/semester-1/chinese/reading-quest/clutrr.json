@@ -1,0 +1,1842 @@
+[
+  {
+    "id": "clutrr-01",
+    "source": "clutrr",
+    "source_id": "0fc660c1-e7d5-41fb-8d72-d2beb2c8d2ef",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Ashley]'s daughter, [Lillian], asked her mom to read her a story. [Nicholas]'s sister [Lillian] asked him for some help planting her garden.",
+    "original_question": "('Ashley', 'Nicholas')",
+    "original_answer": "son",
+    "variants": [
+      {
+        "id": "clutrr-01-v1",
+        "chinese_text": "小莉请妈妈阿欣给她读故事。过了一会儿，小莉又请男孩小明帮忙种花。小明和小莉有同一个妈妈。",
+        "question": "小明是阿欣的谁？",
+        "choices": [
+          "儿子",
+          "女儿",
+          "弟弟"
+        ],
+        "answer": "儿子",
+        "explanation": "阿欣是小莉的妈妈。小明是男孩，和小莉有同一个妈妈，所以小明是阿欣的儿子。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-01-v2",
+        "chinese_text": "小浩和小静是亲兄妹。吃饭时，小静给妈妈方阿姨夹了一块豆腐。",
+        "question": "方阿姨是小浩的谁？",
+        "choices": [
+          "姐姐",
+          "外婆",
+          "妈妈"
+        ],
+        "answer": "妈妈",
+        "explanation": "小静和小浩是亲兄妹。方阿姨是小静的妈妈，也是小浩的妈妈。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-01-v3",
+        "chinese_text": "林阿姨的女儿叫小竹。小竹在树下等她的哥哥小松。",
+        "question": "谁是林阿姨的儿子？",
+        "choices": [
+          "小竹",
+          "小松",
+          "林阿姨"
+        ],
+        "answer": "小松",
+        "explanation": "先找到林阿姨的女儿小竹，再找到小竹的哥哥小松。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "定位人物"
+        ],
+        "distractor_type": "相近人物",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-01-v4",
+        "chinese_text": "王阿姨的女儿小乔借了一本画册。小乔的亲姐妹小叶借的是故事书，小冬借的是连环画。",
+        "question": "王阿姨的另一个女儿是谁？",
+        "choices": [
+          "小叶",
+          "小冬",
+          "小乔"
+        ],
+        "answer": "小叶",
+        "explanation": "小叶和王阿姨的女儿小乔是亲姐妹。小冬借什么书和亲属关系无关。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-02",
+    "source": "clutrr",
+    "source_id": "b1c985cf-69b5-4575-97d3-f5ee6807b315",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Nancy] likes to cut the hair of her daughter [Heidi]. [Heidi]'s sister [Lorraine] went to beauty school and taught them all how to cut hair expertly.",
+    "original_question": "('Nancy', 'Lorraine')",
+    "original_answer": "daughter",
+    "variants": [
+      {
+        "id": "clutrr-02-v1",
+        "chinese_text": "阿宁喜欢给女儿小海剪头发。小海的亲姐妹小兰学过理发，还教她们怎么剪。",
+        "question": "小兰是阿宁的谁？",
+        "choices": [
+          "姐妹",
+          "女儿",
+          "外孙女"
+        ],
+        "answer": "女儿",
+        "explanation": "阿宁是小海的妈妈。小兰和小海是亲姐妹，所以小兰也是阿宁的女儿。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-02-v2",
+        "chinese_text": "小荷是小莲的亲妹妹。小莲早上和妈妈李阿姨一起买了菜。",
+        "question": "李阿姨是小荷的谁？",
+        "choices": [
+          "妈妈",
+          "妹妹",
+          "奶奶"
+        ],
+        "answer": "妈妈",
+        "explanation": "小荷和小莲是亲姐妹。李阿姨是小莲的妈妈，也是小荷的妈妈。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-02-v3",
+        "chinese_text": "小红的妹妹叫小蓝。小红是陈叔叔的大女儿，她戴着一顶绿帽子。",
+        "question": "谁是陈叔叔的小女儿？",
+        "choices": [
+          "小红",
+          "陈叔叔",
+          "小蓝"
+        ],
+        "answer": "小蓝",
+        "explanation": "小红是陈叔叔的大女儿。小红的妹妹小蓝是他的小女儿。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "定位人物"
+        ],
+        "distractor_type": "相近人物",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-02-v4",
+        "chinese_text": "周阿姨在等女儿小月。小月的亲姐妹小云最先跑来。邻居小雨递过来一本书。",
+        "question": "除了小月，谁也是周阿姨的女儿？",
+        "choices": [
+          "小雨",
+          "小云",
+          "周阿姨"
+        ],
+        "answer": "小云",
+        "explanation": "小云是小月的亲姐妹，也是周阿姨的女儿。小雨递书这件事和亲属关系无关。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-03",
+    "source": "clutrr",
+    "source_id": "5e7fc867-3782-4ff6-98d5-33394fac9a68",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Dale] and his sister [Nancy] are decorating for a party. [Nancy]'s daughter [Louise] thinks the party will be fun.",
+    "original_question": "('Dale', 'Louise')",
+    "original_answer": "niece",
+    "variants": [
+      {
+        "id": "clutrr-03-v1",
+        "chinese_text": "阿达和阿宁是同一个妈妈的两个孩子，两人正在布置聚会的房间。阿宁的女儿小露对妈妈说：“聚会一定很好玩！”",
+        "question": "小露是阿达的谁？",
+        "choices": [
+          "侄女",
+          "女儿",
+          "外甥女"
+        ],
+        "answer": "外甥女",
+        "explanation": "阿宁和阿达有同一个妈妈。阿宁是小露的妈妈，小露是阿达亲姐妹的女儿，所以是他的外甥女。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-03-v2",
+        "chinese_text": "小夏帮妈妈阿青挂彩带。阿青的亲哥哥阿林把盒彩笔送了过来。",
+        "question": "阿林是小夏的谁？",
+        "choices": [
+          "叔叔",
+          "舅舅",
+          "哥哥"
+        ],
+        "answer": "舅舅",
+        "explanation": "阿青是小夏的妈妈。妈妈的哥哥是小夏的舅舅。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-03-v3",
+        "chinese_text": "大文给亲妹妹阿禾送来一篮苹果。阿禾的儿子小原挑了一个最大、最红的。",
+        "question": "小原是大文的谁？",
+        "choices": [
+          "外甥",
+          "儿子",
+          "侄子"
+        ],
+        "answer": "外甥",
+        "explanation": "阿禾是大文的亲妹妹。妹妹的儿子是大文的外甥。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-03-v4",
+        "chinese_text": "小安和妈妈阿秀做贺卡。阿秀的哥哥叫大成，邻居大齐来借了一把剪刀。",
+        "question": "小安该把写着“送给舅舅”的贺卡送给谁？",
+        "choices": [
+          "大齐",
+          "阿秀",
+          "大成"
+        ],
+        "answer": "大成",
+        "explanation": "阿秀是小安的妈妈。大成是阿秀的哥哥，所以大成是小安的舅舅。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-04",
+    "source": "clutrr",
+    "source_id": "9bc318aa-3c85-4fef-8e6f-6d575fce62ca",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Lillian] and her sister [Nancy] are the only children in their family. [Lillian]'s biggest accomplishment is raising her son [Douglas].",
+    "original_question": "('Nancy', 'Douglas')",
+    "original_answer": "nephew",
+    "variants": [
+      {
+        "id": "clutrr-04-v1",
+        "chinese_text": "阿莉和阿宁是姐妹，家中只有她们两个孩子。阿莉把儿子小东养大，这件事最让她自豪。",
+        "question": "小东是阿宁的谁？",
+        "choices": [
+          "外甥",
+          "儿子",
+          "侄子"
+        ],
+        "answer": "外甥",
+        "explanation": "阿莉是阿宁的亲姐妹。阿莉的儿子是阿宁的外甥。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-04-v2",
+        "chinese_text": "小星在等妈妈阿芸。阿芸的妹妹阿洁从车站出来，手里拿着一张蓝色的票。",
+        "question": "阿洁是小星的谁？",
+        "choices": [
+          "姑姑",
+          "妈妈",
+          "小姨"
+        ],
+        "answer": "小姨",
+        "explanation": "小星的妈妈是阿芸。妈妈的妹妹是小姨。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-04-v3",
+        "chinese_text": "阿燕的姐姐阿萍画了一只鸟，阿萍的女儿小梅给鸟涂上黄色。",
+        "question": "小梅是阿燕的谁？",
+        "choices": [
+          "侄女",
+          "外甥女",
+          "姐妹"
+        ],
+        "answer": "外甥女",
+        "explanation": "阿萍是阿燕的姐姐。姐姐的女儿是阿燕的外甥女。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-04-v4",
+        "chinese_text": "阿美把蛋糕端上桌。阿美的儿子小树先切一块给阿美的姐姐阿真，又切一块给邻居阿秀。",
+        "question": "小树的姨妈是谁？",
+        "choices": [
+          "阿真",
+          "阿秀",
+          "阿美"
+        ],
+        "answer": "阿真",
+        "explanation": "小树的妈妈是阿美。阿真是阿美的姐姐，也就是小树的姨妈。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-05",
+    "source": "clutrr",
+    "source_id": "3b742cb7-266f-452d-9204-495ec4d1f6f2",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Heidi] and her sister [Lorraine] were playing outside. [Heidi]'s mother [Nancy] called for her to come inside.",
+    "original_question": "('Lorraine', 'Nancy')",
+    "original_answer": "mother",
+    "variants": [
+      {
+        "id": "clutrr-05-v1",
+        "chinese_text": "小海和小兰是亲姐妹，她们在屋外玩。小海的妈妈阿宁在门口叫小海回屋。",
+        "question": "阿宁是小兰的谁？",
+        "choices": [
+          "外婆",
+          "妈妈",
+          "姐姐"
+        ],
+        "answer": "妈妈",
+        "explanation": "小海和小兰是亲姐妹。阿宁是小海的妈妈，也是小兰的妈妈。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-05-v2",
+        "chinese_text": "宋叔叔叫儿子小川回家吃饭。小川的亲兄弟小江还在操场上。",
+        "question": "除了小川，谁也是宋叔叔的儿子？",
+        "choices": [
+          "小江",
+          "小川",
+          "宋叔叔"
+        ],
+        "answer": "小江",
+        "explanation": "宋叔叔是小川的爸爸。小江是小川的亲兄弟，也是宋叔叔的儿子。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "定位人物"
+        ],
+        "distractor_type": "相近人物",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-05-v3",
+        "chinese_text": "小贝陪妈妈何阿姨去邮局。在邮局，小贝写道：“小米是我的亲妹妹。”",
+        "question": "小米应该叫何阿姨什么？",
+        "choices": [
+          "姐姐",
+          "老师",
+          "妈妈"
+        ],
+        "answer": "妈妈",
+        "explanation": "写信的小贝和小米是亲姐妹。何阿姨是小贝的妈妈，也是小米的妈妈。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "定位说话人"
+        ],
+        "distractor_type": "说话人身份",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-05-v4",
+        "chinese_text": "小然和小乐是亲兄弟。小乐的爸爸余叔叔在门口等他们，邻居程叔叔提着菜经过。",
+        "question": "小然的爸爸是谁？",
+        "choices": [
+          "程叔叔",
+          "余叔叔",
+          "小乐"
+        ],
+        "answer": "余叔叔",
+        "explanation": "余叔叔是小乐的爸爸。小然和小乐是亲兄弟，所以余叔叔也是小然的爸爸。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-06",
+    "source": "clutrr",
+    "source_id": "a2f96883-800e-43c6-8e1e-f229d2cac35f",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Jerry]'s father, [George], bought him some ice cream. [Douglas] helped his brother, [Jerry], study for the chemistry exam.",
+    "original_question": "('Douglas', 'George')",
+    "original_answer": "father",
+    "variants": [
+      {
+        "id": "clutrr-06-v1",
+        "chinese_text": "阿乔给儿子小杰买了冰激凌。小杰的亲兄弟小东正在帮他复习功课，准备考试。",
+        "question": "阿乔是小东的谁？",
+        "choices": [
+          "哥哥",
+          "爷爷",
+          "爸爸"
+        ],
+        "answer": "爸爸",
+        "explanation": "阿乔是小杰的爸爸。小杰和小东是亲兄弟，所以阿乔也是小东的爸爸。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-06-v2",
+        "chinese_text": "小利和小平是亲兄弟。小平的爸爸何叔叔买了一袋面包。",
+        "question": "谁是何叔叔的另一个儿子？",
+        "choices": [
+          "何叔叔",
+          "小利",
+          "小平"
+        ],
+        "answer": "小利",
+        "explanation": "何叔叔的儿子小平还有一个亲兄弟小利。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "定位人物"
+        ],
+        "distractor_type": "相近人物",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-06-v3",
+        "chinese_text": "小欣的妈妈方阿姨写了一张便条。小欣说：“小慧和我有同一个妈妈。我先去拿伞，再叫小慧过来。”",
+        "question": "方阿姨是小慧的谁？",
+        "choices": [
+          "妈妈",
+          "妹妹",
+          "老师"
+        ],
+        "answer": "妈妈",
+        "explanation": "方阿姨是小欣的妈妈。小慧和小欣有同一个妈妈，所以方阿姨也是小慧的妈妈。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "定位说话人"
+        ],
+        "distractor_type": "说话人身份",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-06-v4",
+        "chinese_text": "小成和小满跟他们的爸爸去菜场。小满对陈叔叔说：“爸爸，我想买豆腐。”卖豆腐的是周叔叔。",
+        "question": "谁是小成的爸爸？",
+        "choices": [
+          "周叔叔",
+          "小成",
+          "陈叔叔"
+        ],
+        "answer": "陈叔叔",
+        "explanation": "小成和小满跟着同一个爸爸去菜场。小满叫陈叔叔“爸爸”，所以陈叔叔也是小成的爸爸。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-07",
+    "source": "clutrr",
+    "source_id": "9bc16723-3ed1-4049-ae28-6c4bcd017c3b",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Ashley] brought her daughter [Nancy] a cake. [Nancy]'s daughter [Lorraine] wanted to eat the cake.",
+    "original_question": "('Lorraine', 'Ashley')",
+    "original_answer": "grandmother",
+    "variants": [
+      {
+        "id": "clutrr-07-v1",
+        "chinese_text": "阿欣给自己的女儿阿宁带来了一个蛋糕。阿宁的女儿小兰很想吃这个蛋糕。",
+        "question": "阿欣是小兰的谁？",
+        "choices": [
+          "外婆",
+          "奶奶",
+          "妈妈"
+        ],
+        "answer": "外婆",
+        "explanation": "阿宁是小兰的妈妈。阿欣是阿宁的妈妈，所以小兰叫阿欣外婆。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-07-v2",
+        "chinese_text": "小雪和爸爸大山一起折船。大山的妈妈阿芳给他们拿来了纸。",
+        "question": "阿芳是小雪的谁？",
+        "choices": [
+          "外婆",
+          "妈妈",
+          "奶奶"
+        ],
+        "answer": "奶奶",
+        "explanation": "小雪的爸爸是大山。爸爸的妈妈是奶奶。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-07-v3",
+        "chinese_text": "马奶奶把围巾送给儿子小峰。小峰的女儿小花帮爸爸围好。",
+        "question": "小花是马奶奶的谁？",
+        "choices": [
+          "女儿",
+          "孙女",
+          "外孙女"
+        ],
+        "answer": "孙女",
+        "explanation": "小峰是马奶奶的儿子。儿子的女儿是马奶奶的孙女。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-07-v4",
+        "chinese_text": "小桥拉着妈妈阿苹的手。阿苹的妈妈林奶奶坐在长椅旁。徐奶奶给小桥一颗糖。",
+        "question": "谁是小桥的外婆？",
+        "choices": [
+          "林奶奶",
+          "徐奶奶",
+          "阿苹"
+        ],
+        "answer": "林奶奶",
+        "explanation": "阿苹是小桥的妈妈，林奶奶又是阿苹的妈妈。给糖的人是徐奶奶。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-08",
+    "source": "clutrr",
+    "source_id": "3fb92623-d91b-436e-b7cf-6d2f88b9cdc9",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Theresa] took her father [Clarence] and her daughter [Belva] to the park",
+    "original_question": "('Belva', 'Clarence')",
+    "original_answer": "grandfather",
+    "variants": [
+      {
+        "id": "clutrr-08-v1",
+        "chinese_text": "阿珍带爸爸阿康和女儿小贝一起去公园。",
+        "question": "阿康是小贝的谁？",
+        "choices": [
+          "爷爷",
+          "外公",
+          "爸爸"
+        ],
+        "answer": "外公",
+        "explanation": "阿珍是小贝的妈妈。妈妈的爸爸是外公。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-08-v2",
+        "chinese_text": "钱爷爷的女儿阿杏在阳台给花浇水。阿杏的儿子小宇在屋里收拾书包。",
+        "question": "小宇是钱爷爷的谁？",
+        "choices": [
+          "外孙",
+          "孙子",
+          "儿子"
+        ],
+        "answer": "外孙",
+        "explanation": "阿杏是钱爷爷的女儿。女儿的儿子是外孙。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-08-v3",
+        "chinese_text": "小水的爸爸大川在打电话：“爸，我带小水过桥来找你。”跟大川通话的人是张文。",
+        "question": "小水该怎么称呼张文？",
+        "choices": [
+          "外公",
+          "爸爸",
+          "爷爷"
+        ],
+        "answer": "爷爷",
+        "explanation": "小水的爸爸大川叫张文“爸”。张文是小水爸爸的爸爸，所以小水叫他爷爷。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "定位说话人"
+        ],
+        "distractor_type": "说话人身份",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-08-v4",
+        "chinese_text": "李爷爷是阿桃的爸爸。赵爷爷带了望远镜，阿桃的女儿小芽在看天上的鸟。",
+        "question": "谁是小芽的外公？",
+        "choices": [
+          "赵爷爷",
+          "李爷爷",
+          "阿桃"
+        ],
+        "answer": "李爷爷",
+        "explanation": "阿桃是小芽的妈妈。李爷爷是阿桃的爸爸，所以他是小芽的外公。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-09",
+    "source": "clutrr",
+    "source_id": "fe6070cb-1cf0-4597-8c42-422dd6178ec9",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Amy] took her younger sister [Nancy] to the carnival last weekend. [Lorraine] called her mother [Nancy] to let her know she will be back home soon.",
+    "original_question": "('Lorraine', 'Amy')",
+    "original_answer": "aunt",
+    "variants": [
+      {
+        "id": "clutrr-09-v1",
+        "chinese_text": "上周末，阿雅带亲妹妹阿宁去游乐园。小兰给妈妈阿宁打电话，说自己很快就回家。",
+        "question": "阿雅是小兰的谁？",
+        "choices": [
+          "姑姑",
+          "妈妈",
+          "姨妈"
+        ],
+        "answer": "姨妈",
+        "explanation": "小兰的妈妈是阿宁。阿雅是阿宁的姐姐，所以是小兰的姨妈。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-09-v2",
+        "chinese_text": "小米的爸爸叫大川。大川的亲妹妹阿河在楼下等他。",
+        "question": "阿河是小米的谁？",
+        "choices": [
+          "小姨",
+          "姑姑",
+          "妹妹"
+        ],
+        "answer": "姑姑",
+        "explanation": "小米的爸爸是大川。爸爸的妹妹是小米的姑姑。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-09-v3",
+        "chinese_text": "姐姐阿芳把书送给亲妹妹阿草，阿草的女儿小林帮妈妈把书摆好。",
+        "question": "小林是阿芳的谁？",
+        "choices": [
+          "外甥女",
+          "女儿",
+          "侄女"
+        ],
+        "answer": "外甥女",
+        "explanation": "阿草是阿芳的妹妹。妹妹的女儿是阿芳的外甥女。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-09-v4",
+        "chinese_text": "阿月让儿子小泽带上水壶。阿月的妹妹阿星带了一盒饼干，邻居阿花带了几个橘子。",
+        "question": "谁是小泽的小姨？",
+        "choices": [
+          "阿花",
+          "阿月",
+          "阿星"
+        ],
+        "answer": "阿星",
+        "explanation": "小泽的妈妈是阿月。阿星是妈妈的妹妹，所以是小泽的小姨。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-10",
+    "source": "clutrr",
+    "source_id": "b445be26-7746-4ac9-b12a-7355855aac58",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Lillian]'s son, [Timothy], went with her to the store to buy candy for Halloween. [Clarence] was shopping for a new dress for his daughter [Lillian].",
+    "original_question": "('Clarence', 'Timothy')",
+    "original_answer": "grandson",
+    "variants": [
+      {
+        "id": "clutrr-10-v1",
+        "chinese_text": "阿莉和儿子小丁去买万圣节的糖果。阿康正给自己的女儿阿莉挑一条新裙子。",
+        "question": "小丁是阿康的谁？",
+        "choices": [
+          "外孙",
+          "孙子",
+          "儿子"
+        ],
+        "answer": "外孙",
+        "explanation": "阿莉是阿康的女儿，女儿的儿子是他的外孙。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-10-v2",
+        "chinese_text": "黄爷爷叫女儿阿琳来吃面。阿琳的儿子小石先到桌边。",
+        "question": "黄爷爷是小石的谁？",
+        "choices": [
+          "爷爷",
+          "爸爸",
+          "外公"
+        ],
+        "answer": "外公",
+        "explanation": "阿琳是小石的妈妈。妈妈的爸爸是小石的外公。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-10-v3",
+        "chinese_text": "王爷爷的儿子阿勇在打扫屋子。阿勇的女儿小琴提来一桶水。",
+        "question": "小琴是王爷爷的谁？",
+        "choices": [
+          "外孙女",
+          "孙女",
+          "女儿"
+        ],
+        "answer": "孙女",
+        "explanation": "阿勇是王爷爷的儿子。儿子的女儿是孙女。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-10-v4",
+        "chinese_text": "赵奶奶在门边等女儿阿柳。阿柳带来自己的儿子小麦。邻居钱叔叔领着儿子小谷从门口走过。",
+        "question": "谁是赵奶奶的外孙？",
+        "choices": [
+          "小麦",
+          "小谷",
+          "钱叔叔"
+        ],
+        "answer": "小麦",
+        "explanation": "阿柳是赵奶奶的女儿，阿柳的儿子小麦是赵奶奶的外孙。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-11",
+    "source": "clutrr",
+    "source_id": "dd461ba3-0d8f-4413-8072-da8959b333dd",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Douglas] gave his mother [Lillian] flowers on her birthday. [Jerry] loved his mother, [Lillian].",
+    "original_question": "('Douglas', 'Jerry')",
+    "original_answer": "brother",
+    "variants": [
+      {
+        "id": "clutrr-11-v1",
+        "chinese_text": "阿莉过生日时，儿子小东给她送了花。男孩小杰也很爱自己的妈妈阿莉。",
+        "question": "小东和小杰是什么关系？",
+        "choices": [
+          "父子",
+          "亲兄弟",
+          "爷孙"
+        ],
+        "answer": "亲兄弟",
+        "explanation": "小东是阿莉的儿子，小杰的妈妈也是阿莉。这两个男孩是亲兄弟。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-11-v2",
+        "chinese_text": "男孩小朗的妈妈秦阿姨买了两盒酸奶。比小朗小两岁的女孩小晴放下书包，跟秦阿姨说：“妈妈，我想喝原味的。”",
+        "question": "小朗和小晴是什么关系？",
+        "choices": [
+          "亲兄妹",
+          "父女",
+          "母女"
+        ],
+        "answer": "亲兄妹",
+        "explanation": "秦阿姨是小朗的妈妈，小晴也叫秦阿姨妈妈。小朗是男孩，小晴是女孩，他们是一对亲兄妹。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "定位说话人"
+        ],
+        "distractor_type": "说话人身份",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-11-v3",
+        "chinese_text": "白叔叔把足球递给小石。小石说：“我和小木有同一个爸爸。他已经去球场等我们了。”在球场等他们的是小石的爸爸陆叔叔。",
+        "question": "谁是小木的爸爸？",
+        "choices": [
+          "小石",
+          "白叔叔",
+          "陆叔叔"
+        ],
+        "answer": "陆叔叔",
+        "explanation": "小石说他和小木有同一个爸爸，所以陆叔叔也是小木的爸爸。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-11-v4",
+        "chinese_text": "小圆把一串彩灯拿给阿晴。阿晴的两个女儿小方和小角走过来，一人拿住一头。",
+        "question": "小方和小角是什么关系？",
+        "choices": [
+          "母女",
+          "亲姐妹",
+          "外婆和外孙女"
+        ],
+        "answer": "亲姐妹",
+        "explanation": "小方和小角都是阿晴的女儿。她们是同一个妈妈的两个女儿，也就是亲姐妹。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "定位人物"
+        ],
+        "distractor_type": "相近人物",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-12",
+    "source": "clutrr",
+    "source_id": "b94ca744-e8d2-48d7-a436-4ef1f374c2c4",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Lillian] borrowed some money from her brother [Nicholas]. [Lillian]'s son [Timothy] missed seeing his mother on the weekends.",
+    "original_question": "('Timothy', 'Nicholas')",
+    "original_answer": "uncle",
+    "variants": [
+      {
+        "id": "clutrr-12-v1",
+        "chinese_text": "阿莉向自己的兄弟小明借了一点钱。阿莉的儿子小丁周末见不到妈妈，很想她。",
+        "question": "小明是小丁的谁？",
+        "choices": [
+          "叔叔",
+          "哥哥",
+          "舅舅"
+        ],
+        "answer": "舅舅",
+        "explanation": "阿莉是小丁的妈妈。妈妈的兄弟是小丁的舅舅。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-12-v2",
+        "chinese_text": "大平的妹妹阿静带着她的儿子小飞去地铁站。小飞提着一个绿袋子。",
+        "question": "小飞是大平的谁？",
+        "choices": [
+          "儿子",
+          "外甥",
+          "侄子"
+        ],
+        "answer": "外甥",
+        "explanation": "阿静是大平的妹妹。妹妹的儿子是大平的外甥。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-12-v3",
+        "chinese_text": "小加的爸爸阿林喜欢下棋。阿林的弟弟大丰把棋盘放上桌。",
+        "question": "大丰是小加的谁？",
+        "choices": [
+          "叔叔",
+          "舅舅",
+          "爸爸"
+        ],
+        "answer": "叔叔",
+        "explanation": "阿林是小加的爸爸。爸爸的弟弟是叔叔。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-12-v4",
+        "chinese_text": "小青的妈妈叫阿文。阿文的哥哥大江和邻居大海帮忙搬椅子。",
+        "question": "小青应该叫谁舅舅？",
+        "choices": [
+          "大海",
+          "阿文",
+          "大江"
+        ],
+        "answer": "大江",
+        "explanation": "小青的妈妈是阿文。大江是阿文的哥哥，所以小青叫大江舅舅。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-13",
+    "source": "clutrr",
+    "source_id": "c0175be7-4529-46c2-a4e1-a4ed7d3e6ff6",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Wayne] took his daughter [Heidi] out for ice cream. His other daughter, [Louise], was still in school and could not go.",
+    "original_question": "('Heidi', 'Louise')",
+    "original_answer": "sister",
+    "variants": [
+      {
+        "id": "clutrr-13-v1",
+        "chinese_text": "阿伟带女儿小海去吃冰激凌。他的另一个女儿小露还在学校，不能一起去。",
+        "question": "小海和小露是什么关系？",
+        "choices": [
+          "亲姐妹",
+          "母女",
+          "奶奶和孙女"
+        ],
+        "answer": "亲姐妹",
+        "explanation": "她们的爸爸都是阿伟。两个女孩是亲姐妹。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-13-v2",
+        "chinese_text": "乔叔叔的儿子小勇正在喂鱼。他的另一个儿子小龙拿来了鱼食。",
+        "question": "小勇和小龙是什么关系？",
+        "choices": [
+          "父子",
+          "爷孙",
+          "亲兄弟"
+        ],
+        "answer": "亲兄弟",
+        "explanation": "小勇是乔叔叔的儿子，小龙也是乔叔叔的儿子。他们是亲兄弟。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-13-v3",
+        "chinese_text": "李叔叔的大女儿叫小语，小女儿叫小画。小语把自己的书借给了小画。",
+        "question": "小画是小语的谁？",
+        "choices": [
+          "姐姐",
+          "妹妹",
+          "妈妈"
+        ],
+        "answer": "妹妹",
+        "explanation": "两人都是李叔叔的女儿。小语是大女儿，小画是小女儿，所以小画是小语的妹妹。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-13-v4",
+        "chinese_text": "林叔叔的儿子小树要跟另一个儿子小禾下棋。邻居小马来帮他们摆棋子。",
+        "question": "下棋时，谁和小树是一对亲兄弟？",
+        "choices": [
+          "小禾",
+          "小马",
+          "林叔叔"
+        ],
+        "answer": "小禾",
+        "explanation": "小树和小禾有同一个爸爸。小马是来帮忙的邻居。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-14",
+    "source": "clutrr",
+    "source_id": "bf7d958d-e7a1-43ec-a347-25a5ef81adc0",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Ashley] borrowed her son [Wayne]'s phone. [Wayne]'s daughter [Heidi] was not surprised about it.",
+    "original_question": "('Ashley', 'Heidi')",
+    "original_answer": "granddaughter",
+    "variants": [
+      {
+        "id": "clutrr-14-v1",
+        "chinese_text": "阿欣借用了儿子阿伟的手机。阿伟的女儿小海看到后一点也不惊讶。",
+        "question": "小海是阿欣的谁？",
+        "choices": [
+          "女儿",
+          "孙女",
+          "外孙女"
+        ],
+        "answer": "孙女",
+        "explanation": "阿伟是阿欣的儿子。儿子的女儿是阿欣的孙女。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-14-v2",
+        "chinese_text": "车站里，小夏等着爸爸阿力。阿力的妈妈何阿姨让小夏先坐一会儿。",
+        "question": "何阿姨是小夏的谁？",
+        "choices": [
+          "奶奶",
+          "妈妈",
+          "外婆"
+        ],
+        "answer": "奶奶",
+        "explanation": "小夏的爸爸是阿力。爸爸的妈妈是小夏的奶奶。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-14-v3",
+        "chinese_text": "林奶奶把一篮梨交给女儿阿娟。阿娟的女儿小元挑了个小梨。",
+        "question": "小元是林奶奶的谁？",
+        "choices": [
+          "女儿",
+          "孙女",
+          "外孙女"
+        ],
+        "answer": "外孙女",
+        "explanation": "阿娟是林奶奶的女儿。女儿的女儿是外孙女。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-14-v4",
+        "chinese_text": "小原的爸爸大文作了一幅画。大文的妈妈叶阿姨找来一根绳子，邻居孟阿姨找来一个夹子。",
+        "question": "小原的奶奶是谁？",
+        "choices": [
+          "孟阿姨",
+          "叶阿姨",
+          "大文"
+        ],
+        "answer": "叶阿姨",
+        "explanation": "大文是小原的爸爸。叶阿姨是大文的妈妈，所以她是小原的奶奶。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-15",
+    "source": "clutrr",
+    "source_id": "04184598-4034-48fe-9797-80f16b468c3d",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Dale] was busy planning a camping trip with his daughter [Charlotte]. [Dale]'s mother [Ashley] was present at the thanksgiving service.",
+    "original_question": "('Charlotte', 'Ashley')",
+    "original_answer": "grandmother",
+    "variants": [
+      {
+        "id": "clutrr-15-v1",
+        "chinese_text": "阿达忙着和女儿小夏商量去露营的事。阿达的妈妈阿欣去参加感恩节的活动了。",
+        "question": "阿欣是小夏的谁？",
+        "choices": [
+          "外婆",
+          "妈妈",
+          "奶奶"
+        ],
+        "answer": "奶奶",
+        "explanation": "阿达是小夏的爸爸。爸爸的妈妈是小夏的奶奶。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-15-v2",
+        "chinese_text": "小甜的妈妈阿桃戴好草帽。阿桃的妈妈方阿姨递给她一篮草莓。",
+        "question": "方阿姨是小甜的谁？",
+        "choices": [
+          "奶奶",
+          "外婆",
+          "妈妈"
+        ],
+        "answer": "外婆",
+        "explanation": "小甜的妈妈是阿桃。妈妈的妈妈是小甜的外婆。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-15-v3",
+        "chinese_text": "田奶奶说：“阿昌是我的儿子。阿昌带着他女儿小贝去找松果了。”",
+        "question": "小贝是田奶奶的谁？",
+        "choices": [
+          "孙女",
+          "外孙女",
+          "女儿"
+        ],
+        "answer": "孙女",
+        "explanation": "田奶奶说阿昌是她的儿子。儿子的女儿是她的孙女。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-15-v4",
+        "chinese_text": "小可说：“我的爸爸叫大同。”大同的妈妈胡阿姨在刷杯子，邻居沙阿姨在擦桌子。",
+        "question": "谁是小可的奶奶？",
+        "choices": [
+          "沙阿姨",
+          "大同",
+          "胡阿姨"
+        ],
+        "answer": "胡阿姨",
+        "explanation": "大同是小可的爸爸。胡阿姨是大同的妈妈，所以她是小可的奶奶。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-16",
+    "source": "clutrr",
+    "source_id": "dea25817-c7ce-4a06-aca5-45474cdc5b22",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Heidi] and her sister [Linda] both wanted to play with the same doll. [Heidi]'s mother, [Nancy], told them to share.",
+    "original_question": "('Linda', 'Nancy')",
+    "original_answer": "mother",
+    "variants": [
+      {
+        "id": "clutrr-16-v1",
+        "chinese_text": "小海和小琳是亲姐妹，都想玩同一个布娃娃。小海的妈妈阿宁让她们轮流玩。",
+        "question": "阿宁是小琳的谁？",
+        "choices": [
+          "妈妈",
+          "姐姐",
+          "奶奶"
+        ],
+        "answer": "妈妈",
+        "explanation": "小海和小琳是亲姐妹。阿宁是小海的妈妈，也是小琳的妈妈。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-16-v2",
+        "chinese_text": "蒋阿姨的儿子小光去拿毽子。小光的亲妹妹小霞在门口等。",
+        "question": "小霞是蒋阿姨的谁？",
+        "choices": [
+          "妹妹",
+          "外孙女",
+          "女儿"
+        ],
+        "answer": "女儿",
+        "explanation": "小光是蒋阿姨的儿子。小霞是小光的亲妹妹，也是蒋阿姨的女儿。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-16-v3",
+        "chinese_text": "小眉和小云是亲姐妹。小云的爸爸周叔叔在修车。",
+        "question": "谁是小眉的爸爸？",
+        "choices": [
+          "小云",
+          "周叔叔",
+          "小眉"
+        ],
+        "answer": "周叔叔",
+        "explanation": "小眉和小云是亲姐妹。周叔叔是小云的爸爸，也是小眉的爸爸。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "定位人物"
+        ],
+        "distractor_type": "相近人物",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-16-v4",
+        "chinese_text": "小鹿和小欢是亲姐妹。小欢的妈妈何阿姨拿来三颗棋子，邻居常阿姨摆好棋盘。",
+        "question": "谁是小鹿的妈妈？",
+        "choices": [
+          "何阿姨",
+          "常阿姨",
+          "小欢"
+        ],
+        "answer": "何阿姨",
+        "explanation": "小鹿和小欢是亲姐妹，何阿姨是小欢的妈妈，也是小鹿的妈妈。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-17",
+    "source": "clutrr",
+    "source_id": "39b74317-a854-4d22-9e2e-ab60571f8a98",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Nicholas] took his son [Dennis] fishing. [Nicholas] and [Dennis] stopped to give [Dennis]'s sister, [Mary], some fish.",
+    "original_question": "('Mary', 'Nicholas')",
+    "original_answer": "father",
+    "variants": [
+      {
+        "id": "clutrr-17-v1",
+        "chinese_text": "阿明带儿子小德去钓鱼。回去时，两人送了几条鱼给小梅。小德和小梅有同一个爸爸。",
+        "question": "阿明是小梅的谁？",
+        "choices": [
+          "爷爷",
+          "爸爸",
+          "弟弟"
+        ],
+        "answer": "爸爸",
+        "explanation": "阿明是小德的爸爸。小梅和小德是同一个爸爸的两个孩子，阿明也是小梅的爸爸。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-17-v2",
+        "chinese_text": "小竹和小苗是亲姐妹。小苗帮爸爸陆叔叔找到了雨衣。",
+        "question": "陆叔叔是小竹的谁？",
+        "choices": [
+          "爸爸",
+          "叔叔",
+          "哥哥"
+        ],
+        "answer": "爸爸",
+        "explanation": "小竹和小苗是亲姐妹。陆叔叔是小苗的爸爸，也是小竹的爸爸。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "跨句找线索"
+        ],
+        "distractor_type": "线索换序",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-17-v3",
+        "chinese_text": "邹叔叔教女儿小夏写字。小夏的亲哥哥小安正收起自己的练习本。",
+        "question": "小安是邹叔叔的谁？",
+        "choices": [
+          "哥哥",
+          "叔叔",
+          "儿子"
+        ],
+        "answer": "儿子",
+        "explanation": "小夏是邹叔叔的女儿。小安是小夏的亲哥哥，也是邹叔叔的儿子。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-17-v4",
+        "chinese_text": "小羊帮妈妈王阿姨端碗。金阿姨给小羊扶门。小羊说：“小牛和我有同一个妈妈，他也想来帮忙。”",
+        "question": "谁是小牛的妈妈？",
+        "choices": [
+          "金阿姨",
+          "王阿姨",
+          "小羊"
+        ],
+        "answer": "王阿姨",
+        "explanation": "小牛和小羊有同一个妈妈。王阿姨是小羊的妈妈，也是小牛的妈妈。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-18",
+    "source": "clutrr",
+    "source_id": "02f0778b-b911-4924-9a03-b43c5e05b497",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Jennifer]'s father, [Nicholas], was so proud to see her graduate. [Nicholas]'s father, [Clarence], was glad to see him so happy.",
+    "original_question": "('Jennifer', 'Clarence')",
+    "original_answer": "grandfather",
+    "variants": [
+      {
+        "id": "clutrr-18-v1",
+        "chinese_text": "小珍毕业了，爸爸阿明看到后很自豪。阿明的爸爸阿康看见他这么高兴，也很开心。",
+        "question": "阿康是小珍的谁？",
+        "choices": [
+          "爸爸",
+          "外公",
+          "爷爷"
+        ],
+        "answer": "爷爷",
+        "explanation": "阿明是小珍的爸爸。爸爸的爸爸是小珍的爷爷。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-18-v2",
+        "chinese_text": "阿桥陪妈妈阿苹去看花灯。阿苹的爸爸老许站在桥边等他们。",
+        "question": "老许是阿桥的谁？",
+        "choices": [
+          "爸爸",
+          "外公",
+          "爷爷"
+        ],
+        "answer": "外公",
+        "explanation": "阿苹是阿桥的妈妈。妈妈的爸爸是阿桥的外公。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-18-v3",
+        "chinese_text": "钱爷爷给自己的儿子阿峰借了一顶帽子。阿峰的儿子小俊把帽子放进书包。",
+        "question": "小俊是钱爷爷的谁？",
+        "choices": [
+          "孙子",
+          "外孙",
+          "儿子"
+        ],
+        "answer": "孙子",
+        "explanation": "阿峰是钱爷爷的儿子。儿子的儿子是他的孙子。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-18-v4",
+        "chinese_text": "小松的爸爸大石带了四个橘子。大石的爸爸老周带了一个保温杯，邻居老宋背着布袋。",
+        "question": "谁是小松的爷爷？",
+        "choices": [
+          "老宋",
+          "大石",
+          "老周"
+        ],
+        "answer": "老周",
+        "explanation": "大石是小松的爸爸。老周是大石的爸爸，所以老周是小松的爷爷。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-19",
+    "source": "clutrr",
+    "source_id": "e8872113-7944-4031-8595-9ae9ba9c9afa",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Dennis] invited his sister [Natalia] out to watch the meteor shower. [Amy] gave her son, [Dennis], blankets for them to sit on and snacks to eat while they watched the meteors.",
+    "original_question": "('Amy', 'Natalia')",
+    "original_answer": "daughter",
+    "variants": [
+      {
+        "id": "clutrr-19-v1",
+        "chinese_text": "小德请家里的女孩小娜一起去看流星，他们有同一个妈妈。阿雅是小德的妈妈，她给了儿子毯子和点心。",
+        "question": "小娜是阿雅的谁？",
+        "choices": [
+          "女儿",
+          "亲姐妹",
+          "孙女"
+        ],
+        "answer": "女儿",
+        "explanation": "阿雅是小德的妈妈，小德和小娜有同一个妈妈，所以小娜也是阿雅的女儿。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-19-v2",
+        "chinese_text": "小乔和小景是一对亲姐弟。小景帮妈妈刘阿姨把晾干的毛巾收起来。",
+        "question": "刘阿姨是小乔的谁？",
+        "choices": [
+          "姐姐",
+          "奶奶",
+          "妈妈"
+        ],
+        "answer": "妈妈",
+        "explanation": "小乔和小景是亲姐弟。刘阿姨是小景的妈妈，也是小乔的妈妈。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-19-v3",
+        "chinese_text": "郭叔叔和儿子阿星在看窗外的月亮。阿星的亲妹妹小云把灯关了，屋里变暗了。",
+        "question": "在故事里，郭叔叔的女儿是谁？",
+        "choices": [
+          "阿星",
+          "小云",
+          "郭叔叔"
+        ],
+        "answer": "小云",
+        "explanation": "阿星是郭叔叔的儿子。小云是阿星的亲妹妹，也是郭叔叔的女儿。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "定位人物"
+        ],
+        "distractor_type": "相近人物",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-19-v4",
+        "chinese_text": "陶阿姨的儿子小航说：“我拿手电筒，小舟来画月亮。她是我的妹妹，我们有同一个妈妈。”邻居小帆把门打开了。",
+        "question": "谁是陶阿姨的女儿？",
+        "choices": [
+          "小舟",
+          "小帆",
+          "小航"
+        ],
+        "answer": "小舟",
+        "explanation": "陶阿姨是小航的妈妈。小舟是小航的妹妹，也是陶阿姨的女儿。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  },
+  {
+    "id": "clutrr-20",
+    "source": "clutrr",
+    "source_id": "08b3c94a-ae06-4850-90ac-fa7d080f140a",
+    "source_url": "https://huggingface.co/datasets/CLUTRR/v1/viewer/gen_train234_test2to10/train?p=1",
+    "source_author": "Koustuv Sinha, Shagun Sodhani, Jin Dong, Joelle Pineau, William L. Hamilton",
+    "original_text": "[Ashley] called her son, [Nicholas], and told him about a cool new theme park that had just opened up in her town. [Nicholas] decided to take his young son, [Dennis], to the new theme park.",
+    "original_question": "('Ashley', 'Dennis')",
+    "original_answer": "grandson",
+    "variants": [
+      {
+        "id": "clutrr-20-v1",
+        "chinese_text": "阿欣打电话告诉儿子阿明，镇上新开了一个游乐园。阿明打算带年幼的儿子小德去那里玩。",
+        "question": "小德是阿欣的谁？",
+        "choices": [
+          "外孙",
+          "孙子",
+          "儿子"
+        ],
+        "answer": "孙子",
+        "explanation": "阿明是阿欣的儿子。儿子的儿子是阿欣的孙子。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-20-v2",
+        "chinese_text": "孟爷爷的女儿阿禾想去图书馆。阿禾的儿子小平还在门口绑鞋带。",
+        "question": "小平是孟爷爷的谁？",
+        "choices": [
+          "外孙",
+          "孙子",
+          "儿子"
+        ],
+        "answer": "外孙",
+        "explanation": "阿禾是孟爷爷的女儿。女儿的儿子是他的外孙。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "辨别称呼"
+        ],
+        "distractor_type": "相近称呼",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-20-v3",
+        "chinese_text": "阿山带儿子小杨坐地铁。阿山的妈妈陈阿姨已经在地铁站等他们。",
+        "question": "陈阿姨是小杨的谁？",
+        "choices": [
+          "妈妈",
+          "外婆",
+          "奶奶"
+        ],
+        "answer": "奶奶",
+        "explanation": "阿山是小杨的爸爸。爸爸的妈妈是小杨的奶奶。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "称呼方向"
+        ],
+        "distractor_type": "称呼方向",
+        "difficulty": "基础",
+        "verification_status": "待人工审校"
+      },
+      {
+        "id": "clutrr-20-v4",
+        "chinese_text": "许爷爷的儿子叫大明。大明的孩子小瑞是男孩，邻居小达也来玩了。",
+        "question": "谁是许爷爷的孙子？",
+        "choices": [
+          "小达",
+          "小瑞",
+          "大明"
+        ],
+        "answer": "小瑞",
+        "explanation": "大明是许爷爷的儿子，小瑞是大明的儿子。儿子的儿子是孙子。",
+        "skill_tags": [
+          "人物关系",
+          "两条线索",
+          "排除无关信息"
+        ],
+        "distractor_type": "无关信息",
+        "difficulty": "进阶",
+        "verification_status": "待人工审校"
+      }
+    ]
+  }
+]

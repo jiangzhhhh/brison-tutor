@@ -6,11 +6,17 @@
   const bank = window.Punctuation;
   const training = window.PunctuationTraining;
   const { categories, questions, names } = bank;
-  const { id: exerciseId, storage: { currentKey, schemaVersion, bankVersion, validate, auxiliaryKeys: [migrationKey] } } = window.EXERCISES.find(item => item.id === 'punctuation');
-  const previousKey = 'brison-tutor:progress:punctuation:v2';
+  const exerciseId = bridge.exerciseId ?? 'punctuation';
+  const classified = exerciseId === 'punctuation-classified';
+  const { storage: { currentKey, schemaVersion, bankVersion, validate, auxiliaryKeys: [migrationKey] = [] } } =
+    window.EXERCISES.find(item => item.id === exerciseId);
+  const previousKey = classified ? 'brison-tutor:progress:punctuation-classified:v1' : 'brison-tutor:progress:punctuation:v2';
   const $ = id => document.getElementById(id);
   const sentence = $('sentence');
   const palette = $('palette');
+  const questionList = $('question-list');
+  const questionButtons = new Map();
+  const questionNumbers = new Map(questions.map(({ id }, index) => [id, index + 1]));
   const caret = $('insertion-caret');
   const ghost = $('drag-mark');
   const practice = sentence.closest('.card');
@@ -19,6 +25,8 @@
   preview.setAttribute('aria-hidden', 'true');
 
   let data = { round: null, history: [] };
+  let classifiedData = { currentQuestionId: null, records: {} };
+  let classifiedRaw = null;
   let needsMigration = false;
   if (!bridge.invalidated) {
     try {
@@ -28,15 +36,21 @@
         if (saved?.schemaVersion !== schemaVersion || String(saved.bankVersion) !== bankVersion || !validate(saved)) {
           bridge.invalidated = true;
           storageNotice('此页无法恢复练习进度，已暂停保存。请前往进度管理。');
+        } else if (classified) {
+          classifiedRaw = raw;
+          classifiedData = saved.data;
         } else data = saved.data;
       } else if (localStorage.getItem(migrationKey) === null) {
         const previous = localStorage.getItem(previousKey);
         if (previous !== null) {
           const migrated = restorePrevious(previous);
           if (migrated) {
-            data = migrated;
+            if (classified) classifiedData = migrated;
+            else data = migrated;
             needsMigration = true;
-          } else storageNotice('无法恢复之前的练习进度，可以开始一轮新练习。');
+          } else {
+            storageNotice(classified ? '无法恢复之前的练习进度，可以重新选题。' : '无法恢复之前的练习进度，可以开始一轮新练习。');
+          }
         }
       }
     } catch {
@@ -62,7 +76,8 @@
 
   function restorePrevious(raw) {
     try {
-      return training.migrateV2(JSON.parse(raw), previousKey);
+      const saved = JSON.parse(raw);
+      return classified ? training.migrateClassifiedV1(saved, previousKey) : training.migrateV2(saved, previousKey);
     } catch {
       return null;
     }
@@ -71,8 +86,14 @@
   function save() {
     if (bridge.invalidated) return;
     try {
-      const raw = JSON.stringify({ exerciseId, schemaVersion, bankVersion, updatedAt: new Date().toISOString(), data });
-      const markMigration = data.migratedFrom === previousKey && localStorage.getItem(migrationKey) === null;
+      if (classified && localStorage.getItem(currentKey) !== classifiedRaw) {
+        bridge.invalidated = true;
+        storageNotice('进度已在其他页面更改。此页已暂停保存，请刷新后继续。');
+        return;
+      }
+      const progress = classified ? classifiedData : data;
+      const raw = JSON.stringify({ exerciseId, schemaVersion, bankVersion, updatedAt: new Date().toISOString(), data: progress });
+      const markMigration = progress.migratedFrom === previousKey && localStorage.getItem(migrationKey) === null;
       if (markMigration) localStorage.setItem(migrationKey, '1');
       try {
         localStorage.setItem(currentKey, raw);
@@ -80,18 +101,32 @@
         if (markMigration) localStorage.removeItem(migrationKey);
         throw error;
       }
+      if (classified) classifiedRaw = raw;
       $('storage-notice').hidden = true;
     } catch {
       storageNotice('无法保存进度。关闭或刷新页面可能丢失本次作答。');
     }
   }
 
+  function currentQuestionId() {
+    return classified ? classifiedData.currentQuestionId : data.round?.currentQuestionId;
+  }
+
+  function currentRecord() {
+    return classified ? classifiedData.records[classifiedData.currentQuestionId] : data.round;
+  }
+
+  function currentResult() {
+    const record = currentRecord();
+    return classified ? training.classifiedResult(record) : record && training.currentResult(record);
+  }
+
   function editing() {
-    return !training.currentResult(data.round);
+    return Boolean(currentQuestionId()) && !currentResult();
   }
 
   function marks() {
-    return data.round.draft ?? training.currentResult(data.round) ?? bank.blank(question);
+    return currentRecord().draft ?? currentResult() ?? bank.blank(question);
   }
 
   function button(label, className = 'secondary') {
@@ -103,8 +138,8 @@
   }
 
   function renderQuestion() {
-    question = questions.find(item => item.id === data.round.currentQuestionId);
-    const number = data.round.attempts.length + Number(editing());
+    question = questions.find(item => item.id === currentQuestionId());
+    const number = classified ? questionNumbers.get(question.id) : data.round.attempts.length + Number(editing());
     $('question-title').textContent = `第 ${number} 题`;
     $('context').textContent = question.hint;
     palette.replaceChildren(...Array.from(question.palette, mark => {
@@ -219,12 +254,15 @@
     $('undo').disabled = !undoStack.length;
     $('submit').hidden = done;
     $('submit').disabled = !bank.complete(question, current);
-    $('navigation').hidden = !done || data.round.completedAt !== null;
+    $('navigation').hidden = classified || !done || data.round.completedAt !== null;
+    $('back-to-questions').hidden = !classified;
+    $('restart-question').hidden = !classified || !done;
     const feedback = done ? (correct ? '答对了。' : '还有标点需要调整。') : '';
     if ($('feedback').textContent !== feedback) $('feedback').textContent = feedback;
     $('feedback').toggleAttribute('data-incorrect', done && !correct);
 
-    $('progress-count').textContent = `已达标 ${training.mastered(data.round)} / ${data.round.requiredCategories.length} 类`;
+    $('progress-count').hidden = classified;
+    if (!classified) $('progress-count').textContent = `已达标 ${training.mastered(data.round)} / ${data.round.requiredCategories.length} 类`;
   }
 
   const completedTimeFormat = new Intl.DateTimeFormat('zh-CN', { dateStyle: 'medium', timeStyle: 'medium', hourCycle: 'h23' });
@@ -293,10 +331,48 @@
     }));
   }
 
+  function buildQuestionList() {
+    $('question-groups').replaceChildren(...categories.map(({ id, title }, index) => {
+      const group = document.createElement('details');
+      group.className = 'practice-question-group';
+      group.open = index === 0;
+      const summary = document.createElement('summary');
+      const items = questions.filter(item => item.category === id);
+      summary.textContent = `${title}（${items.length} 题）`;
+      const list = document.createElement('ul');
+      for (const item of items) {
+        const row = document.createElement('li');
+        const choice = button('');
+        const label = document.createElement('span');
+        label.textContent = `第 ${questionNumbers.get(item.id)} 题　${item.text}`;
+        const status = document.createElement('small');
+        status.className = 'practice-question-status';
+        choice.dataset.questionId = item.id;
+        choice.append(label, status);
+        row.append(choice);
+        list.append(row);
+        questionButtons.set(item.id, choice);
+      }
+      group.append(summary, list);
+      return group;
+    }));
+  }
+
   function renderPage() {
-    $('intro').hidden = data.round !== null;
-    practice.hidden = data.round === null;
-    if (data.round) renderQuestion();
+    const hasQuestion = Boolean(currentQuestionId());
+    practice.hidden = !hasQuestion;
+    if (hasQuestion) renderQuestion();
+    if (classified) {
+      questionList.hidden = hasQuestion;
+      if (!hasQuestion) {
+        for (const [id, choice] of questionButtons) {
+          const record = classifiedData.records[id];
+          choice.querySelector('small').textContent = record ? (training.classifiedResult(record) ? '已作答' : '作答中') : '';
+        }
+      }
+      return;
+    }
+    $('intro').hidden = hasQuestion;
     renderCompletion();
     renderHistory();
   }
@@ -383,7 +459,7 @@
 
   function updateDraft(draft) {
     undoStack.push(marks());
-    data.round.draft = draft;
+    currentRecord().draft = draft;
     save();
   }
 
@@ -435,6 +511,36 @@
 
   $('start').addEventListener('click', start);
   $('restart').addEventListener('click', start);
+  if (classified) {
+    $('random-mode').removeAttribute('aria-current');
+    $('classified-mode').setAttribute('aria-current', 'page');
+    buildQuestionList();
+    questionList.addEventListener('click', event => {
+      const choice = event.target.closest('button[data-question-id]');
+      if (!choice || !training.selectClassified(classifiedData, choice.dataset.questionId)) return;
+      resetQuestion();
+      save();
+      renderPage();
+      $('question-title').focus();
+    });
+    $('back-to-questions').addEventListener('click', () => {
+      const choice = questionButtons.get(classifiedData.currentQuestionId);
+      if (!choice) return;
+      classifiedData.currentQuestionId = null;
+      resetQuestion();
+      save();
+      renderPage();
+      choice.closest('details').open = true;
+      choice.focus();
+    });
+    $('restart-question').addEventListener('click', () => {
+      if (!training.restartClassified(classifiedData)) return;
+      resetQuestion();
+      save();
+      renderAnswer();
+      $('question-title').focus();
+    });
+  }
   $('next').addEventListener('click', () => {
     if (!training.advance(data.round)) return;
     resetQuestion();
@@ -558,18 +664,21 @@
 
   $('undo').addEventListener('click', () => {
     if (!undoStack.length) return;
-    data.round.draft = undoStack.pop();
+    currentRecord().draft = undoStack.pop();
     save();
     renderAnswer();
   });
   $('submit').addEventListener('click', () => {
-    if (!training.submit(data.round, marks())) return;
+    if (!editing()) return;
+    const submitted = classified ? training.submitClassified(classifiedData, marks()) : training.submit(data.round, marks());
+    if (!submitted) return;
     undoStack = [];
     selected = '';
     save();
     renderAnswer();
-    renderCompletion();
+    if (!classified) renderCompletion();
     if ($('feedback').hasAttribute('data-incorrect')) sentence.focus();
+    else if (classified) $('back-to-questions').focus();
     else $(data.round.completedAt === null ? 'next' : 'completion-title').focus();
   });
 

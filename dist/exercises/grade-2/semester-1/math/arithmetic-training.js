@@ -16,6 +16,14 @@
     return { round: null, history: [] };
   }
 
+  function emptyClassifiedData() {
+    return { categoryId: null, categories: {} };
+  }
+
+  function roundCategories(scopeId) {
+    return trackCategories.get(scopeId) ?? [byCategory.get(scopeId)];
+  }
+
   function isObject(value) {
     return value !== null && typeof value === 'object' && !Array.isArray(value);
   }
@@ -48,7 +56,7 @@
   }
 
   function newProgress(trackId) {
-    return Object.fromEntries(trackCategories.get(trackId).map(({ id }) => [id, { streak: 0, last: null, attempts: 0 }]));
+    return Object.fromEntries(roundCategories(trackId).map(({ id }) => [id, { streak: 0, last: null, attempts: 0 }]));
   }
 
   function applyAttempt(progress, question, answer, legacy) {
@@ -92,7 +100,7 @@
   function draw(round, random) {
     const progress = getProgress(round);
     const previousId = round.attempts.at(-1)?.questionId;
-    const eligible = trackCategories.get(round.trackId).filter(({ id }) => progress[id].streak < target);
+    const eligible = roundCategories(round.trackId).filter(({ id }) => progress[id].streak < target);
     const fewest = Math.min(...eligible.map(({ id }) => progress[id].attempts));
     const even = eligible.filter(({ id }) => progress[id].attempts === fewest);
     const otherCategory = even.filter(({ id }) => id !== byId.get(previousId)?.category);
@@ -123,8 +131,62 @@
     delete round.step;
     round.optionOrder = Object.fromEntries(question.fields.map(field => {
       const ids = field.options.map(({ id }) => id);
-      return [field.id, field.id === 'first' ? ids : shuffled(ids, random)];
+      return [field.id, random && field.id !== 'first' ? shuffled(ids, random) : ids];
     }));
+  }
+
+  function newClassifiedQuestion(question) {
+    const state = { attempts: [], history: [] };
+    setQuestion(state, question);
+    return state;
+  }
+
+  function previousQuestion(data, question) {
+    if (!question) return;
+    const record = data.categories[question === example ? 'compose' : question.category];
+    if (!record) return;
+    const rounds = record.round ? [...record.history, record.round] : record.history;
+    const answers = rounds.flatMap(round => round.attempts.filter(({ questionId }) => questionId === question.id));
+    const currentState = record.round?.questionId === question.id ? record.round : null;
+    const working = currentState && !currentResult(currentState);
+    if (!working && answers.length === 0) return;
+    const state = newClassifiedQuestion(question);
+    if (currentState) state.optionOrder = currentState.optionOrder;
+    if (working) {
+      state.draft = currentState.draft && Object.fromEntries(Object.entries(currentState.draft).map(([field, ids]) => [field, [...ids]]));
+      if (currentState.step !== undefined) state.step = currentState.step;
+    } else {
+      state.attempts.push(answers.pop());
+    }
+    state.history = answers.map(({ answer }) => answer);
+    return state;
+  }
+
+  function classifiedQuestion(data, questionId) {
+    return data.practice?.questions[questionId] ?? previousQuestion(data, byId.get(questionId));
+  }
+
+  function openClassifiedQuestion(data, questionId) {
+    const question = byId.get(questionId);
+    if (!question || data.practice?.questionId === questionId) return false;
+    const state = classifiedQuestion(data, questionId) ?? newClassifiedQuestion(question);
+    data.practice ??= { questionId: null, questions: {} };
+    data.practice.questions[questionId] = state;
+    data.practice.questionId = questionId;
+    return true;
+  }
+
+  function closeClassifiedQuestion(data) {
+    if (!data.practice?.questionId) return false;
+    data.practice.questionId = null;
+    return true;
+  }
+
+  function retryClassifiedQuestion(data) {
+    const state = classifiedQuestion(data, data.practice?.questionId);
+    if (!state || !currentResult(state)) return false;
+    state.history.push(state.attempts.pop().answer);
+    return true;
   }
 
   function current(round) {
@@ -174,20 +236,25 @@
     return true;
   }
 
-  function submit(round, answer, now = Date.now()) {
+  function recordAnswer(round, answer) {
     const question = current(round);
-    if (round.completedAt !== null || currentResult(round) || !complete(question, answer)) return false;
+    if (currentResult(round) || !complete(question, answer)) return false;
     if (question.expression && (stepIndex(round) !== question.fields.length - 1
       || question.fields.slice(0, -1).some(field => answer[field.id][0] !== round.draft?.[field.id]?.[0]))) return false;
     round.attempts.push({ questionId: round.questionId, answer: Object.fromEntries(question.fields.map(({ id }) => [id, [...answer[id]]])) });
     round.draft = null;
     delete round.step;
-    if (mastered(round) === trackCategories.get(round.trackId).length) round.completedAt = Math.max(round.startedAt, now);
+    return true;
+  }
+
+  function submit(round, answer, now = Date.now()) {
+    if (round.completedAt !== null || !recordAnswer(round, answer)) return false;
+    if (mastered(round) === roundCategories(round.trackId).length) round.completedAt = Math.max(round.startedAt, now);
     return true;
   }
 
   function summarize(round) {
-    const rows = trackCategories.get(round.trackId).map(({ id, title, track }) => ({
+    const rows = roundCategories(round.trackId).map(({ id, title, track }) => ({
       id, title, track, answered: 0, wrong: 0, firstWrong: 0, intermediateWrong: 0, resultOnlyWrong: 0,
       factsWrong: 0, unknownWrong: 0, equationWrong: 0
     }));
@@ -295,6 +362,38 @@
       && (data.round === null || (data.round?.legacy === undefined && validRound(data.round, mixed, legacy)));
   }
 
+  function validPreviousClassifiedData(data) {
+    if (!isObject(data.categories)) return false;
+    const records = Object.entries(data.categories);
+    if (data.categoryId === null) return records.length === 0;
+    if (!byCategory.has(data.categoryId) || !Object.hasOwn(data.categories, data.categoryId)) return false;
+    return records.every(([id, record]) => {
+      if (!byCategory.has(id) || !isObject(record) || Object.keys(record).length !== 2) return false;
+      const valid = round => round?.legacy === undefined && validRound(round, id, false);
+      return Array.isArray(record.history) && record.history.every(round => valid(round) && round.completedAt !== null)
+        && (record.round === null ? record.history.length === 0 : valid(record.round));
+    });
+  }
+
+  function validClassifiedData(data) {
+    if (!isObject(data) || Object.keys(data).some(key => !['categoryId', 'categories', 'practice'].includes(key))
+      || !validPreviousClassifiedData(data)) return false;
+    if (!Object.hasOwn(data, 'practice')) return true;
+    const { practice } = data;
+    if (!isObject(practice) || Object.keys(practice).length !== 2 || !isObject(practice.questions)
+      || (practice.questionId !== null && (typeof practice.questionId !== 'string'
+        || !Object.hasOwn(practice.questions, practice.questionId)))) return false;
+    return Object.entries(practice.questions).every(([id, state]) => {
+      const question = byId.get(id);
+      if (!question || state?.questionId !== id || !validQuestionState(state) || !Array.isArray(state.attempts)
+        || !Array.isArray(state.history) || !state.history.every(answer => complete(question, answer))) return false;
+      if (state.attempts.length === 0) return true;
+      const [attempt] = state.attempts;
+      return state.attempts.length === 1 && state.draft === null && state.step === undefined
+        && attempt?.questionId === id && complete(question, attempt.answer);
+    });
+  }
+
   function migrateV1(record, key) {
     if (record.schemaVersion !== 1 || !validLegacy(record.data)) return null;
     const old = JSON.parse(JSON.stringify(record.data));
@@ -360,7 +459,9 @@
   }
 
   window.ArithmeticTraining = {
-    emptyData, complete, grade, streaks, mastered, current, currentResult, start, advance, submit, summarize, validData,
+    emptyData, emptyClassifiedData, validClassifiedData, classifiedQuestion, openClassifiedQuestion,
+    closeClassifiedQuestion, retryClassifiedQuestion, submitClassified: recordAnswer,
+    complete, grade, streaks, mastered, current, currentResult, start, advance, submit, summarize, validData,
     stepIndex, confirmStep, v1Key, v2Key, migrate
   };
 })();

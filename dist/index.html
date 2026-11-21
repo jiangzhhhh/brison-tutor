@@ -40,7 +40,7 @@
     subject: Object.hasOwn(subjects,params.get('subject')) ? params.get('subject') : 'all',
     query: params.get('q') || ''
   };
-  const bank = window.EXERCISES;
+  const bank = window.EXERCISES.filter(exercise => !exercise.parentId);
   const el = id => document.getElementById(id);
   const escape = text => String(text).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   function buttons(){
@@ -54,7 +54,7 @@
     const items = bank.filter(x => x.grade===state.grade && x.semester===state.semester && (state.subject==='all'||x.subject===state.subject) && [x.title,x.subtitle,x.description,...x.tags].join(' ').toLocaleLowerCase().includes(query));
     el('category').textContent = `${names[state.grade-1]} · ${state.semester===1?'上':'下'}册 · ${subjects[state.subject]}`;
     el('count').textContent = `${items.length} 份练习`;
-    el('results').innerHTML = items.length ? items.map(x=>`<article class="card" data-subject="${escape(x.subject)}"><div class="card-top"><span class="tile" aria-hidden="true">${x.subject==='math'?'＋':'文'}</span><span class="label">${subjects[x.subject]} · ${names[x.grade-1]}${x.semester===1?'上':'下'}册</span></div><h3>${escape(x.title)}</h3><p class="description">${escape(x.description)}</p><div class="tags">${x.tags.map(t=>`<span class="tag">${escape(t)}</span>`).join('')}</div><div class="actions"><a class="start" href="${escape(x.path)}" aria-label="打开练习：${escape(x.title)}">打开练习 <span aria-hidden="true">↗</span></a></div></article>`).join('') : `<div class="empty"><strong>${query?'没有找到匹配的练习':'暂无练习'}</strong><p>${query?'请更换关键词或分类。':'此分类暂无练习。'}</p><button type="button" class="reset" id="reset">查看二年级上册全部练习</button></div>`;
+    el('results').innerHTML = items.length ? items.map(x=>`<article class="card" data-subject="${escape(x.subject)}"><div class="card-top"><span class="tile" aria-hidden="true">${x.subject==='math'?'＋':'文'}</span><span class="label">${subjects[x.subject]} · ${names[x.grade-1]}${x.semester===1?'上':'下'}册</span></div><h3>${escape(x.title)}</h3><p class="description">${escape(x.description)}</p><div class="tags">${x.tags.map(t=>`<span class="tag">${escape(t)}</span>`).join('')}</div><div class="actions"><a class="start" href="${escape(x.shelfPath ?? x.path)}" aria-label="打开练习：${escape(x.title)}">打开练习 <span aria-hidden="true">↗</span></a></div></article>`).join('') : `<div class="empty"><strong>${query?'没有找到匹配的练习':'暂无练习'}</strong><p>${query?'请更换关键词或分类。':'此分类暂无练习。'}</p><button type="button" class="reset" id="reset">查看二年级上册全部练习</button></div>`;
     const hash = new URLSearchParams({grade:state.grade,semester:state.semester,subject:state.subject});
     if(state.query) hash.set('q',state.query);
     // file:// 下也可使用，不依赖服务器。

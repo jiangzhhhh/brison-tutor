@@ -102,6 +102,37 @@
     return true;
   }
 
+  function questionRecord(data, questionId) {
+    return data.records[questionId] ??= { draft: null, attempts: [] };
+  }
+
+  function selectClassified(data, questionId) {
+    if (!byId.has(questionId)) return false;
+    questionRecord(data, questionId);
+    data.currentQuestionId = questionId;
+    return true;
+  }
+
+  function classifiedResult(record) {
+    return record?.draft === null ? record.attempts.at(-1) ?? null : null;
+  }
+
+  function submitClassified(data, marks) {
+    const record = data.records[data.currentQuestionId];
+    const question = byId.get(data.currentQuestionId);
+    if (!record || !question || classifiedResult(record) || !bank.validMarks(question, marks) || !bank.complete(question, marks)) return false;
+    record.attempts.push(marks.slice());
+    record.draft = null;
+    return true;
+  }
+
+  function restartClassified(data) {
+    const record = data.records[data.currentQuestionId];
+    if (!classifiedResult(record)) return false;
+    record.draft = bank.blank(byId.get(data.currentQuestionId));
+    return true;
+  }
+
   function advance(round, random = Math.random) {
     if (round.completedAt !== null || !currentResult(round)) return false;
     round.currentQuestionId = draw(round, random);
@@ -159,6 +190,48 @@
       (data.round === null || validStoredRound(data.round));
   }
 
+  function validClassifiedData(data) {
+    const records = data?.records;
+    if (!records || typeof records !== 'object' || Array.isArray(records)) return false;
+    const current = data.currentQuestionId;
+    if (current !== null && (!byId.has(current) || !Object.hasOwn(records, current))) return false;
+    return Object.entries(records).every(([id, record]) => {
+      const question = byId.get(id);
+      return Boolean(question && Array.isArray(record?.attempts) &&
+        (record.draft === null || bank.validMarks(question, record.draft)) &&
+        record.attempts.every(marks => bank.validMarks(question, marks) && bank.complete(question, marks)));
+    });
+  }
+
+  function validClassifiedV1(data) {
+    const sessions = data?.sessions;
+    if (!sessions || typeof sessions !== 'object' || Array.isArray(sessions)) return false;
+    if (data.selectedCategoryId === null) return Object.keys(sessions).length === 0;
+    if (!byCategory.has(data.selectedCategoryId) || !Object.hasOwn(sessions, data.selectedCategoryId)) return false;
+    return Object.entries(sessions).every(([id, session]) => {
+      if (!byCategory.has(id) || !Array.isArray(session?.history)) return false;
+      const ids = [id];
+      const valid = round => sameCategories(round?.requiredCategories, ids) && validRound(round, ids);
+      return (session.round === null || valid(session.round)) &&
+        session.history.every(round => valid(round) && round.completedAt !== null);
+    });
+  }
+
+  function migrateClassifiedV1(saved, sourceKey) {
+    if (saved?.exerciseId !== 'punctuation-classified' || saved.schemaVersion !== 1 || saved.bankVersion !== '2.1' || !validClassifiedV1(saved.data)) return null;
+    const data = { currentQuestionId: null, records: {}, migratedFrom: sourceKey };
+    for (const { round, history } of Object.values(saved.data.sessions)) {
+      for (const previous of [...history, round].filter(Boolean)) {
+        for (const { questionId, marks } of previous.attempts) questionRecord(data, questionId).attempts.push(marks.slice());
+      }
+      if (!round || currentResult(round)) continue;
+      const record = questionRecord(data, round.currentQuestionId);
+      const question = byId.get(round.currentQuestionId);
+      record.draft = round.draft?.slice() ?? (record.attempts.length ? bank.blank(question) : null);
+    }
+    return validClassifiedData(data) ? data : null;
+  }
+
   function migrateV2(saved, sourceKey) {
     if (saved?.exerciseId !== 'punctuation' || saved.schemaVersion !== 2 || saved.bankVersion !== '2.0') return null;
     const data = saved.data;
@@ -172,5 +245,8 @@
     return validData(upgraded) ? upgraded : null;
   }
 
-  window.PunctuationTraining = { streaks, mastered, summarize, currentResult, start, advance, submit, validData, migrateV2 };
+  window.PunctuationTraining = {
+    streaks, mastered, summarize, currentResult, start, advance, submit, validData, migrateV2,
+    selectClassified, classifiedResult, submitClassified, restartClassified, validClassifiedData, migrateClassifiedV1
+  };
 })();

@@ -10,7 +10,7 @@
   <script src="../../../../progress-store.js"></script>
   <script src="punctuation-bank.js"></script>
   <script src="punctuation-training.js"></script>
-  <script src="../../../../progress-bridge.js" data-exercise="punctuation"></script>
+  <script src="../../../../progress-bridge.js" data-exercise="punctuation" data-classified-exercise="punctuation-classified"></script>
   <script defer src="../../../../vendor/pinyin-pro-3.29.5.js"></script>
   <script defer src="../../../../pinyin-data.js"></script>
   <script defer src="../../../../pinyin.js"></script>
@@ -23,7 +23,15 @@
   </nav>
   <main>
     <h1>标点应用</h1>
+    <nav class="practice-modes" aria-label="练习方式">
+      <a id="classified-mode" href="punctuation.html?mode=classified">分类练习</a>
+      <a id="random-mode" href="punctuation.html" aria-current="page">随机闯关</a>
+    </nav>
     <p id="storage-notice" class="project-storage-notice" role="alert" hidden></p>
+    <section id="question-list" class="practice-question-list" aria-labelledby="question-list-title" hidden>
+      <h2 id="question-list-title">题目列表</h2>
+      <div id="question-groups"></div>
+    </section>
     <section id="intro" class="card" aria-label="开始练习" hidden>
       <p id="goal"></p>
       <button type="button" class="primary" id="start">开始练习</button>
@@ -54,6 +62,8 @@
       <p id="keyboard-help-boxes" class="sr-only">用回车拿起标点，再按回车放进方框，按退格键移除方框里的标点。</p>
       <p id="selection-status" class="sr-only" role="status"></p>
       <div class="actions">
+        <button type="button" class="secondary" id="back-to-questions" hidden>返回题目列表</button>
+        <button type="button" class="secondary" id="restart-question" hidden>再练一次</button>
         <button type="button" class="secondary" id="undo">撤销</button>
         <button type="button" class="primary" id="submit">提交答案</button>
       </div>

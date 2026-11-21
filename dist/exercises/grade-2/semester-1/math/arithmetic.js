@@ -2,12 +2,18 @@
   'use strict';
 
   const bridge = window.ProgressBridge;
+  const { exerciseId } = bridge;
+  const classified = exerciseId === 'arithmetic-foundations-classified';
+  const { storage } = window.EXERCISES.find(item => item.id === exerciseId);
+  const { currentKey, schemaVersion, bankVersion, validate, auxiliaryKeys: [migrationKey, v2MigrationKey] } = storage;
+  if (classified && window.navigator?.locks) {
+    bridge.withWriteLock = operation => window.navigator.locks.request(currentKey, operation);
+  }
   if (bridge.isManagementFrame) return;
 
   const bank = window.ArithmeticBank;
   const training = window.ArithmeticTraining;
-  const { id: exerciseId, storage } = window.EXERCISES.find(item => item.id === 'arithmetic-foundations');
-  const { currentKey, schemaVersion, bankVersion, validate, auxiliaryKeys: [migrationKey, v2MigrationKey] } = storage;
+  const emptyData = classified ? training.emptyClassifiedData : training.emptyData;
   const $ = id => document.getElementById(id);
   const labelByField = { facts: '已知条件', unknown: '要问的问题', equation: '算式', first: '运算顺序', intermediate: '中间数', result: '最后结果' };
   const dateFormat = new Intl.DateTimeFormat('zh-CN', { dateStyle: 'short', timeStyle: 'short' });
@@ -31,22 +37,23 @@
   }
 
   let needsMigration = false;
+  let lastStored = null;
   function restore() {
-    if (bridge.invalidated) return training.emptyData();
+    if (bridge.invalidated) return emptyData();
     try {
-      const raw = localStorage.getItem(currentKey);
+      const raw = lastStored = localStorage.getItem(currentKey);
       if (raw !== null) {
         const saved = JSON.parse(raw);
         if (saved?.schemaVersion === schemaVersion && saved.bankVersion === bankVersion && validate(saved)) return saved.data;
       } else {
-        if (localStorage.getItem(migrationKey) !== null) return training.emptyData();
+        if (classified || localStorage.getItem(migrationKey) !== null) return emptyData();
         let key = training.v2Key;
         let previous = localStorage.getItem(key);
         if (previous === null && localStorage.getItem(v2MigrationKey) === null) {
           key = training.v1Key;
           previous = localStorage.getItem(key);
         }
-        if (previous === null) return training.emptyData();
+        if (previous === null) return emptyData();
         const migrated = training.migrate(JSON.parse(previous), key);
         if (migrated) {
           needsMigration = true;
@@ -58,20 +65,44 @@
       notice('无法读取进度，本次作答无法保存。');
     }
     bridge.invalidated = true;
-    return training.emptyData();
+    return emptyData();
   }
 
   const data = restore();
+  const questionButtons = new Map();
   let fieldViews = [];
+
+  function activeRound() {
+    return classified ? training.classifiedQuestion(data, data.practice?.questionId) : data.round;
+  }
 
   function save() {
     if (bridge.invalidated) return;
+    if (bridge.withWriteLock) {
+      bridge.withWriteLock(writeProgress).catch(reportSaveFailure);
+    } else {
+      writeProgress();
+    }
+  }
+
+  function reportSaveFailure() {
+    if (!bridge.invalidated) notice('无法保存进度。关闭或刷新页面可能丢失本次作答。');
+  }
+
+  function writeProgress() {
+    if (bridge.invalidated) return;
     try {
+      if (classified && localStorage.getItem(currentKey) !== lastStored) {
+        bridge.invalidated = true;
+        notice('进度已在其他页面更改，已暂停保存。请刷新后继续。');
+        return;
+      }
       const raw = JSON.stringify({ exerciseId, schemaVersion, bankVersion, updatedAt: new Date().toISOString(), data });
       const markMigration = needsMigration && localStorage.getItem(migrationKey) === null;
       if (markMigration) localStorage.setItem(migrationKey, '1');
       try {
         localStorage.setItem(currentKey, raw);
+        lastStored = raw;
       } catch (error) {
         if (markMigration) localStorage.removeItem(migrationKey);
         throw error;
@@ -79,12 +110,12 @@
       needsMigration = false;
       notice('');
     } catch {
-      notice('无法保存进度。关闭或刷新页面可能丢失本次作答。');
+      reportSaveFailure();
     }
   }
 
   function choose(field, optionId) {
-    const { round } = data;
+    const round = activeRound();
     if (training.currentResult(round)) return;
     const draft = round.draft ?? {};
     const selected = draft[field.id] ?? [];
@@ -169,7 +200,7 @@
     $('submit').textContent = moveStep ? '下一步' : '提交答案';
     $('submit').disabled = moveStep ? !answer[question.fields[currentStep].id]?.length : !training.complete(question, answer);
     $('submit').hidden = Boolean(result);
-    $('next-actions').hidden = !result;
+    $('next-actions').hidden = classified || !result;
   }
 
   function renderFeedback(node, question, answer) {
@@ -225,7 +256,7 @@
     const step = answer && question.expression ? question.fields.length - 1 : training.stepIndex(round);
     $('question-title').textContent = question.expression
       ? [question.title, '算出中间数', '算最后一步'][step] : question.title;
-    $('mastered').textContent = `已达标 ${training.mastered(round)} / ${bank.categories.length} 类`;
+    if (!classified) $('mastered').textContent = `已达标 ${training.mastered(round)} / ${bank.categories.length} 类`;
     const prompt = $('prompt');
     prompt.hidden = Boolean(question.expression);
     prompt.textContent = question.expression ? '' : question.prompt;
@@ -281,6 +312,10 @@
   }
 
   function render() {
+    if (classified) {
+      renderClassified();
+      return;
+    }
     const { round, history } = data;
     const finished = Boolean(round && round.completedAt !== null);
     $('intro').hidden = Boolean(round);
@@ -301,6 +336,60 @@
     }));
   }
 
+  function renderClassified() {
+    const round = activeRound();
+    $('categories').hidden = Boolean(round);
+    $('practice').hidden = !round;
+    if (round) {
+      renderQuestion(round);
+      $('question-retry-actions').hidden = !training.currentResult(round);
+      const question = training.current(round);
+      const correct = round.history.filter(answer => training.grade(question, answer).correct).length;
+      $('question-history').hidden = round.history.length === 0;
+      $('question-history').textContent = `历次作答：答对 ${correct} 次，答错 ${round.history.length - correct} 次。`;
+      return;
+    }
+    for (const [id, { status }] of questionButtons) {
+      const state = training.classifiedQuestion(data, id);
+      const answer = state && training.currentResult(state);
+      status.hidden = !state;
+      status.textContent = answer ? (training.grade(training.current(state), answer).correct ? '答对' : '答错') : '作答中';
+    }
+  }
+
+  function buildQuestionList() {
+    const active = activeRound();
+    const activeQuestion = active ? training.current(active) : null;
+    const expanded = activeQuestion === bank.example ? 'compose' : activeQuestion?.category ?? data.categoryId ?? bank.categories[0].id;
+    for (const { id, title } of bank.categories) {
+      const group = element('details');
+      group.className = 'practice-question-group';
+      group.open = id === expanded;
+      const questions = bank.questions.filter(question => question.category === id);
+      if (id === 'compose') questions.unshift(bank.example);
+      const items = element('ul');
+      for (const question of questions) {
+        const item = element('li');
+        const control = button(undefined, 'secondary');
+        const label = question === bank.example ? `示例 · ${question.prompt}` : question.expression ?? question.prompt;
+        const status = element('small');
+        control.dataset.questionId = question.id;
+        control.append(element('span', label), status);
+        control.onclick = () => {
+          if (!training.openClassifiedQuestion(data, question.id)) return;
+          save();
+          render();
+          $('question-title').focus();
+        };
+        questionButtons.set(question.id, { control, status });
+        item.append(control);
+        items.append(item);
+      }
+      group.append(element('summary', title), items);
+      $('category-options').append(group);
+    }
+  }
+
   function begin() {
     if (!training.start(data)) return;
     save();
@@ -308,29 +397,51 @@
     $('question-title').focus();
   }
 
-  $('start').onclick = begin;
-  $('restart').onclick = begin;
   $('answer-form').onsubmit = event => {
     event.preventDefault();
-    const { round } = data;
+    const round = activeRound();
+    if (!round) return;
     if (training.confirmStep(round)) {
       save();
       renderQuestion(round);
       $('question-title').focus();
       return;
     }
-    if (!training.submit(round, round.draft)) return;
+    const submit = classified ? training.submitClassified : training.submit;
+    if (!submit(round, round.draft)) return;
     save();
     render();
-    $(round.completedAt === null ? 'feedback' : 'completion-title').focus();
+    $(classified || round.completedAt === null ? 'feedback' : 'completion-title').focus();
   };
-  $('next').onclick = () => {
-    const { round } = data;
-    if (!training.advance(round)) return;
-    save();
-    render();
-    $('question-title').focus();
-  };
+  $(classified ? 'classified-mode' : 'random-mode').setAttribute('aria-current', 'page');
+  if (classified) {
+    $('intro').hidden = true;
+    $('question-list-return').hidden = false;
+    $('question-list-return').onclick = () => {
+      const id = data.practice?.questionId;
+      if (!training.closeClassifiedQuestion(data)) return;
+      save();
+      render();
+      questionButtons.get(id).control.focus();
+    };
+    $('question-retry').onclick = () => {
+      if (!training.retryClassifiedQuestion(data)) return;
+      save();
+      render();
+      $('question-title').focus();
+    };
+    buildQuestionList();
+  } else {
+    $('start').onclick = begin;
+    $('restart').onclick = begin;
+    $('next').onclick = () => {
+      const { round } = data;
+      if (!training.advance(round)) return;
+      save();
+      render();
+      $('question-title').focus();
+    };
+  }
   if (needsMigration) save();
   render();
 })();

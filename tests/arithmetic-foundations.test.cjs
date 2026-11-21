@@ -18,6 +18,33 @@ const random = () => 0;
 const copy = value => JSON.parse(JSON.stringify(value));
 const solution = question => Object.fromEntries(question.fields.map(field => [field.id, [...field.correct]]));
 
+function page(values, exerciseId, isManagementFrame = false) {
+  const { window } = load();
+  const nodes = new Map();
+  const element = () => ({
+    hidden: false, attrs: {}, children: [], dataset: {}, classList: { add() {}, toggle() {} },
+    setAttribute(name, value) { this.attrs[name] = value; },
+    append(...children) { this.children.push(...children); },
+    replaceChildren(...children) { this.children = children; },
+    focus() {}
+  });
+  const document = {
+    createElement: element,
+    getElementById(id) {
+      if (!nodes.has(id)) nodes.set(id, element());
+      return nodes.get(id);
+    }
+  };
+  window.ProgressBridge = { exerciseId, isManagementFrame, invalidated: false };
+  window.PinyinAid = { annotate() {} };
+  const localStorage = {
+    getItem: key => values.get(key) ?? null,
+    setItem: (key, raw) => values.set(key, raw)
+  };
+  vm.runInNewContext(fs.readFileSync(folder + 'arithmetic.js', 'utf8'), { window, document, localStorage });
+  return { get: document.getElementById, nodes, bridge: window.ProgressBridge };
+}
+
 function submit(training, round, answer, now) {
   if (training.current(round).expression) {
     round.draft = { first: answer.first };
@@ -159,6 +186,155 @@ test('十类在同一轮交错出题，编题示例不计分且两种除法问�
   assert.equal(data.history.length, 1);
   assert.equal(data.round.completedAt, null);
   assert(training.validData(copy(data)));
+});
+
+test('分类按题号点选，提交只结算当前题，重练保留历史和其他题的草稿', () => {
+  const { bank, training } = load();
+  const data = training.emptyClassifiedData();
+  assert(training.validClassifiedData(data));
+  assert(!training.openClassifiedQuestion(data, 'mixed'));
+  assert(training.openClassifiedQuestion(data, 'mul-first-4'));
+  const order = training.classifiedQuestion(data, 'mul-first-4');
+  assert.equal(training.current(order).id, 'mul-first-4');
+  const answer = solution(training.current(order));
+  order.draft = { first: answer.first };
+  assert(training.confirmStep(order));
+  order.draft.intermediate = answer.intermediate;
+  assert(training.closeClassifiedQuestion(data));
+  assert.equal(data.practice.questionId, null);
+  assert(training.openClassifiedQuestion(data, 'total-6'));
+  const total = training.classifiedQuestion(data, 'total-6');
+  const chosen = bank.questions.find(question => question.id === 'total-6');
+  assert.equal(training.current(total), chosen);
+  assert.deepEqual(copy(total.optionOrder.choice), Array.from(chosen.fields[0].options, option => option.id));
+  assert(training.submitClassified(total, solution(chosen)));
+  assert(!training.submitClassified(total, solution(chosen)));
+  assert.equal(data.practice.questionId, 'total-6');
+  assert(training.retryClassifiedQuestion(data));
+  assert.equal(data.practice.questionId, 'total-6');
+  assert.deepEqual(copy(total.history), [copy(solution(chosen))]);
+  assert.equal(training.currentResult(total), null);
+  const restored = copy(data);
+  assert(training.validClassifiedData(restored));
+  assert(!training.validData(restored));
+  assert.equal(training.stepIndex(restored.practice.questions['mul-first-4']), 1);
+  assert.deepEqual(restored.practice.questions['mul-first-4'].draft, copy(order.draft));
+  const invalidSelection = copy(restored);
+  invalidSelection.practice.questionId = ['total-6'];
+  assert(!training.validClassifiedData(invalidSelection));
+  restored.practice.questions['total-6'].questionId = 'mul-first-4';
+  assert(!training.validClassifiedData(restored));
+});
+
+test('分类可直接选择编题正式题和独立示例，按原规则判分', () => {
+  const { bank, training } = load();
+  const data = training.emptyClassifiedData();
+  assert(training.openClassifiedQuestion(data, 'compose-6'));
+  const session = training.classifiedQuestion(data, 'compose-6');
+  const q = training.current(session);
+  assert.equal(q.id, 'compose-6');
+  assert(!training.submitClassified(session, { facts: ['known'] }));
+  assert(training.submitClassified(session, { ...solution(q), unknown: ['total'] }));
+  assert.equal(training.grade(q, training.currentResult(session)).fields.unknown, false);
+  assert(training.openClassifiedQuestion(data, bank.example.id));
+  assert.equal(training.current(training.classifiedQuestion(data, bank.example.id)), bank.example);
+  assert(training.validClassifiedData(copy(data)));
+});
+
+test('旧分类轮次保留原数据并按题号恢复分步草稿及完成答案', () => {
+  const { bank, training } = load();
+  const prior = bank.questions.find(question => question.id === 'mul-first-1');
+  const current = bank.questions.find(question => question.id === 'mul-first-4');
+  const oldRound = {
+    trackId: 'mul-first', startedAt: 10, completedAt: null, questionId: current.id,
+    attempts: [{ questionId: prior.id, answer: solution(prior) }],
+    draft: { first: current.fields[0].correct }, step: 1,
+    optionOrder: Object.fromEntries(current.fields.map(field => [field.id, field.options.map(({ id }) => id)]))
+  };
+  const data = copy({ categoryId: 'mul-first', categories: { 'mul-first': { round: oldRound, history: [] } } });
+  const originalCategories = copy(data.categories);
+  assert(training.validClassifiedData(data));
+  assert(training.openClassifiedQuestion(data, current.id));
+  assert.equal(training.stepIndex(training.classifiedQuestion(data, current.id)), 1);
+  assert.deepEqual(copy(training.classifiedQuestion(data, current.id).optionOrder), copy(oldRound.optionOrder));
+  assert(training.openClassifiedQuestion(data, prior.id));
+  assert.deepEqual(copy(training.currentResult(training.classifiedQuestion(data, prior.id))), copy(solution(prior)));
+  assert.deepEqual(data.categories, originalCategories);
+  assert(training.validClassifiedData(copy(data)));
+});
+
+function questionControl(view, id) {
+  return view.get('category-options').children
+    .flatMap(group => group.children[1].children)
+    .map(item => item.children[0]).find(control => control.dataset.questionId === id);
+}
+
+test('分类页面列出全部正式题和示例，点选原题后可返回并恢复分步草稿', () => {
+  const classified = 'arithmetic-foundations-classified';
+  const random = 'arithmetic-foundations';
+  const classifiedKey = `brison-tutor:progress:${classified}:v1`;
+  const randomKey = `brison-tutor:progress:${random}:v3`;
+  const values = new Map();
+  const randomPage = page(values, random);
+  randomPage.get('start').onclick();
+  const previousRandom = values.get(randomKey);
+  assert(previousRandom);
+  const p = page(values, classified);
+  assert.equal(p.get('classified-mode').attrs['aria-current'], 'page');
+  assert(p.get('intro').hidden);
+  assert(!p.get('categories').hidden);
+  assert.equal(p.get('category-options').children.length, 10);
+  assert.equal(p.get('category-options').children.flatMap(group => group.children[1].children).length, 61);
+  assert(questionControl(p, 'compose-example'));
+  assert(!values.has(classifiedKey));
+  questionControl(p, 'mul-first-4').onclick();
+  assert(p.get('categories').hidden);
+  const choice = p.get('fields').children[0].children[1].children.find(node => node.onclick);
+  choice.onclick();
+  p.get('answer-form').onsubmit({ preventDefault() {} });
+  const savedDraft = JSON.parse(values.get(classifiedKey)).data.practice.questions['mul-first-4'];
+  assert.equal(savedDraft.step, 1);
+  p.get('question-list-return').onclick();
+  assert(!p.get('categories').hidden);
+  questionControl(p, 'total-6').onclick();
+  const totalChoice = p.get('fields').children[0].children[1].children[0];
+  totalChoice.onclick();
+  p.get('answer-form').onsubmit({ preventDefault() {} });
+  assert(!p.get('feedback').hidden);
+  assert.equal(JSON.parse(values.get(classifiedKey)).data.practice.questionId, 'total-6');
+  assert(p.get('next-actions').hidden);
+  p.get('question-list-return').onclick();
+  questionControl(p, 'mul-first-4').onclick();
+  const restored = page(values, classified);
+  assert.equal(restored.get('question-title').textContent, '算出中间数');
+  assert.deepEqual(JSON.parse(values.get(classifiedKey)).data.practice.questions['mul-first-4'], savedDraft);
+  assert.equal(values.get(randomKey), previousRandom);
+
+  const managed = page(values, classified, true);
+  assert.equal(managed.nodes.size, 0);
+  values.delete(classifiedKey);
+  restored.get('question-list-return').onclick();
+  assert(restored.bridge.invalidated);
+  assert.match(restored.get('storage-notice').textContent, /刷新/);
+  assert(!values.has(classifiedKey));
+});
+
+test('分类进度损坏时原样保留，写入被拒绝时明确提示', () => {
+  const id = 'arithmetic-foundations-classified';
+  const key = `brison-tutor:progress:${id}:v1`;
+  const raw = JSON.stringify({ exerciseId: id, schemaVersion: 1, bankVersion: '1.1', data: { categoryId: 'unknown', categories: {} } });
+  const corrupted = new Map([[key, raw]]);
+  const restored = page(corrupted, id);
+  questionControl(restored, 'total-1').onclick();
+  assert.match(restored.get('storage-notice').textContent, /无法恢复.*暂停保存/);
+  assert.equal(corrupted.get(key), raw);
+
+  const readOnly = Object.assign(new Map(), { set() { throw new Error('storage is read-only'); } });
+  const practice = page(readOnly, id);
+  questionControl(practice, 'total-1').onclick();
+  assert.match(practice.get('storage-notice').textContent, /无法保存进度/);
+  assert(!practice.get('practice').hidden);
+  assert(!readOnly.has(key));
 });
 
 test('错一道只中断该类连对，恢复时保留草稿和选项顺序；损坏数据由管理页识别', () => {

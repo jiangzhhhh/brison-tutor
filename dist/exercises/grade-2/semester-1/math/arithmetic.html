@@ -10,7 +10,7 @@
   <script src="../../../../progress-store.js"></script>
   <script src="arithmetic-bank.js"></script>
   <script src="arithmetic-training.js"></script>
-  <script src="../../../../progress-bridge.js" data-exercise="arithmetic-foundations"></script>
+  <script src="../../../../progress-bridge.js" data-exercise="arithmetic-foundations" data-classified-exercise="arithmetic-foundations-classified"></script>
   <script defer src="../../../../vendor/pinyin-pro-3.29.5.js"></script>
   <script defer src="../../../../pinyin-data.js"></script>
   <script defer src="../../../../pinyin.js"></script>
@@ -23,12 +23,21 @@
   </nav>
   <main>
     <h1>乘除意义与运算顺序</h1>
+    <nav class="practice-modes" aria-label="练习方式">
+      <a id="classified-mode" href="arithmetic.html?mode=classified">分类练习</a>
+      <a id="random-mode" href="arithmetic.html">随机闯关</a>
+    </nav>
     <p id="storage-notice" class="project-storage-notice" role="alert" hidden></p>
+    <section id="categories" class="practice-question-list" aria-labelledby="category-title" hidden>
+      <h2 id="category-title">选择题目</h2>
+      <div id="category-options"></div>
+    </section>
     <section id="intro" class="card" aria-label="开始练习" hidden>
       <p>混合练习十类题。每类连对两道后，本轮就不再出这一类。</p>
       <button type="button" id="start" class="primary">开始练习</button>
     </section>
     <section id="practice" class="card" aria-labelledby="question-title" hidden>
+      <button type="button" id="question-list-return" class="secondary" hidden>返回题目列表</button>
       <header class="question-header">
         <h2 id="question-title" tabindex="-1"></h2>
         <span id="mastered"></span>
@@ -48,6 +57,10 @@
       <div id="feedback" class="feedback" role="status" tabindex="-1" hidden></div>
       <div id="next-actions" class="actions" hidden>
         <button type="button" id="next" class="primary">下一题</button>
+      </div>
+      <p id="question-history" hidden></p>
+      <div id="question-retry-actions" class="actions" hidden>
+        <button type="button" id="question-retry" class="secondary">再练一次</button>
       </div>
     </section>
     <section id="completion" class="card" aria-labelledby="completion-title" hidden>

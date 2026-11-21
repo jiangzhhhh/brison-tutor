@@ -9,3 +9,22 @@ body{background:var(--project-bg);color:var(--project-ink);font-family:var(--pro
 /* 生字的上方注音；保留按钮原有文字颜色和键盘焦点。 */
 .pinyin-ruby{ruby-position:over;ruby-align:center;padding-inline:.04em}
 .pinyin-ruby rt{font-size:.55em;font-weight:400;line-height:1;letter-spacing:0;text-transform:none;opacity:.85;user-select:none;pointer-events:none}
+
+/* Practice modes and category selection share the same controls across subjects. */
+.practice-modes{display:flex;flex-wrap:wrap;gap:8px;margin-block:0 24px}
+.practice-modes a,.practice-categories button{display:inline-flex;min-height:44px;align-items:center;justify-content:center;padding:8px 16px;border:1px solid var(--project-border);border-radius:12px;background:var(--project-surface);color:var(--project-primary);font-size:15px;font-weight:650;text-decoration:none;line-height:1.4}
+.practice-modes a:hover,.practice-categories button:hover:not(:disabled){border-color:var(--project-primary)}
+.practice-modes a[aria-current="page"]{border-color:var(--project-primary);background:var(--project-primary);color:#fff;text-decoration:underline;text-underline-offset:4px}
+.practice-categories{display:flex;flex-wrap:wrap;gap:8px;margin-block:0 16px}
+.practice-categories[hidden]{display:none}
+.practice-categories button{gap:6px}
+.practice-categories button[aria-pressed="true"]{border-color:var(--project-primary);background:var(--project-soft);box-shadow:inset 0 0 0 1px var(--project-primary);font-weight:750}
+
+.practice-question-list{min-width:0}
+.practice-question-group{margin-block:0 12px;border:1px solid var(--project-border);border-radius:12px;background:var(--project-surface)}
+.practice-question-group summary{min-height:44px;padding:10px 14px;cursor:pointer;font-weight:650;overflow-wrap:anywhere}
+.practice-question-group ul{display:grid;gap:8px;list-style:none;margin:0;padding:0 12px 12px}
+.practice-question-group button{width:100%;display:flex;align-items:center;justify-content:space-between;gap:8px;padding:8px 12px;text-align:left;border:1px solid var(--project-border);border-radius:12px;background:var(--project-surface);color:var(--project-ink);font-size:16px;line-height:1.5;overflow-wrap:anywhere}
+.practice-question-group button:hover{border-color:var(--project-primary);background:var(--project-soft)}
+.practice-question-status{flex-shrink:0;color:var(--project-muted);font-size:13px;font-weight:400}
+@media(max-width:520px){.practice-question-group button{align-items:flex-start;flex-direction:column}}

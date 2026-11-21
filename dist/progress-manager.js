@@ -3,11 +3,12 @@
   const $=id=>document.getElementById(id), clients=new Map(), snapshots=new Map();
   const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const labels={current:'当前版本',legacy:'保留的旧版记录',damaged:'无法解析的记录',incompatible:'与当前版本不兼容'};
+  const title=exercise=>exercise.progressTitle??exercise.title;
   let sequence=0,busy=false,pending=null;
   function client(exercise){
     if(clients.has(exercise.id)) return clients.get(exercise.id);
     const token=Array.from(crypto.getRandomValues(new Uint32Array(4))).join('-');
-    const frame=document.createElement('iframe');frame.title=`${exercise.title}进度读取`;frame.src=`${exercise.path}#brison-progress=${token}`;
+    const frame=document.createElement('iframe');frame.title=`${title(exercise)}进度读取`;frame.src=`${exercise.path}#brison-progress=${token}`;
     const ready=new Promise((resolve,reject)=>{const timeout=setTimeout(()=>reject(new Error('练习页面加载超时，请检查文件是否完整。')),8000);frame.onload=()=>{clearTimeout(timeout);resolve();};frame.onerror=()=>{clearTimeout(timeout);reject(new Error('练习页面未能加载。'));};});
     // Avoid an unhandled rejection before the first request begins waiting.
     ready.catch(()=>{});document.body.append(frame);
@@ -31,7 +32,7 @@
     $('records').innerHTML=window.EXERCISES.map(exercise=>{
       const value=snapshots.get(exercise.id);
       const body=!value?'<p>正在读取…</p>':value.error?`<p class="error">${escape(value.error)}</p>`:value.rows.length?value.rows.map(row=>`<div class="version"><div><strong>${labels[row.status]}</strong><p>数据版本 ${escape(row.schemaVersion??'未知')} · 题库版本 ${escape(row.bankVersion??'未知')} · ${Math.max(1,Math.ceil(row.bytes/1024))} KB</p><p>${escape(row.key)}</p></div><button class="secondary" type="button" data-id="${escape(exercise.id)}" data-key="${escape(row.key)}" ${busy?'disabled':''}>清理此记录…</button></div>`).join(''):'<p class="empty">没有已保存的进度。</p>';
-      return `<article class="card"><div class="row"><h2>${escape(exercise.title)}</h2><button class="danger" type="button" data-id="${escape(exercise.id)}" ${busy||!value?.rows?.length?'disabled':''}>清理此练习进度…</button></div>${body}</article>`;
+      return `<article class="card"><div class="row"><h2>${escape(title(exercise))}</h2><button class="danger" type="button" data-id="${escape(exercise.id)}" ${busy||!value?.rows?.length?'disabled':''}>清理此练习进度…</button></div>${body}</article>`;
     }).join('');
     $('refresh').disabled=busy;
     $('clear-all').disabled=busy||![...snapshots.values()].some(value=>value.rows?.length);
@@ -42,7 +43,7 @@
     busy=false;render();$('status').textContent=[...snapshots.values()].some(value=>value.error)?'部分练习读取失败，请查看下方说明。':'记录已刷新。';
   }
   function ask(exercises,keys){
-    pending={exercises,keys};$('confirm-text').textContent=keys?'将删除所选的一条进度记录，无法撤销。':`将清理${exercises.map(e=>`《${e.title}》`).join('、')}的全部进度，包含保留的旧版记录，无法撤销。`;
+    pending={exercises,keys};$('confirm-text').textContent=keys?'将删除所选的一条进度记录，无法撤销。':`将清理${exercises.map(exercise=>`《${title(exercise)}》`).join('、')}的全部进度，包含保留的旧版记录，无法撤销。`;
     $('confirmation').showModal();$('cancel').focus();
   }
   $('refresh').onclick=refresh;
@@ -53,7 +54,7 @@
   $('confirm').onclick=async()=>{
     if(!pending||busy)return;const operation=pending;pending=null;$('confirmation').close();busy=true;render();
     const failures=[];
-    for(const exercise of operation.exercises){try{snapshots.set(exercise.id,{rows:await request(exercise,'clear',operation.keys)});}catch(error){snapshots.set(exercise.id,{error:error.message});failures.push(exercise.title);}}
+    for(const exercise of operation.exercises){try{snapshots.set(exercise.id,{rows:await request(exercise,'clear',operation.keys)});}catch(error){snapshots.set(exercise.id,{error:error.message});failures.push(title(exercise));}}
     busy=false;render();$('status').textContent=failures.length?`部分清理失败：${failures.join('、')}。已成功清理的练习不会回滚，请查看下方说明。`:'所选进度已清理。下次打开练习将重新开始。';
   };
   refresh();

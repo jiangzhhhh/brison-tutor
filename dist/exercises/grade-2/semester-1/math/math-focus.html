@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#256657">
+<title>应用题分类练习 · Brison 的练习书架</title>
+<style>
+*{box-sizing:border-box}body{margin:0}main{max-width:880px;margin:auto;padding:32px 24px 64px}header{display:flex;justify-content:space-between;align-items:baseline;gap:16px;flex-wrap:wrap;margin-bottom:28px}h1{font-size:32px;line-height:1.35;margin:0 0 4px}h2{font-size:23px;line-height:1.7;margin:0 0 20px}h3{font-size:20px;margin:0}p{margin:8px 0}button{font-size:16px;padding:12px 20px;cursor:pointer;border:1px solid transparent}button:disabled{opacity:.5}.meta{color:var(--project-muted)}.meta{font-size:14px}.card{padding:28px;border:1px solid var(--project-border)}.question-meta{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:16px}.question-title{font-size:23px;line-height:1.9;overflow-wrap:anywhere}.options{display:grid;gap:12px;border:0;margin:24px 0 0;padding:0;min-width:0}.option{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--project-border);border-radius:12px;padding:16px;font-size:19px;line-height:1.7;cursor:pointer;min-height:58px}.option input{accent-color:var(--project-primary);width:20px;height:20px;flex-shrink:0;margin:6px 0 0}.option:has(input:checked){background:var(--project-soft);border-color:var(--project-primary)}.option:has(input:focus-visible){outline:3px solid var(--project-focus);outline-offset:3px}.option:has(input:disabled){cursor:default}.option-text{min-width:0;overflow-wrap:anywhere}.letter{font-weight:700;margin-right:8px}#list-heading ~ h3{margin:20px 0 12px}.actions{display:flex;gap:12px;justify-content:space-between;align-items:center;flex-wrap:wrap;margin-top:24px}.feedback{margin-top:24px;padding:18px 20px;background:var(--project-soft);border-radius:12px}.feedback.incorrect{border-left:4px solid var(--project-danger)}.feedback p{margin:6px 0 0}.result-title{font-size:20px;font-weight:700}.question-table{border-collapse:collapse;width:100%;margin:16px 0;font-size:18px}.question-table th,.question-table td{padding:10px;border:1px solid var(--project-border);text-align:center}.back{margin-bottom:20px}.saved{font-size:13px;color:var(--project-muted);min-height:22px;margin-top:20px}.storage-error{padding:16px 20px;margin-bottom:24px;border:1px solid var(--project-danger);border-radius:12px;color:var(--project-danger);background:var(--project-surface)}.storage-error a{color:inherit}a{color:var(--project-primary)}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.notice{min-height:24px;color:var(--project-danger)}
+
+@media(max-width:560px){main{padding:24px 16px 40px}h1{font-size:28px}.card{padding:20px}.question-title{font-size:21px}.option{font-size:18px;padding:14px}.actions{gap:10px}.actions button{padding:11px 16px}.question-meta{gap:6px}}
+</style>
+<link rel="stylesheet" href="../../../../project.css">
+<script src="../../../../catalog.js"></script>
+<script src="../../../../progress-store.js"></script>
+<script src="../../../../progress-bridge.js" data-exercise="math-focus" data-validate-progress="app"></script>
+<script src="math-focus-bank.js" defer></script>
+<script src="math-focus-model.js" defer></script>
+<script src="math-focus.js" defer></script>
+</head>
+<body>
+<nav class="project-nav" aria-label="项目导航"><a href="../../../../index.html#grade=2&amp;semester=1&amp;subject=math">← 返回练习书架</a><a href="../../../../progress.html">进度管理</a></nav>
+<main>
+<header><div><h1>应用题分类练习</h1><span class="meta">二年级上册</span></div><span id="overall" class="meta"></span></header>
+<nav class="practice-modes" aria-label="练习方式">
+  <a href="math-focus.html" aria-current="page">分类练习</a>
+  <a href="math-streak.html">随机闯关</a>
+</nav>
+<div id="storage-error" class="storage-error" role="alert" hidden></div>
+<div id="app"><p>正在读取练习…</p></div>
+<p id="action-error" class="notice" role="alert"></p>
+<p id="saved" class="saved" role="status" aria-live="polite"></p>
+<noscript>请启用 JavaScript 后使用练习。</noscript>
+</main>
+</body>
+</html>
